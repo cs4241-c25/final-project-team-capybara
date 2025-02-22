@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import "./App.css";
+// @ts-ignore
 import FileUpload from "./FileUpload";
 import {
     Typography,
     Card
 } from "@material-tailwind/react";
+import React from "react";
 
 function App() {
     const [tableData, setTableData] = useState<any[]>([]);

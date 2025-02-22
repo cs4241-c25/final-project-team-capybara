@@ -1,10 +1,11 @@
-import "./index.css";
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+// @ts-ignore
 import App from "./App";
+// @ts-ignore
 import Tracker from "./Tracker";
+// @ts-ignore
 import Tutorial from "./Tutorial";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
