@@ -4,94 +4,215 @@ import multer from "multer";
 import ExcelJS from "exceljs";
 import { MongoClient } from "mongodb";
 import fs from "fs";
+import session from "express-session";
+import bcrypt from "bcrypt";
 
 const app = express();
 const upload = multer({ dest: "uploads/" });
 
 const url = "mongodb://localhost:27017";
-const dbName = "course_collection"; // Update this!
+const dbName = "course_collection"; // Update this if needed!
 const client = new MongoClient(url);
+const saltRounds = 10; // For bcrypt
 
 async function connectDB() {
-    await client.connect();
-    console.log("Connected to MongoDB!");
+  await client.connect();
+  console.log("Connected to MongoDB!");
 }
 connectDB();
 
-interface CourseData {
-    Course: string;
-    Grade: string;
-    "Grade Points": number;
-    Credits: number;
-    "Earned Credit Points": number;
-}
+// Middleware to parse JSON bodies and URL-encoded data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
+// Session middleware (adjust secret and options for production)
+app.use(
+  session({
+    secret: "your-secret-key", // Replace with your own secret or use an env variable
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+/* ========================
+   Excel Data Upload Route
+======================== */
 app.get("/data", async (req, res) => {
-    try {
-        const db = client.db(dbName);
-        const collection = db.collection("courses");
-        const data = await collection.find().toArray(); // Fetch all stored data
-
-        res.json(data);
-    } catch (error) {
-        console.error("Error fetching data:", error);
-        res.status(500).json({ error: "Error fetching data" });
-    }
+  try {
+    const db = client.db(dbName);
+    const collection = db.collection("courses");
+    const data = await collection.find().toArray();
+    res.json(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.status(500).json({ error: "Error fetching data" });
+  }
 });
 
 app.post("/upload", upload.single("file"), async (req, res) => {
-    if (!req.file) return res.status(400).json({ error: "No file uploaded" });
+  if (!req.file)
+    return res.status(400).json({ error: "No file uploaded" });
 
-    try {
-        console.log("Uploaded file path:", req.file.path);
+  try {
+    console.log("Uploaded file path:", req.file.path);
+    const workbook = new ExcelJS.Workbook();
+    await workbook.xlsx.readFile(req.file.path);
+    const worksheet = workbook.worksheets[0]; // Get the first sheet
+    const jsonData: any[] = [];
 
-        const workbook = new ExcelJS.Workbook();
-        await workbook.xlsx.readFile(req.file.path);
+    worksheet.eachRow((row) => {
+      const rowValues = Array.isArray(row.values)
+        ? row.values.slice(1)
+        : []; // Remove the first empty index
+      const nonNullValues = rowValues.filter(
+        (value) => value !== null && value !== undefined
+      );
 
-        const worksheet = workbook.worksheets[0]; // Get the first sheet
-        const jsonData: any[] = [];
+      // Ensure at least 5 non-null values and first column is not null
+      if (
+        nonNullValues.length >= 5 &&
+        rowValues[0] !== null &&
+        rowValues[0] !== undefined
+      ) {
+        const formattedData = {
+          column1: rowValues[0] ?? null,
+          column2: rowValues[1] ?? null,
+          column3: rowValues[2] ?? null,
+          column4: rowValues[3] ?? null,
+          column5: rowValues[4] ?? null,
+          column6: rowValues[5] ?? null,
+        };
 
-        worksheet.eachRow((row) => {
-            const rowValues = Array.isArray(row.values) ? row.values.slice(1) : []; // Remove the first empty index
+        jsonData.push(formattedData);
+      }
+    });
 
-            // Count non-null values
-            const nonNullValues = rowValues.filter(value => value !== null && value !== undefined);
+    console.log(
+      "Filtered & Formatted Data:",
+      JSON.stringify(jsonData, null, 2)
+    );
 
-            // Ensure at least 5 non-null values and 2nd column (index 1) is not null
-            if (nonNullValues.length >= 5 && rowValues[0] !== null && rowValues[0] !== undefined) {
-                // Format into an object with keys column1 - column6, filling missing values with null
-                const formattedData = {
-                    column1: rowValues[0] ?? null,
-                    column2: rowValues[1] ?? null,
-                    column3: rowValues[2] ?? null,
-                    column4: rowValues[3] ?? null,
-                    column5: rowValues[4] ?? null,
-                    column6: rowValues[5] ?? null,
-                };
-
-                jsonData.push(formattedData);
-            }
-        });
-
-        console.log("Filtered & Formatted Data:", JSON.stringify(jsonData, null, 2));
-
-        // Connect to MongoDB and insert data
-        const db = client.db(dbName);
-        const collection = db.collection("courses"); // Change collection name if needed
-        if (jsonData.length > 0) {
-            await collection.insertMany(jsonData);
-            console.log("Data inserted into MongoDB!");
-        }
-
-        // Delete uploaded file
-        fs.unlinkSync(req.file.path);
-
-        res.json({ message: "Data processed and inserted into MongoDB", data: jsonData });
-    } catch (error) {
-        console.error("Error processing file:", error);
-        const errorMessage = error instanceof Error ? error.message : "Unknown error";
-        res.status(500).json({ error: "Error processing file", details: errorMessage });
+    const db = client.db(dbName);
+    const collection = db.collection("courses");
+    if (jsonData.length > 0) {
+      await collection.insertMany(jsonData);
+      console.log("Data inserted into MongoDB!");
     }
+
+    fs.unlinkSync(req.file.path);
+    res.json({
+      message: "Data processed and inserted into MongoDB",
+      data: jsonData,
+    });
+  } catch (error) {
+    console.error("Error processing file:", error);
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
+    res
+      .status(500)
+      .json({ error: "Error processing file", details: errorMessage });
+  }
 });
 
-ViteExpress.listen(app, 3000, () => console.log("Server is listening on port 3000..."));
+/* ========================
+   Authentication Routes
+======================== */
+
+// Register endpoint
+app.post("/register", async (req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password)
+    return res
+      .status(400)
+      .json({ success: false, message: "Username and password are required" });
+
+  try {
+    const db = client.db(dbName);
+    const usersCollection = db.collection("users");
+
+    // Check if user already exists
+    const existingUser = await usersCollection.findOne({ username });
+    if (existingUser) {
+      return res
+        .status(400)
+        .json({ success: false, message: "User already exists" });
+    }
+
+    // Hash the password and store the new user
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const newUser = { username, password: hashedPassword };
+    await usersCollection.insertOne(newUser);
+
+    return res.json({
+      success: true,
+      message: "Registration successful",
+    });
+  } catch (err) {
+    console.error("Error registering:", err);
+    return res
+      .status(500)
+      .json({ success: false, message: "Server error during registration" });
+  }
+});
+
+// Login endpoint
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password)
+    return res
+      .status(400)
+      .json({ success: false, message: "Username and password are required" });
+
+  try {
+    const db = client.db(dbName);
+    const usersCollection = db.collection("users");
+    const user = await usersCollection.findOne({ username });
+    if (!user) {
+      return res
+        .status(401)
+        .json({ success: false, message: "Invalid credentials" });
+    }
+
+    // Compare the password with the hashed password stored in the database
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      return res
+        .status(401)
+        .json({ success: false, message: "Invalid credentials" });
+    }
+
+    // Set the session for the user
+    req.session.user = {
+      username: user.username,
+      id: user._id,
+    };
+
+    return res.json({
+      success: true,
+      message: "Login successful",
+    });
+  } catch (err) {
+    console.error("Error during login:", err);
+    return res
+      .status(500)
+      .json({ success: false, message: "Server error during login" });
+  }
+});
+
+// (Optional) Logout endpoint to clear session
+app.post("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error logging out:", err);
+      return res
+        .status(500)
+        .json({ success: false, message: "Logout failed" });
+    }
+    res.clearCookie("connect.sid");
+    return res.json({ success: true, message: "Logout successful" });
+  });
+});
+
+ViteExpress.listen(app, 3000, () =>
+  console.log("Server is listening on port 3000...")
+);
