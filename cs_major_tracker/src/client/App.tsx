@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import FileUpload from "./FileUpload";
+import {
+    Typography,
+    Card
+} from "@material-tailwind/react";
 
 function App() {
     const [tableData, setTableData] = useState<any[]>([]);
@@ -19,43 +23,43 @@ function App() {
             </header>
 
             <div className="flex flex-col items-center justify-center flex-grow text-black">
-                <h1 className="text-4xl font-bold mb-8">CS Major Tracker</h1>
+                <Typography variant="h2" className="font-bold my-8">CS Major Tracker</Typography>
                 <FileUpload />
 
-                <div className="mt-8 w-full max-w-4xl">
-                    <table className="w-full border-collapse border border-gray-400">
-                        <thead>
-                        <tr className="bg-gray-200">
-                            <th className="border border-gray-400 px-4 py-2">Column 1</th>
-                            <th className="border border-gray-400 px-4 py-2">Column 2</th>
-                            <th className="border border-gray-400 px-4 py-2">Column 3</th>
-                            <th className="border border-gray-400 px-4 py-2">Column 4</th>
-                            <th className="border border-gray-400 px-4 py-2">Column 5</th>
-                            <th className="border border-gray-400 px-4 py-2">Column 6</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {tableData.length > 0 ? (
-                            tableData.map((row, index) => (
-                                <tr key={index} className="bg-white border border-gray-400">
-                                    <td className="border border-gray-400 px-4 py-2">{row.column1 ?? "—"}</td>
-                                    <td className="border border-gray-400 px-4 py-2">{row.column2 ?? "—"}</td>
-                                    <td className="border border-gray-400 px-4 py-2">{row.column3 ?? "—"}</td>
-                                    <td className="border border-gray-400 px-4 py-2">{row.column4 ?? "—"}</td>
-                                    <td className="border border-gray-400 px-4 py-2">{row.column5 ?? "—"}</td>
-                                    <td className="border border-gray-400 px-4 py-2">{row.column6 ?? "—"}</td>
-                                </tr>
-                            ))
-                        ) : (
-                            <tr>
-                                <td colSpan={6} className="text-center border border-gray-400 px-4 py-2">
-                                    No data available
-                                </td>
-                            </tr>
-                        )}
-                        </tbody>
-                    </table>
-                </div>
+                {/*<Card className="mt-8 mb-5 w-full max-w-4xl overflow-auto rounded-[15px]">*/}
+                {/*    <table className="w-full border-collapse border border-gray-300">*/}
+                {/*        <thead>*/}
+                {/*        <tr className="bg-gray-200">*/}
+                {/*            <th className="border-b border-gray-300 px-4 py-2">Column 1</th>*/}
+                {/*            <th className="border-b border-gray-300 px-4 py-2">Column 2</th>*/}
+                {/*            <th className="border-b border-gray-300 px-4 py-2 min-w-30">Column 3</th>*/}
+                {/*            <th className="border-b border-gray-300 px-4 py-2 min-w-30">Column 4</th>*/}
+                {/*            <th className="border-b border-gray-300 px-4 py-2 min-w-30">Column 5</th>*/}
+                {/*            <th className="border-b border-gray-300 px-4 py-2 min-w-30">Column 6</th>*/}
+                {/*        </tr>*/}
+                {/*        </thead>*/}
+                {/*        <tbody>*/}
+                {/*        {tableData.length > 0 ? (*/}
+                {/*            tableData.map((row, index) => (*/}
+                {/*                <tr key={index} className="bg-white border border-gray-300">*/}
+                {/*                    <td className="border border-gray-300 px-4 py-2">{row.column1 ?? "—"}</td>*/}
+                {/*                    <td className="border border-gray-300 px-4 py-2">{row.column2 ?? "—"}</td>*/}
+                {/*                    <td className="border border-gray-300 px-4 py-2">{row.column3 ?? "—"}</td>*/}
+                {/*                    <td className="border border-gray-300 px-4 py-2">{row.column4 ?? "—"}</td>*/}
+                {/*                    <td className="border border-gray-300 px-4 py-2">{row.column5 ?? "—"}</td>*/}
+                {/*                    <td className="border border-gray-300 px-4 py-2">{row.column6 ?? "—"}</td>*/}
+                {/*                </tr>*/}
+                {/*            ))*/}
+                {/*        ) : (*/}
+                {/*            <tr>*/}
+                {/*                <td colSpan={6} className="text-center border border-gray-400 px-4 py-2">*/}
+                {/*                    No data available*/}
+                {/*                </td>*/}
+                {/*            </tr>*/}
+                {/*        )}*/}
+                {/*        </tbody>*/}
+                {/*    </table>*/}
+                {/*</Card>*/}
             </div>
         </div>
     );
