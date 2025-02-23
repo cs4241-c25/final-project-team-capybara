@@ -25,14 +25,7 @@ const Login: React.FC = () => {
       if (!res.ok || !data.success) {
         setErrorMsg(data.message || 'Invalid login');
       } else {
-        // Option A: If your server sets a session cookie, you might just rely on that.
-        // Option B: If your server returns a JWT (or similar), store it in localStorage:
-        // localStorage.setItem('token', data.token!);
-
-        // Simple approach: store "authenticated" in localStorage
         localStorage.setItem('authenticated', 'true');
-
-        // Navigate to your main page (protected page)
         navigate('/main');
       }
     } catch (err) {
@@ -68,7 +61,7 @@ const Login: React.FC = () => {
         <button type="submit">Login</button>
       </form>
 
-      <a href="/auth/github">Login with GitHub</a>
+      {/* <a href="/auth/github">Login with GitHub</a> */}
       <p>
         Don’t have an account? <a href="/register">Register</a>
       </p>

@@ -5,7 +5,6 @@ interface ProtectedRouteProps {
   children: ReactNode;
 }
 
-// Simple check using localStorage — adapt to your own logic
 function isAuthenticated() {
   return localStorage.getItem('authenticated') === 'true';
 }
