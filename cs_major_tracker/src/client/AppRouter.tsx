@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import App from "./App.tsx";
-import Login from "./Login.tsx";
-import Register from "./Register.tsx";
-import ProtectedRoute from "./ProtectedRoute.tsx";
-import Tracker from "./Tracker.tsx";
-import Tutorial from "./Tutorial.tsx";
+import App from "./App";
+import Login from "./Login";
+import Register from "./Register";
+import ProtectedRoute from "./ProtectedRoute";
+import Tracker from "./Tracker";
+import Tutorial from "./Tutorial";
 
 function AppRouter() {
   return (
