@@ -30,6 +30,7 @@ function Tracker() {
                             <th className="border border-gray-400 px-4 py-2">Column 4</th>
                             <th className="border border-gray-400 px-4 py-2">Column 5</th>
                             <th className="border border-gray-400 px-4 py-2">Column 6</th>
+                            <th className="border border-gray-400 px-4 py-2">Column 7</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -42,11 +43,12 @@ function Tracker() {
                                     <td className="border border-gray-400 px-4 py-2">{row.column4 ?? "—"}</td>
                                     <td className="border border-gray-400 px-4 py-2">{row.column5 ?? "—"}</td>
                                     <td className="border border-gray-400 px-4 py-2">{row.column6 ?? "—"}</td>
+                                    <td className="border border-gray-400 px-4 py-2">{row.column7 ?? "—"}</td>
                                 </tr>
                             ))
                         ) : (
                             <tr>
-                                <td colSpan={6} className="text-center border border-gray-400 px-4 py-2">
+                                <td colSpan={7} className="text-center border border-gray-400 px-4 py-2">
                                     No data available
                                 </td>
                             </tr>
