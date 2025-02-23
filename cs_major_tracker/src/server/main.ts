@@ -60,28 +60,30 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     const worksheet = workbook.worksheets[0]; // Get the first sheet
     const jsonData: any[] = [];
 
-    worksheet.eachRow((row) => {
-      const rowValues = Array.isArray(row.values)
-        ? row.values.slice(1)
-        : []; // Remove the first empty index
-      const nonNullValues = rowValues.filter(
-        (value) => value !== null && value !== undefined
-      );
+        worksheet.eachRow((row) => {
+            const rowValues = Array.isArray(row.values) ? row.values.slice(1) : []; // Remove the first empty index
 
-      // Ensure at least 5 non-null values and first column is not null
-      if (
-        nonNullValues.length >= 5 &&
-        rowValues[0] !== null &&
-        rowValues[0] !== undefined
-      ) {
-        const formattedData = {
-          column1: rowValues[0] ?? null,
-          column2: rowValues[1] ?? null,
-          column3: rowValues[2] ?? null,
-          column4: rowValues[3] ?? null,
-          column5: rowValues[4] ?? null,
-          column6: rowValues[5] ?? null,
-        };
+            // Count non-null values
+            const nonNullValues = rowValues.filter(value => value !== null && value !== undefined);
+
+            // Ensure at least 5 non-null values and 2nd column (index 1) is not null
+            if (nonNullValues.length >= 5 && rowValues[0] !== null && rowValues[0] !== undefined) {
+                let course = rowValues[1];
+                let courseName, courseTitle;
+                // @ts-ignore
+                [courseName, courseTitle] = course.split(" - ").map(item => item.trim());
+                let courseType, courseNum;
+                // @ts-ignore
+                [courseType, courseNum] = courseName.split(" ").map(item => item.trim());
+                const formattedData = {
+                    column1: courseType ?? null,
+                    column2: courseNum ?? null,
+                    column3: courseTitle ?? null,
+                    column4: rowValues[2] ?? null,
+                    column5: rowValues[3] ?? null,
+                    column6: rowValues[4] ?? null,
+                    column7: rowValues[5] ?? null,
+                };
 
         jsonData.push(formattedData);
       }
