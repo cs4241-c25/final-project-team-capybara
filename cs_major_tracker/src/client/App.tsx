@@ -14,7 +14,7 @@ function App() {
       navigate("/login");
       return;
     }
-    
+
     fetch("http://localhost:3000/data")
       .then((response) => response.json())
       .then((data) => setTableData(data))
@@ -28,12 +28,10 @@ function App() {
         credentials: "include",
       });
       if (res.ok) {
-        // 2. Clear localStorage or any other stored auth info
         localStorage.removeItem("authenticated");
         localStorage.removeItem("username");
 
-        // 3. Redirect to login (or any other page)
-        navigate("/login"); // or window.location.href = "/login";
+        navigate("/login");
       } else {
         console.error("Logout failed");
       }
@@ -47,7 +45,6 @@ function App() {
       <header className="bg-[#A9B0B7] p-4 flex items-center justify-between">
         <img src="/wpi.png" alt="WPI Logo" className="h-12 w-auto ml-4" />
         
-        {/* 4. Place your Logout button in the header (or anywhere else) */}
         <button
           onClick={handleLogout}
           className="bg-red-600 text-white px-4 py-2 rounded"

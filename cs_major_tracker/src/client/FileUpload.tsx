@@ -2,21 +2,19 @@ import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 
 const FileUpload = () => {
-  // 1. Create a function to handle file upload
   const handleUpload = async (file: File) => {
     try {
-      // Retrieve the username from local storage (assuming it's stored there after login)
       const username = localStorage.getItem("username") ?? "";
 
       // Build the FormData
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("username", username); // Include the username
+      formData.append("username", username);
 
       const response = await fetch("http://localhost:3000/upload", {
         method: "POST",
         body: formData,
-        credentials: "include", // optional, if you need cookies/sessions
+        credentials: "include",
       });
 
       const data = await response.json();
@@ -26,14 +24,12 @@ const FileUpload = () => {
     }
   };
 
-  // 2. Use the `onDrop` callback from `useDropzone` and pass the file(s) to `handleUpload`
   const onDrop = useCallback((acceptedFiles: File[]) => {
     if (acceptedFiles && acceptedFiles.length > 0) {
       handleUpload(acceptedFiles[0]);
     }
   }, []);
 
-  // 3. Configure dropzone
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: { "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": [".xlsx"] },
