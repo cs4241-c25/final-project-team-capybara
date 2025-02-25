@@ -227,7 +227,7 @@ app.post("/logout", (req, res) => {
       console.error("Error logging out:", err);
       return res.status(500).json({ success: false, message: "Logout failed" });
     }
-    res.clearCookie("connect.sid"); // If using the default session cookie
+    res.clearCookie("connect.sid");
     return res.json({ success: true, message: "Logout successful" });
   });
 });
