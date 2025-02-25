@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import React from "react";
 
+import Sidebar from "./Sidebar";
+
 function Tracker() {
     const [tableData, setTableData] = useState<any[]>([]);
 
@@ -13,12 +15,12 @@ function Tracker() {
 
     return (
         <div className="min-h-screen bg-[#AC2B37] flex flex-col">
-            <header className="bg-[#A9B0B7] p-4 flex items-center">
+            <header className="bg-[#A9B0B7] p-4 w-[100vw] items-center z-1 fixed">
                 <img src="/wpi.png" alt="WPI Logo" className="h-12 w-auto ml-4" />
             </header>
 
             <div className="flex flex-col items-center justify-center flex-grow text-black">
-                <h1 className="text-4xl font-bold mb-8">CS Major Tracker</h1>
+                <h1 className="text-4xl font-bold mt-30 mb-8">CS Major Tracker</h1>
 
                 <div className="mt-8 w-full max-w-4xl">
                     <table className="w-full border-collapse border border-gray-400">
@@ -57,6 +59,7 @@ function Tracker() {
                     </table>
                 </div>
             </div>
+            <Sidebar></Sidebar>
         </div>
     )
 }

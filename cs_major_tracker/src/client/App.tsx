@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 // @ts-ignore
 import FileUpload from "./FileUpload";
+import Sidebar from "./Sidebar";
 import {
     Typography,
     Card
@@ -19,13 +20,15 @@ function App() {
 
     return (
         <div className="min-h-screen bg-[#AC2B37] flex flex-col">
-            <header className="bg-[#A9B0B7] p-4 flex items-center">
+            <header className="bg-[#A9B0B7] p-4 w-[100vw] items-center z-1 fixed">
                 <img src="/wpi.png" alt="WPI Logo" className="h-12 w-auto ml-4" />
             </header>
 
             <div className="flex flex-col items-center justify-center flex-grow text-black">
                 <Typography variant="h2" className="font-bold my-8">CS Major Tracker</Typography>
                 <FileUpload />
+                <Sidebar></Sidebar>
+
 
                 {/*<Card className="mt-8 mb-5 w-full max-w-4xl overflow-auto rounded-[15px]">*/}
                 {/*    <table className="w-full border-collapse border border-gray-300">*/}
