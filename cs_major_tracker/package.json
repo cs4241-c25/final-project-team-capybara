@@ -9,6 +9,7 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "bcrypt": "^5.1.1",
     "express": "^4.18.2",
     "express-session": "^1.18.1",
