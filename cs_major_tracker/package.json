@@ -17,7 +17,8 @@
     "react-router-dom": "^7.2.0",
     "tsx": "^4.3.0",
     "typescript": "^5.3.2",
-    "vite-express": "*"
+    "vite-express": "*",
+    "@material-tailwind/react": "^2.1.10"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
