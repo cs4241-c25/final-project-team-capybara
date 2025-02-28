@@ -10,29 +10,33 @@ const Login: React.FC = () => {
 
   async function handleLogin(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setErrorMsg('');
-
+    setErrorMsg("");
+  
     try {
-      const res = await fetch('/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include', // This allows cookies to be sent/received
+      const res = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({ username, password }),
       });
-
-      const data: { success?: boolean; message?: string; token?: string } = await res.json();
-
+  
+      const data: { success?: boolean; message?: string; username?: string } = await res.json();
+  
       if (!res.ok || !data.success) {
-        setErrorMsg(data.message || 'Invalid login');
+        setErrorMsg(data.message || "Invalid login");
       } else {
-        localStorage.setItem('authenticated', 'true');
-        navigate('/main');
+        // Store authentication and username
+        localStorage.setItem("authenticated", "true");
+        localStorage.setItem("username", data.username || "");
+  
+        navigate("/main");
       }
     } catch (err) {
-      console.error('Login error:', err);
-      setErrorMsg('Server error occurred.');
+      console.error("Login error:", err);
+      setErrorMsg("Server error occurred.");
     }
   }
+  
 
   return (
     <div>
