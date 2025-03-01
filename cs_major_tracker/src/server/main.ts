@@ -11,7 +11,7 @@ const app = express();
 const upload = multer({ dest: "uploads/" });
 
 const url = "mongodb://localhost:27017";
-const dbName = "course_collection"; // Update this if needed!
+const dbName = "course_collection";
 const client = new MongoClient(url);
 const saltRounds = 10; // For bcrypt
 
@@ -39,9 +39,20 @@ app.use(
 ======================== */
 app.get("/data", async (req, res) => {
   try {
+    // 1) Make sure the user is logged in
+    if (!req.session.user) {
+      return res.status(401).json({ success: false, message: "Not authorized" });
+    }
+
+    // 2) Grab the username from session
+    const username = req.session.user.username;
+
+    // 3) Fetch data from MongoDB for THIS username only
     const db = client.db(dbName);
     const collection = db.collection("courses");
-    const data = await collection.find().toArray();
+    const data = await collection.find({ owner: username }).toArray();
+
+    // 4) Send only that user’s data
     res.json(data);
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -49,9 +60,14 @@ app.get("/data", async (req, res) => {
   }
 });
 
+
 app.post("/upload", upload.single("file"), async (req, res) => {
-  if (!req.file)
+  // 1. Retrieve the username from the form data
+  const username = req.body.username;
+
+  if (!req.file) {
     return res.status(400).json({ error: "No file uploaded" });
+  }
 
   try {
     console.log("Uploaded file path:", req.file.path);
@@ -60,39 +76,40 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     const worksheet = workbook.worksheets[0]; // Get the first sheet
     const jsonData: any[] = [];
 
-        worksheet.eachRow((row) => {
-            const rowValues = Array.isArray(row.values) ? row.values.slice(1) : []; // Remove the first empty index
+    worksheet.eachRow((row) => {
+      const rowValues = Array.isArray(row.values) ? row.values.slice(1) : []; // Remove the first empty index
 
-            // Count non-null values
-            const nonNullValues = rowValues.filter(value => value !== null && value !== undefined);
+      // Count non-null values
+      const nonNullValues = rowValues.filter((value) => value !== null && value !== undefined);
 
-            // Ensure at least 5 non-null values and 2nd column (index 1) is not null
-            if (nonNullValues.length >= 5 && rowValues[0] !== null && rowValues[0] !== undefined) {
-                let course = rowValues[1];
-                let courseName, courseTitle;
-                // @ts-ignore
-                [courseName, courseTitle] = course.split(" - ").map(item => item.trim());
-                let courseType, courseNum;
-                // @ts-ignore
-                [courseType, courseNum] = courseName.split(" ").map(item => item.trim());
-                const formattedData = {
-                    column1: courseType ?? null,
-                    column2: courseNum ?? null,
-                    column3: courseTitle ?? null,
-                    column4: rowValues[2] ?? null,
-                    column5: rowValues[3] ?? null,
-                    column6: rowValues[4] ?? null,
-                    column7: rowValues[5] ?? null,
-                };
+      // Ensure at least 5 non-null values and 2nd column (index 1) is not null
+      if (nonNullValues.length >= 5 && rowValues[0] !== null && rowValues[0] !== undefined) {
+        let course = rowValues[1];
+        let courseName, courseTitle;
+        // @ts-ignore (optional if you'd like to suppress TS warnings)
+        [courseName, courseTitle] = course.split(" - ").map((item) => item.trim());
+
+        let courseType, courseNum;
+        // @ts-ignore
+        [courseType, courseNum] = courseName.split(" ").map((item) => item.trim());
+
+        const formattedData = {
+          column1: courseType ?? null,
+          column2: courseNum ?? null,
+          column3: courseTitle ?? null,
+          column4: rowValues[2] ?? null,
+          column5: rowValues[3] ?? null,
+          column6: rowValues[4] ?? null,
+          column7: rowValues[5] ?? null,
+
+          owner: username,
+        };
 
         jsonData.push(formattedData);
       }
     });
 
-    console.log(
-      "Filtered & Formatted Data:",
-      JSON.stringify(jsonData, null, 2)
-    );
+    console.log("Filtered & Formatted Data:", JSON.stringify(jsonData, null, 2));
 
     const db = client.db(dbName);
     const collection = db.collection("courses");
@@ -101,20 +118,20 @@ app.post("/upload", upload.single("file"), async (req, res) => {
       console.log("Data inserted into MongoDB!");
     }
 
+    // Cleanup uploaded file after processing
     fs.unlinkSync(req.file.path);
+
     res.json({
       message: "Data processed and inserted into MongoDB",
       data: jsonData,
     });
   } catch (error) {
     console.error("Error processing file:", error);
-    const errorMessage =
-      error instanceof Error ? error.message : "Unknown error";
-    res
-      .status(500)
-      .json({ error: "Error processing file", details: errorMessage });
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    res.status(500).json({ error: "Error processing file", details: errorMessage });
   }
 });
+
 
 /* ========================
    Authentication Routes
@@ -192,6 +209,7 @@ app.post("/login", async (req, res) => {
     return res.json({
       success: true,
       message: "Login successful",
+      username: user.username,
     });
   } catch (err) {
     console.error("Error during login:", err);
@@ -201,19 +219,19 @@ app.post("/login", async (req, res) => {
   }
 });
 
-// (Optional) Logout endpoint to clear session
+
+// Logout endpoint to clear session
 app.post("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) {
       console.error("Error logging out:", err);
-      return res
-        .status(500)
-        .json({ success: false, message: "Logout failed" });
+      return res.status(500).json({ success: false, message: "Logout failed" });
     }
     res.clearCookie("connect.sid");
     return res.json({ success: true, message: "Logout successful" });
   });
 });
+
 
 ViteExpress.listen(app, 3000, () =>
   console.log("Server is listening on port 3000...")
