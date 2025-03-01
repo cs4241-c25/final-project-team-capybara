@@ -2,7 +2,7 @@ import express from "express";
 import ViteExpress from "vite-express";
 import multer from "multer";
 import ExcelJS from "exceljs";
-import { MongoClient } from "mongodb";
+import {MongoClient, WithId} from "mongodb";
 import fs from "fs";
 import session from "express-session";
 import bcrypt from "bcrypt";
@@ -49,10 +49,24 @@ app.get("/data", async (req, res) => {
 
     // 3) Fetch data from MongoDB for THIS username only
     const db = client.db(dbName);
-    const collection = db.collection("courses");
-    const data = await collection.find({ owner: username }).toArray();
 
-    // 4) Send only that user’s data
+    // 4) Get data based on type
+    const type = req.query.type as string;
+    const collections: Record<string, string> = {
+      humanities: "humanities",
+      wellness: "wellness",
+      social: "social",
+      iqp: "iqp",
+      cs: "cs",
+      math: "math",
+      sciences: "sciences",
+      free: "free"
+    };
+
+    console.log(type);
+    const data = await db.collection(collections[type]).find({owner: username}).toArray();
+
+    // 5) Send only that user’s data
     res.json(data);
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -60,6 +74,9 @@ app.get("/data", async (req, res) => {
   }
 });
 
+function isFull(arr: any[], limit: number): boolean {
+  return arr.length >= limit;
+}
 
 app.post("/upload", upload.single("file"), async (req, res) => {
   // 1. Retrieve the username from the form data
@@ -74,7 +91,14 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     const workbook = new ExcelJS.Workbook();
     await workbook.xlsx.readFile(req.file.path);
     const worksheet = workbook.worksheets[0]; // Get the first sheet
-    const jsonData: any[] = [];
+    const humanities: any[] = [];
+    const wellness: any[] = [];
+    const social: any[] = [];
+    const iqp: any[] = [];
+    const cs: any[] = [];
+    const math: any[] = [];
+    const sciences: any[] = [];
+    const free: any[] = [];
 
     worksheet.eachRow((row) => {
       const rowValues = Array.isArray(row.values) ? row.values.slice(1) : []; // Remove the first empty index
@@ -86,7 +110,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
       if (nonNullValues.length >= 5 && rowValues[0] !== null && rowValues[0] !== undefined) {
         let course = rowValues[1];
         let courseName, courseTitle;
-        // @ts-ignore (optional if you'd like to suppress TS warnings)
+        // @ts-ignore
         [courseName, courseTitle] = course.split(" - ").map((item) => item.trim());
 
         let courseType, courseNum;
@@ -105,25 +129,63 @@ app.post("/upload", upload.single("file"), async (req, res) => {
           owner: username,
         };
 
-        jsonData.push(formattedData);
+        if (!isFull(humanities, 5) && (courseType == 'AR' || courseType == 'EN' || courseType == 'TH' || courseType == 'MU' || courseType == 'AB' || courseType == 'CN' || courseType == 'GN' || courseType == 'SP' || courseType == 'WR' || courseType == 'RH' || courseType == 'HI' || courseType == 'HU' || courseType == 'INTL' || courseType == 'PY' || courseType == 'RE')) {
+          humanities.push(formattedData);
+        }
+        else if (!isFull(wellness, 4) && (courseType == 'WPE')) {
+          wellness.push(formattedData);
+        }
+        else if (!isFull(social, 2) && ((courseType == 'ID' && courseNum == '2050') || courseType == 'ECON' || courseType == 'ENV' || courseType == 'GOV' || courseType == 'PSY' || courseType == 'SD' || courseType == 'SOC' || courseType == 'SS' || courseType == 'STS' || courseType == 'DEV')) {
+          social.push(formattedData);
+        }
+        else if (!isFull(iqp, 3) && (courseType == 'CDR' || (courseType == 'ID' && courseNum == 'IQP'))) {
+          iqp.push(formattedData);
+        }
+        else if (!isFull(cs, 18) && (courseType == 'CS')) {
+          cs.push(formattedData);
+        }
+        else if (!isFull(math, 7) && (courseType == 'MA')) {
+          math.push(formattedData);
+        }
+        else if (!isFull(sciences, 5) && (courseType == 'AE' || courseType == 'BB' || courseType == 'BME' || courseType == 'CE' || courseType == 'CHE' || courseType == 'ECE' || courseType == 'ES' || courseType == 'GE' || courseType == 'ME' || courseType == 'PH' || courseType == 'RBE')) {
+          sciences.push(formattedData);
+        }
+        else {
+          free.push(formattedData)
+        }
       }
     });
 
-    console.log("Filtered & Formatted Data:", JSON.stringify(jsonData, null, 2));
+    console.log("Filtered & Formatted CS Data:", JSON.stringify(cs, null, 2));
 
     const db = client.db(dbName);
     const collection = db.collection("courses");
-    if (jsonData.length > 0) {
-      await collection.insertMany(jsonData);
-      console.log("Data inserted into MongoDB!");
-    }
+    const collection_humanities = db.collection("humanities");
+    const collection_wellness = db.collection("wellness");
+    const collection_social = db.collection("social");
+    const collection_iqp = db.collection("iqp");
+    const collection_cs = db.collection("cs");
+    const collection_math = db.collection("math");
+    const collection_sciences = db.collection("sciences");
+    const collection_free = db.collection("free");
+
+    if (humanities.length > 0) { await collection_humanities.insertMany(humanities); }
+    if (wellness.length > 0) { await collection_wellness.insertMany(wellness); }
+    if (social.length > 0) { await collection_social.insertMany(social); }
+    if (iqp.length > 0) { await collection_iqp.insertMany(iqp); }
+    if (cs.length > 0) { await collection_cs.insertMany(cs); }
+    if (math.length > 0) { await collection_math.insertMany(math); }
+    if (sciences.length > 0) { await collection_sciences.insertMany(sciences); }
+    if (free.length > 0) { await collection_free.insertMany(free); }
+
+    console.log("Data inserted into MongoDB!");
 
     // Cleanup uploaded file after processing
     fs.unlinkSync(req.file.path);
 
     res.json({
       message: "Data processed and inserted into MongoDB",
-      data: jsonData,
+      data: humanities, wellness, social, iqp, cs, math, sciences, free,
     });
   } catch (error) {
     console.error("Error processing file:", error);

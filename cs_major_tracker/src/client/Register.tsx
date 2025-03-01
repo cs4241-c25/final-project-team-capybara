@@ -7,7 +7,6 @@ interface RegisterResponse {
 }
 
 function Register(): JSX.Element {
-  const navigate = useNavigate();
 
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -34,6 +33,7 @@ function Register(): JSX.Element {
       const data: RegisterResponse = await response.json();
       if (response.ok && data.success) {
         setSuccessMsg('Registration successful! Please log in.');
+        const navigate = useNavigate();
         navigate('/login');
       } else {
         setErrorMsg(data.message || 'Registration failed.');
