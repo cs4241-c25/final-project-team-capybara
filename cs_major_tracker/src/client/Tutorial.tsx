@@ -1,5 +1,6 @@
 import React from "react";
 import Sidebar from "./Sidebar";
+import Header from "./Header";
 import {
     Typography,
     Card,
@@ -9,9 +10,7 @@ import {
 function Tutorial () {
     return (
         <div className="min-h-screen bg-[#AC2B37] flex flex-col items-center">
-            <header className="bg-[#A9B0B7] p-4 w-[100vw] items-center z-1 fixed">
-                <img src="/wpi.png" alt="WPI Logo" className="h-12 w-auto ml-4" />
-            </header>
+            <Header></Header>
 
             <Typography variant="h1" className="text-center content-center py-6 mt-20 text-white">Tutorial</Typography><br />
             <img src="/src/client/assets/tutorial/tutorial.gif" className="max-w-[60%]" /><br />
