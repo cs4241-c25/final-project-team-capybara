@@ -27,7 +27,9 @@ function Register(): JSX.Element {
     try {
       const response = await fetch('/register', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json',
+                 "Access-Control-Allow-Origin": "*",
+                 "Access-Control-Allow-Credentials" : true },
         body: JSON.stringify({ username, password }),
       });
 
