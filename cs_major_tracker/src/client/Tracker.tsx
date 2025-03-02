@@ -211,18 +211,10 @@ function Tracker() {
     };
 
     return (
-        <div className="min-h-screen bg-[#AC2B37] flex flex-col">
-            <header className="bg-[#A9B0B7] p-4 flex items-center justify-between">
-                <img src="/wpi.png" alt="WPI Logo" className="h-12 w-auto ml-4" />
+        <>
+        <Header></Header>
 
-                <button
-                    onClick={handleLogout}
-                    className="bg-red-600 text-white px-4 py-2 rounded"
-                >
-                    Logout
-                </button>
-            </header>
-
+        <main className="min-h-screen bg-[#AC2B37] flex flex-col">
             <div className="flex flex-col items-center flex-grow text-black">
                 <h1 className="text-4xl font-bold mt-6 mb-2">CS Major Tracker</h1>
                 <h2 id = "percentage" ></h2>
@@ -238,7 +230,9 @@ function Tracker() {
                 </div>
                 <Button className="mt-3" variant="gradient" onClick={onButtonClick}> Download Tracker PDF </Button>
             </div>
-        </div>
+        </main>
+        <aside><Sidebar></Sidebar></aside>
+        </>
     )
 }
 
