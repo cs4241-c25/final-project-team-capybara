@@ -4,6 +4,9 @@ import {useNavigate} from "react-router-dom";
 import {Accordion, AccordionHeader, AccordionBody, AccordionProps, Card, Button} from "@material-tailwind/react";
 import { PDFDocument } from "pdf-lib";
 
+import Sidebar from "./Sidebar";
+import Header from "./Header";
+
 function Tracker() {
     const [humanitiesData, setHumanities] = useState<any[]>([]);
     const [wellnessData, setWellness] = useState<any[]>([]);
