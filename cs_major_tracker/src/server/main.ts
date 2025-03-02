@@ -167,6 +167,18 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     const collection_math = db.collection("math");
     const collection_sciences = db.collection("sciences");
     const collection_free = db.collection("free");
+    await Promise.all([
+      collection.deleteMany({ owner: username }),
+      collection_humanities.deleteMany({ owner: username }),
+      collection_wellness.deleteMany({ owner: username }),
+      collection_social.deleteMany({ owner: username }),
+      collection_iqp.deleteMany({ owner: username }),
+      collection_cs.deleteMany({ owner: username }),
+      collection_math.deleteMany({ owner: username }),
+      collection_sciences.deleteMany({ owner: username }),
+      collection_free.deleteMany({ owner: username }),
+    ]);
+    
 
     if (humanities.length > 0) { await collection_humanities.insertMany(humanities); }
     if (wellness.length > 0) { await collection_wellness.insertMany(wellness); }
