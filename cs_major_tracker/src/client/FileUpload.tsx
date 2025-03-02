@@ -1,7 +1,9 @@
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
+import {useNavigate} from "react-router-dom";
 
 const FileUpload = () => {
+  const navigate = useNavigate();
   const handleUpload = async (file: File) => {
     try {
       const username = localStorage.getItem("username") ?? "";
@@ -19,6 +21,7 @@ const FileUpload = () => {
 
       const data = await response.json();
       console.log("Success:", data);
+      navigate('/tracker');
     } catch (err) {
       console.error("Upload error:", err);
     }
