@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import {
@@ -6,8 +6,19 @@ import {
     Card,
     CardBody
 } from "@material-tailwind/react";
+import {useNavigate} from "react-router-dom";
 
 function Tutorial () {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const isAuthenticated = localStorage.getItem("authenticated");
+        if (!isAuthenticated) {
+            navigate("/login");
+            return;
+        }
+    }, [navigate]);
+
     return (
         <>
             <Header></Header>

@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from 'react';
+import React, {useState, FormEvent, useEffect} from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
 interface RegisterResponse {
@@ -8,6 +8,12 @@ interface RegisterResponse {
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("authenticated") === "true") {
+      navigate("/main");
+    }
+  }, [navigate]);
 
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');

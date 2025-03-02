@@ -8,6 +8,16 @@ import Sidebar from "./Sidebar";
 import Header from "./Header";
 
 function Tracker() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const isAuthenticated = localStorage.getItem("authenticated");
+        if (!isAuthenticated) {
+            navigate("/login");
+            return;
+        }
+    }, [navigate]);
+
     const [humanitiesData, setHumanities] = useState<any[]>([]);
     const [wellnessData, setWellness] = useState<any[]>([]);
     const [socialData, setSocial] = useState<any[]>([]);
@@ -16,8 +26,6 @@ function Tracker() {
     const [mathData, setMath] = useState<any[]>([]);
     const [scienceData, setScience] = useState<any[]>([]);
     const [freeData, setFree] = useState<any[]>([]);
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async (type: string, setData: React.Dispatch<React.SetStateAction<any[]>>) => {
