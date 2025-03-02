@@ -37,6 +37,49 @@ function Tracker() {
         fetchData("free", setFree);
     }, []);
 
+    useEffect(() => {
+        const getPercent = async () => {
+            const percent = document.getElementById("percentage");
+            let total_courses = 0;
+
+            if (humanitiesData.length > 5) { total_courses += 5; }
+            else { total_courses += humanitiesData.length; }
+
+            if (wellnessData.length > 5) { total_courses += 5; }
+            else { total_courses += wellnessData.length; }
+
+            if (socialData.length > 5) { total_courses += 5; }
+            else { total_courses += socialData.length; }
+
+            if (iqpData.length > 5) { total_courses += 5; }
+            else { total_courses += iqpData.length; }
+
+            if (csData.length > 5) { total_courses += 5; }
+            else { total_courses += csData.length; }
+
+            if (mathData.length > 5) { total_courses += 5; }
+            else { total_courses += mathData.length; }
+
+            if (scienceData.length > 5) { total_courses += 5; }
+            else { total_courses += scienceData.length; }
+
+            if (freeData.length > 5) { total_courses += 5; }
+            else { total_courses += freeData.length; }
+
+            total_courses = (total_courses/48) * 100;
+
+            if (total_courses > 50) {
+                // @ts-ignore
+                percent.innerText = "Congrats! You have completed " + total_courses.toFixed(2) + "% of your graduation requirement";
+            }
+            else {
+                // @ts-ignore
+                percent.innerText = "Sadly, you have only completed " + total_courses.toFixed(2) + "% of your graduation requirement";
+            }
+        };
+
+        getPercent();
+    }, [humanitiesData, wellnessData, socialData, iqpData, csData, mathData, scienceData, freeData]);
 
     const handleLogout = async () => {
         try {
@@ -81,18 +124,70 @@ function Tracker() {
 
         const pdfDoc = await PDFDocument.load(existingPdfBytes);
         const form = pdfDoc.getForm();
-        form.getTextField("Name").setText("Test Dummy");
-        form.getTextField("Advisor").setText("Prof. Wong");
-        form.getTextField("Name Class Year").setText("2026");
-        form.getTextField("2nd Major").setText("Data Science");
-        form.getTextField("Course1").setText("English 101");
-        form.getTextField("Course6").setText("Soccer 213");
-        form.getTextField("Course10").setText("Microeconomics 230");
-        form.getTextField("Course12").setText("IQP - Paris");
-        form.getTextField("Course15").setText("Freedom 120");
-        form.getTextField("Course18").setText("CS 415");
-        form.getTextField("Course36").setText("Stats 230");
-        form.getTextField("Course43").setText("Biology 124");
+
+        let num = 1;
+        for (let i = 0; i < humanitiesData.length; i++) {
+            const field = form.getTextField(`Course${num}`);
+            field.setFontSize(7);
+            field.setText(humanitiesData[i].column1 + humanitiesData[i].column2 + " - " + humanitiesData[i].column3);
+            num++;
+        }
+
+        num = 6;
+        for (let i = 0; i < wellnessData.length; i++) {
+            const field = form.getTextField(`Course${num}`);
+            field.setFontSize(7);
+            field.setText(wellnessData[i].column1 + wellnessData[i].column2 + " - " + wellnessData[i].column3);
+            num++;
+        }
+
+        num = 10;
+        for (let i = 0; i < socialData.length; i++) {
+            const field = form.getTextField(`Course${num}`);
+            field.setFontSize(7);
+            field.setText(socialData[i].column1 + socialData[i].column2 + " - " + socialData[i].column3);
+            num++;
+        }
+
+        num = 12;
+        for (let i = 0; i < iqpData.length; i++) {
+            const field = form.getTextField(`Course${num}`);
+            field.setFontSize(7);
+            field.setText(iqpData[i].column1 + iqpData[i].column2 + " - " + iqpData[i].column3);
+            num++;
+        }
+
+        num = 15;
+        for (let i = 0; i < freeData.length; i++) {
+            const field = form.getTextField(`Course${num}`);
+            field.setFontSize(7);
+            field.setText(freeData[i].column1 + freeData[i].column2 + " - " + freeData[i].column3);
+            num++;
+        }
+
+        num = 18;
+        for (let i = 0; i < csData.length; i++) {
+            const field = form.getTextField(`Course${num}`);
+            field.setFontSize(7);
+            field.setText(csData[i].column1 + csData[i].column2 + " - " + csData[i].column3);
+            num++;
+        }
+
+        num = 36;
+        for (let i = 0; i < mathData.length; i++) {
+            const field = form.getTextField(`Course${num}`);
+            field.setFontSize(7);
+            field.setText(mathData[i].column1 + mathData[i].column2 + " - " + mathData[i].column3);
+            num++;
+        }
+
+        num = 43;
+        for (let i = 0; i < scienceData.length; i++) {
+            const field = form.getTextField(`Course${num}`);
+            field.setFontSize(7);
+            field.setText(scienceData[i].column1 + scienceData[i].column2 + " - " + scienceData[i].column3);
+            num++;
+        }
 
         const fields = form.getFields();
         fields.forEach(field => {
@@ -126,16 +221,17 @@ function Tracker() {
             </header>
 
             <div className="flex flex-col items-center flex-grow text-black">
-                <h1 className="text-4xl font-bold mt-8">CS Major Tracker</h1>
+                <h1 className="text-4xl font-bold mt-6 mb-2">CS Major Tracker</h1>
+                <h2 id = "percentage" ></h2>
                 <div>
-                    <CourseDropdowns title="Humanities Requirement" data={humanitiesData} open={openAcc1} handleOpen={handleOpenAcc1} num={1}/>
-                    <CourseDropdowns title="Wellness Requirement" data={wellnessData} open={openAcc2} handleOpen={handleOpenAcc2} num={2}/>
-                    <CourseDropdowns title="Social Science Requirement" data={socialData} open={openAcc3} handleOpen={handleOpenAcc3} num={3}/>
-                    <CourseDropdowns title="IQP Requirement" data={iqpData} open={openAcc4} handleOpen={handleOpenAcc4} num={4}/>
-                    <CourseDropdowns title="Computer Science Requirement" data={csData} open={openAcc5} handleOpen={handleOpenAcc5} num={5}/>
-                    <CourseDropdowns title="Math Requirement" data={mathData} open={openAcc6} handleOpen={handleOpenAcc6} num={6}/>
-                    <CourseDropdowns title="Science Requirement" data={scienceData} open={openAcc7} handleOpen={handleOpenAcc7} num={7}/>
-                    <CourseDropdowns title="Free Elective Requirement" data={freeData} open={openAcc8} handleOpen={handleOpenAcc8} num={8}/>
+                    <CourseDropdowns title="Humanities Requirement" data={humanitiesData} open={openAcc1} handleOpen={handleOpenAcc1} num={5}/>
+                    <CourseDropdowns title="Wellness Requirement" data={wellnessData} open={openAcc2} handleOpen={handleOpenAcc2} num={4}/>
+                    <CourseDropdowns title="Social Science Requirement" data={socialData} open={openAcc3} handleOpen={handleOpenAcc3} num={2}/>
+                    <CourseDropdowns title="IQP Requirement" data={iqpData} open={openAcc4} handleOpen={handleOpenAcc4} num={3}/>
+                    <CourseDropdowns title="Computer Science Requirement" data={csData} open={openAcc5} handleOpen={handleOpenAcc5} num={18}/>
+                    <CourseDropdowns title="Math Requirement" data={mathData} open={openAcc6} handleOpen={handleOpenAcc6} num={7}/>
+                    <CourseDropdowns title="Science Requirement" data={scienceData} open={openAcc7} handleOpen={handleOpenAcc7} num={5}/>
+                    <CourseDropdowns title="Free Elective Requirement" data={freeData} open={openAcc8} handleOpen={handleOpenAcc8} num={3}/>
                 </div>
                 <Button className="mt-3" variant="gradient" onClick={onButtonClick}> Download Tracker PDF </Button>
             </div>
@@ -163,7 +259,7 @@ function Icon({ open }) {
 const CourseDropdowns = ({ title, data, open, handleOpen, num }) => {
     return (
         <Accordion open={open} icon={<Icon open={open} />}>
-            <AccordionHeader onClick={handleOpen} className="flex justify-between items-center">{title}</AccordionHeader>
+            <AccordionHeader onClick={handleOpen} className={`flex justify-between items-center ${data.length >= num ? 'text-green-500' : ''}`}>{title} ({data.length}/{num})</AccordionHeader>
             <AccordionBody>
                 <div className="mt-8 w-full max-w-4xl">
                     <Card className="mt-8 mb-5 w-full max-w-4xl overflow-auto rounded-[15px]">

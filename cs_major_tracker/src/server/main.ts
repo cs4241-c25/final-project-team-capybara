@@ -128,7 +128,6 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 
           owner: username,
         };
-
         if (!isFull(humanities, 5) && (courseType == 'AR' || courseType == 'EN' || courseType == 'TH' || courseType == 'MU' || courseType == 'AB' || courseType == 'CN' || courseType == 'GN' || courseType == 'SP' || courseType == 'WR' || courseType == 'RH' || courseType == 'HI' || courseType == 'HU' || courseType == 'INTL' || courseType == 'PY' || courseType == 'RE')) {
           humanities.push(formattedData);
         }
