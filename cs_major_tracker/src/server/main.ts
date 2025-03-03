@@ -2,7 +2,7 @@ import express from "express";
 import ViteExpress from "vite-express";
 import multer from "multer";
 import ExcelJS from "exceljs";
-import {MongoClient, WithId} from "mongodb";
+import { MongoClient, WithId } from "mongodb";
 import fs from "fs";
 import session from "express-session";
 import bcrypt from "bcrypt";
@@ -10,8 +10,8 @@ import bcrypt from "bcrypt";
 const app = express();
 const upload = multer({ dest: "uploads/" });
 
-//const url = "mongodb://localhost:27017";
-const url = "mongodb+srv://cierra:RiC9tHbe0FHHEPga@cluster0.qzbsl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const url = "mongodb://localhost:27017";
+// const url = "mongodb+srv://cierra:RiC9tHbe0FHHEPga@cluster0.qzbsl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const dbName = "course_collection";
 const client = new MongoClient(url);
 const saltRounds = 10; // For bcrypt
@@ -65,7 +65,7 @@ app.get("/data", async (req, res) => {
     };
 
     console.log(type);
-    const data = await db.collection(collections[type]).find({owner: username}).toArray();
+    const data = await db.collection(collections[type]).find({ owner: username }).toArray();
 
     // 5) Send only that user’s data
     res.json(data);
@@ -80,7 +80,33 @@ function isFull(arr: any[], limit: number): boolean {
 }
 
 app.post("/upload", upload.single("file"), async (req, res) => {
-  // 1. Retrieve the username from the form data
+
+  /**
+  * If an item with the same (courseType, courseNum) already exists, replace it.
+  * Otherwise, push if the list isn't full.
+  */
+  function insertOrReplace(
+    list: any[],
+    newData: any,
+    limit: number
+  ): void {
+    const existingIndex = list.findIndex(
+      (item) =>
+        item.column1 === newData.column1 &&
+        item.column2 === newData.column2
+    );
+
+    if (existingIndex !== -1 && newData.column2!="MQP") {
+      // Replace the old entry with the new one
+      list[existingIndex] = newData;
+    } else {
+      // Only push if we're not at the limit
+      if (list.length < limit) {
+        list.push(newData);
+      }
+    }
+  }
+
   const username = req.body.username;
 
   if (!req.file) {
@@ -91,7 +117,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     console.log("Uploaded file path:", req.file.path);
     const workbook = new ExcelJS.Workbook();
     await workbook.xlsx.readFile(req.file.path);
-    const worksheet = workbook.worksheets[0]; // Get the first sheet
+    const worksheet = workbook.worksheets[0];
     const humanities: any[] = [];
     const wellness: any[] = [];
     const social: any[] = [];
@@ -135,30 +161,48 @@ app.post("/upload", upload.single("file"), async (req, res) => {
           column7: rowValues[5] ?? null,
 
           owner: username,
-        };
-        if (!isFull(humanities, 5) && (courseType == 'AR' || courseType == 'EN' || courseType == 'TH' || courseType == 'MU' || courseType == 'AB' || courseType == 'CN' || courseType == 'GN' || courseType == 'SP' || courseType == 'WR' || courseType == 'RH' || courseType == 'HI' || courseType == 'HU' || courseType == 'INTL' || courseType == 'PY' || courseType == 'RE')) {
-          humanities.push(formattedData);
-        }
-        else if (!isFull(wellness, 4) && (courseType == 'WPE')) {
+        }; if (!isFull(humanities, 5) && (
+          courseType === 'AR' || courseType === 'EN' || courseType === 'TH' ||
+          courseType === 'MU' || courseType === 'AB' || courseType === 'CN' ||
+          courseType === 'GN' || courseType === 'SP' || courseType === 'WR' ||
+          courseType === 'RH' || courseType === 'HI' || courseType === 'HU' ||
+          courseType === 'INTL' || courseType === 'PY' || courseType === 'RE'
+        )) {
+          insertOrReplace(humanities, formattedData, 5);
+
+        } else if (!isFull(wellness, 4) && (courseType === 'WPE' || courseType === 'PE')) {
           wellness.push(formattedData);
-        }
-        else if (!isFull(social, 2) && ((courseType == 'ID' && courseNum == '2050') || courseType == 'ECON' || courseType == 'ENV' || courseType == 'GOV' || courseType == 'PSY' || courseType == 'SD' || courseType == 'SOC' || courseType == 'SS' || courseType == 'STS' || courseType == 'DEV')) {
-          social.push(formattedData);
-        }
-        else if (!isFull(iqp, 3) && (courseType == 'CDR' || (courseType == 'ID' && courseNum == 'IQP'))) {
-          iqp.push(formattedData);
-        }
-        else if (!isFull(cs, 18) && (courseType == 'CS')) {
-          cs.push(formattedData);
-        }
-        else if (!isFull(math, 7) && (courseType == 'MA')) {
-          math.push(formattedData);
-        }
-        else if (!isFull(sciences, 5) && (courseType == 'AE' || courseType == 'BB' || courseType == 'BME' || courseType == 'CE' || courseType == 'CHE' || courseType == 'ECE' || courseType == 'ES' || courseType == 'GE' || courseType == 'ME' || courseType == 'PH' || courseType == 'RBE')) {
-          sciences.push(formattedData);
-        }
-        else {
-          free.push(formattedData)
+        } else if (!isFull(social, 2) && (
+          (courseType === 'ID' && courseNum === '2050') ||
+          courseType === 'ECON' || courseType === 'ENV' || courseType === 'GOV' ||
+          courseType === 'PSY' || courseType === 'SD' || courseType === 'SOC' ||
+          courseType === 'SS' || courseType === 'STS' || courseType === 'DEV'
+        )) {
+          insertOrReplace(social, formattedData, 2);
+
+        } else if (!isFull(iqp, 3) && (
+          courseType === 'CDR' || (courseType === 'ID' && courseNum === 'IQP')
+        )) {
+          insertOrReplace(iqp, formattedData, 3);
+
+        } else if (!isFull(cs, 18) && (courseType === 'CS')) {
+          insertOrReplace(cs, formattedData, 18);
+
+        } else if (!isFull(math, 7) && (courseType === 'MA')) {
+          insertOrReplace(math, formattedData, 7);
+
+        } else if (
+          !isFull(sciences, 5) &&
+          (courseType === 'AE' || courseType === 'BB' || courseType === 'BME' ||
+            courseType === 'CE' || courseType === 'CHE' || courseType === 'ECE' ||
+            courseType === 'ES' || courseType === 'GE' || courseType === 'ME' ||
+            courseType === 'PH' || courseType === 'RBE' || courseType === 'CH')
+        ) {
+          insertOrReplace(sciences, formattedData, 5);
+
+        } else {
+          // If none of the above match or categories are full, push to free
+          free.push(formattedData);
         }
       }
     });
@@ -186,7 +230,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
       collection_sciences.deleteMany({ owner: username }),
       collection_free.deleteMany({ owner: username }),
     ]);
-    
+
 
     if (humanities.length > 0) { await collection_humanities.insertMany(humanities); }
     if (wellness.length > 0) { await collection_wellness.insertMany(wellness); }
