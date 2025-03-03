@@ -20,10 +20,14 @@ const FileUpload = () => {
       });
 
       const data = await response.json();
-      console.log("Success:", data);
-      navigate('/tracker');
+      if (!response.ok) {
+        throw new Error(data.error || "File upload failed");
+      }
+
+      alert("File uploaded successfully!");
+      navigate("/tracker");
     } catch (err) {
-      console.error("Upload error:", err);
+      alert(`Error: ${(err as Error).message}`);
     }
   };
 

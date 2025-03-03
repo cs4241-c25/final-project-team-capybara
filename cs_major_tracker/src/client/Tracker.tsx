@@ -56,28 +56,28 @@ function Tracker() {
             if (humanitiesData.length > 5) { total_courses += 5; }
             else { total_courses += humanitiesData.length; }
 
-            if (wellnessData.length > 5) { total_courses += 5; }
+            if (wellnessData.length > 4) { total_courses += 4; }
             else { total_courses += wellnessData.length; }
 
-            if (socialData.length > 5) { total_courses += 5; }
+            if (socialData.length > 2) { total_courses += 2; }
             else { total_courses += socialData.length; }
 
-            if (iqpData.length > 5) { total_courses += 5; }
+            if (iqpData.length > 3) { total_courses += 3; }
             else { total_courses += iqpData.length; }
 
-            if (csData.length > 5) { total_courses += 5; }
+            if (csData.length > 18) { total_courses += 18; }
             else { total_courses += csData.length; }
 
-            if (mathData.length > 5) { total_courses += 5; }
+            if (mathData.length > 7) { total_courses += 7; }
             else { total_courses += mathData.length; }
 
             if (scienceData.length > 5) { total_courses += 5; }
             else { total_courses += scienceData.length; }
 
-            if (freeData.length > 5) { total_courses += 5; }
+            if (freeData.length > 3) { total_courses += 3; }
             else { total_courses += freeData.length; }
 
-            total_courses = (total_courses/48) * 100;
+            total_courses = (total_courses/47) * 100;
 
             if (total_courses > 50) {
                 // @ts-ignore

@@ -100,6 +100,13 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     const sciences: any[] = [];
     const free: any[] = [];
 
+    const firstRow = worksheet.getRow(1);
+    const firstCellValue = firstRow.getCell(1).text.trim();
+
+    if (firstCellValue != "View My Academic Record") {
+      return res.status(400).json({ error: "That is not the Academic Record Excel file. Please re-watch the tutorial." });
+    }
+
     worksheet.eachRow((row) => {
       const rowValues = Array.isArray(row.values) ? row.values.slice(1) : []; // Remove the first empty index
 
