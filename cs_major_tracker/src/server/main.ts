@@ -78,6 +78,42 @@ function isFull(arr: any[], limit: number): boolean {
   return arr.length >= limit;
 }
 
+app.get("/delete", async (req, res) => {
+  try {
+    // 1) Make sure the user is logged in
+    if (!req.session.user) {
+      return res.status(401).json({ success: false, message: "Not authorized" });
+    }
+
+    // 2) Grab the username from session
+    const username = req.session.user.username;
+
+    // 3) Delete the requested row if owned by this user
+    const db = client.db(dbName);
+
+    const id = req.query.id as string;
+    const type = req.query.type as string;
+    const collections: Record<string, string> = {
+      humanities: "humanities",
+      wellness: "wellness",
+      social: "social",
+      iqp: "iqp",
+      cs: "cs",
+      math: "math",
+      sciences: "sciences",
+      free: "free"
+    };
+
+    const data = await db.collection(collections[type]).find({owner: username}).toArray();
+
+    // 5) Send that user’s updated data
+    res.json(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.status(500).json({ error: "Error fetching data" });
+  }
+});
+
 app.post("/upload", upload.single("file"), async (req, res) => {
   // 1. Retrieve the username from the form data
   const username = req.body.username;

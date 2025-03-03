@@ -262,6 +262,13 @@ function Icon({ open }) {
 
 // @ts-ignore
 const CourseDropdowns = ({ title, data, open, handleOpen, num }) => {
+    const del = async function ( _id ) {        
+        const response = await fetch(`http://localhost:3000/delete?id=${_id}`);
+        //const data = await response.json();
+
+        //const text = await response.text();
+    }
+    
     return (
         <Accordion open={open} icon={<Icon open={open} />}>
             <AccordionHeader onClick={handleOpen} className={`flex justify-between items-center ${data.length >= num ? 'text-green-500' : ''}`}>{title} ({data.length}/{num})</AccordionHeader>
@@ -279,11 +286,12 @@ const CourseDropdowns = ({ title, data, open, handleOpen, num }) => {
                                 <th className="border-b border-gray-300 px-4 py-2">Column 6</th>
                                 <th className="border-b border-gray-300 px-4 py-2">Column 7</th>
                                 <th className="border-b border-gray-300 px-4 py-2">Owner</th>
+                                <th className="border-b border-gray-300 px-4 py-2"></th>
                             </tr>
                             </thead>
                             <tbody>
                             {data.length > 0 ? (
-                                data.map((row: { column1: any; column2: any; column3: any; column4: any; column5: any; column6: any; column7: any; owner: any; }, index: React.Key | null | undefined) => (
+                                data.map((row: { _id: any; column1: any; column2: any; column3: any; column4: any; column5: any; column6: any; column7: any; owner: any; }, index: React.Key | null | undefined) => (
                                     <tr key={index} className="bg-white border border-gray-300">
                                         <td className="border border-gray-300 px-4 py-2">{row.column1 ?? "—"}</td>
                                         <td className="border border-gray-300 px-4 py-2">{row.column2 ?? "—"}</td>
@@ -293,6 +301,9 @@ const CourseDropdowns = ({ title, data, open, handleOpen, num }) => {
                                         <td className="border border-gray-300 px-4 py-2">{row.column6 ?? "—"}</td>
                                         <td className="border border-gray-300 px-4 py-2">{row.column7 ?? "—"}</td>
                                         <td className="border border-gray-300 px-4 py-2">{row.owner ?? "—"}</td>
+                                        <td className="border border-gray-300 px-4 py-2">
+                                            <Button>Edit</Button><Button onClick={del(row._id)}>Delete</Button>
+                                        </td>
                                     </tr>
                                 ))
                             ) : (
