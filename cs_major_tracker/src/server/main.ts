@@ -95,7 +95,9 @@ app.post("/upload", upload.single("file"), async (req, res) => {
         item.column1 === newData.column1 &&
         item.column2 === newData.column2
     );
-
+    if(newData.column4 =="NR"){
+      return;
+    }
     if (existingIndex !== -1 && newData.column2!="MQP") {
       // Replace the old entry with the new one
       list[existingIndex] = newData;
