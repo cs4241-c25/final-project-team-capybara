@@ -7,6 +7,9 @@ import { PDFDocument } from "pdf-lib";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 
+//const address = 'http://localhost:3000/';
+const address = 'https://final-project-team-capybara.onrender.com/';
+
 function Tracker() {
     const navigate = useNavigate();
 
@@ -30,7 +33,7 @@ function Tracker() {
     useEffect(() => {
         const fetchData = async (type: string, setData: React.Dispatch<React.SetStateAction<any[]>>) => {
             try {
-                const response = await fetch(`http://localhost:3000/data?type=${type}`);
+                const response = await fetch(address + `data?type=${type}`);
                 const data = await response.json();
                 setData(data);
             } catch (error) {
@@ -94,7 +97,7 @@ function Tracker() {
 
     const handleLogout = async () => {
         try {
-            const res = await fetch("http://localhost:3000/logout", {
+            const res = await fetch(address + "logout", {
                 method: "POST",
                 credentials: "include",
             });
