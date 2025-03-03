@@ -6,7 +6,7 @@ function Header() {
     
     const handleLogout = async () => {
         try {
-          const res = await fetch("http://localhost:3000/logout", {
+          const res = await fetch("/logout", {
             method: "POST",
             credentials: "include",
           });

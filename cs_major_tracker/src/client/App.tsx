@@ -17,7 +17,7 @@ function App() {
       return;
     }
 
-    fetch("http://localhost:3000/data")
+    fetch("/data")
       .then((response) => response.json())
       .then((data) => setTableData(data))
       .catch((error) => console.error("Error fetching data:", error));

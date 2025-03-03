@@ -13,7 +13,7 @@ const FileUpload = () => {
       formData.append("file", file);
       formData.append("username", username);
 
-      const response = await fetch("http://localhost:3000/upload", {
+      const response = await fetch("/upload", {
         method: "POST",
         body: formData,
         credentials: "include",
