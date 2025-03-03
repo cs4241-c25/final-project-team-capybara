@@ -10,8 +10,8 @@ import bcrypt from "bcrypt";
 const app = express();
 const upload = multer({ dest: "uploads/" });
 
-const url = "mongodb://localhost:27017";
-// const url = "mongodb+srv://cierra:RiC9tHbe0FHHEPga@cluster0.qzbsl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+// const url = "mongodb://localhost:27017";
+const url = "mongodb+srv://cierra:RiC9tHbe0FHHEPga@cluster0.qzbsl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const dbName = "course_collection";
 const client = new MongoClient(url);
 const saltRounds = 10; // For bcrypt
