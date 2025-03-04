@@ -3,9 +3,10 @@
 @theme {
   --color-gray-1: #f5f5f5;
   --color-gray-2: #cecfd0;
-  --color-gray-3: #f6f6f6;
+  --color-gray-3: #ebebeb;
   --color-dark-gray: #34383b;
   --color-wpi-red: #AC2B37;
   --color-wpi-gray: #A9B0B7;
   --color-shadow-red: #902934;
+  --color-confirmation: #60993E;
 }

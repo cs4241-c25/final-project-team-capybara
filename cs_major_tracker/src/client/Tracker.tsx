@@ -222,11 +222,13 @@ function Tracker() {
         <>
         <Header></Header>
 
-        <main className="min-h-screen bg-[#AC2B37] flex flex-col">
+        <main className="min-h-screen bg-gray-1 flex flex-col">
             <div className="flex flex-col items-center flex-grow text-black">
-                <h1 className="text-4xl font-bold mt-6 mb-2">CS Major Tracker</h1>
-                <h2 id = "percentage" ></h2>
-                <div>
+                <div className="bg-gray-3 flex flex-col items-center justify-center flex-grow w-full p-9">
+                    <h1 className="text-4xl font-bold mt-6 mb-2">CS Major Tracker</h1>
+                    <h2 id = "percentage" ></h2>
+                </div>
+                <div className="my-10">
                     <CourseDropdowns title="Humanities Requirement" data={humanitiesData} open={openAcc1} handleOpen={handleOpenAcc1} num={5}/>
                     <CourseDropdowns title="Wellness Requirement" data={wellnessData} open={openAcc2} handleOpen={handleOpenAcc2} num={4}/>
                     <CourseDropdowns title="Social Science Requirement" data={socialData} open={openAcc3} handleOpen={handleOpenAcc3} num={2}/>
@@ -236,7 +238,7 @@ function Tracker() {
                     <CourseDropdowns title="Science Requirement" data={scienceData} open={openAcc7} handleOpen={handleOpenAcc7} num={5}/>
                     <CourseDropdowns title="Free Elective Requirement" data={freeData} open={openAcc8} handleOpen={handleOpenAcc8} num={3}/>
                 </div>
-                <Button className="mt-3" variant="gradient" onClick={onButtonClick}> Download Tracker PDF </Button>
+                <Button className="mb-10" variant="gradient" onClick={onButtonClick}> Download Tracker PDF </Button>
             </div>
         </main>
         <aside><Sidebar></Sidebar></aside>
@@ -264,7 +266,7 @@ function Icon({ open }) {
 const CourseDropdowns = ({ title, data, open, handleOpen, num }) => {
     return (
         <Accordion open={open} icon={<Icon open={open} />}>
-            <AccordionHeader onClick={handleOpen} className={`flex justify-between items-center ${data.length >= num ? 'text-green-500' : ''}`}>{title} ({data.length}/{num})</AccordionHeader>
+            <AccordionHeader onClick={handleOpen} className={`flex justify-between items-center ${data.length >= num ? 'text-confirmation' : ''}`}>{title} ({data.length}/{num})</AccordionHeader>
             <AccordionBody>
                 <div className="mt-8 w-full max-w-4xl">
                     <Card className="mt-8 mb-5 w-full max-w-4xl overflow-auto rounded-[15px]">
