@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import {useNavigate} from "react-router-dom";
-import {Accordion, AccordionHeader, AccordionBody, AccordionProps, Card, Button} from "@material-tailwind/react";
+import {Accordion, AccordionHeader, AccordionBody, AccordionProps, Card, Button, Typography} from "@material-tailwind/react";
 import { PDFDocument } from "pdf-lib";
 
 import Sidebar from "./Sidebar";
@@ -264,37 +264,31 @@ function Icon({ open }) {
 
 // @ts-ignore
 const CourseDropdowns = ({ title, data, open, handleOpen, num }) => {
+    const headings = ["Column 1", "Column 2", "Column 3", "Column 4", "Column 5", "Column 6", "Column 7", "Owner"];
+    
     return (
         <Accordion open={open} icon={<Icon open={open} />}>
             <AccordionHeader onClick={handleOpen} className={`flex justify-between items-center ${data.length >= num ? 'text-confirmation' : ''}`}>{title} ({data.length}/{num})</AccordionHeader>
             <AccordionBody>
                 <div className="mt-8 w-full max-w-4xl">
-                    <Card className="mt-8 mb-5 w-full max-w-4xl overflow-auto rounded-[15px]">
-                        <table className="w-full border-collapse border border-gray-300">
+                    <Card className="mt-8 mb-5 w-full max-w-4xl overflow-auto  border-gray-3 border">
+                        <table className="w-full w-min-max text-left">
                             <thead>
                             <tr className="bg-gray-200">
-                                <th className="border-b border-gray-300 px-4 py-2">Column 1</th>
-                                <th className="border-b border-gray-300 px-4 py-2">Column 2</th>
-                                <th className="border-b border-gray-300 px-4 py-2">Column 3</th>
-                                <th className="border-b border-gray-300 px-4 py-2">Column 4</th>
-                                <th className="border-b border-gray-300 px-4 py-2">Column 5</th>
-                                <th className="border-b border-gray-300 px-4 py-2">Column 6</th>
-                                <th className="border-b border-gray-300 px-4 py-2">Column 7</th>
-                                <th className="border-b border-gray-300 px-4 py-2">Owner</th>
+                                {headings.map((h) => (
+                                    <th className="border-b border-gray-300 p-4 min-w-[100px]">
+                                        <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70">{h}</Typography>
+                                    </th>
+                                ))}   
                             </tr>
                             </thead>
                             <tbody>
                             {data.length > 0 ? (
                                 data.map((row: { column1: any; column2: any; column3: any; column4: any; column5: any; column6: any; column7: any; owner: any; }, index: React.Key | null | undefined) => (
-                                    <tr key={index} className="bg-white border border-gray-300">
-                                        <td className="border border-gray-300 px-4 py-2">{row.column1 ?? "—"}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{row.column2 ?? "—"}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{row.column3 ?? "—"}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{row.column4 ?? "—"}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{row.column5 ?? "—"}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{row.column6 ?? "—"}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{row.column7 ?? "—"}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{row.owner ?? "—"}</td>
+                                    <tr key={index} className="even:bg-gray-1">
+                                        {Object.values(row).slice(1).map((col) => (
+                                            <td className="p-4 text-black">{col ?? "—"}</td>
+                                        ))}
                                     </tr>
                                 ))
                             ) : (
