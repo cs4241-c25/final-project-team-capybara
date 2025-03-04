@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import FileUpload from "./FileUpload";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
+import Tutorial from "./Tutorial";
 import { Typography, Card } from "@material-tailwind/react";
 import React from "react";
 import { useNavigate } from 'react-router-dom';
@@ -18,6 +19,16 @@ function App() {
     }
   }, [navigate]);
   
+  useEffect(() => {
+    const href = window.location.href.substring(
+      window.location.href.lastIndexOf('#') + 1
+    );
+    const element = document.getElementById(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []);
+  
   return (
     <>
       <Header></Header>
@@ -30,6 +41,8 @@ function App() {
           <FileUpload />
         </Card>
       </main>
+      
+      <Tutorial></Tutorial>
       
       <aside><Sidebar></Sidebar></aside>
     </>
