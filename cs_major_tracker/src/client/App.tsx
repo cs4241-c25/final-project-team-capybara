@@ -22,13 +22,13 @@ function App() {
     <>
       <Header></Header>
       
-      <main className="min-h-screen bg-[#AC2B37] flex flex-col">
-        <div className="flex flex-col items-center justify-center flex-grow text-black">
+      <main className="min-h-full py-[3rem] bg-gray-1 flex flex-col items-center justify-center bg-[url(/geometric.png)] bg-repeat">
+        <Card className="flex flex-col items-center justify-center bg-[#f9f9f9] text-dark-gray w-[45em] h-[75vh] shadow-xl shadow-gray-200">
           <Typography variant="h2" className="font-bold my-8">
             CS Major Tracker
           </Typography>
           <FileUpload />
-        </div>
+        </Card>
       </main>
       
       <aside><Sidebar></Sidebar></aside>

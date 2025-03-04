@@ -27,14 +27,14 @@ const pages = [
 function Sidebar() {
 //const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, children }) => {
     return (
-        <Card id="sidebar" className="left-0 top-0 absolute fixed h-[100%] w-0 max-w-[15rem] p-4 rounded-none shadow-xl shadow-gray-900/5 duration-[0.5s] invisible">
+        <Card id="sidebar" className="bg-dark-gray left-0 top-0 absolute fixed h-[100%] w-0 max-w-[15rem] p-4 rounded-none shadow-xl shadow-gray-900/5 duration-[0.5s] invisible">
             <List>
-                <span id="closebtn" className="flex justify-end mr-8 duration-[0.3s]" onClick={closeNav}>
-                    <XMarkIcon className="h-5 w-5"></XMarkIcon>
+                <span id="closebtn" className="flex hover:bg-black ml-auto p-1 mr-8 duration-[0.3s]" onClick={closeNav}>
+                    <XMarkIcon className="h-5 w-5 fill-white"></XMarkIcon>
                 </span>
                 {pages.map((page) => (
                     <a href={page.route}>
-                        <ListItem className="sidebarItem hover:bg-black hover:text-white w-full max-w-[13rem] duration-[0.3s]">
+                        <ListItem className="sidebarItem text-white hover:bg-black hover:text-white w-full max-w-[13rem] duration-[0.3s]">
                             <ListItemPrefix>
                                 {page.icon}
                             </ListItemPrefix>
