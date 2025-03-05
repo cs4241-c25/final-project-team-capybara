@@ -35,6 +35,7 @@ function Tracker() {
                 setData(data);
             } catch (error) {
                 console.error(`Error fetching ${type} data:`, error);
+                navigate("/login");
             }
         };
 
@@ -262,13 +263,6 @@ function Icon({ open }) {
 
 // @ts-ignore
 const CourseDropdowns = ({ title, data, open, handleOpen, num }) => {
-    const del = async function ( _id ) {        
-        const response = await fetch(`http://localhost:3000/delete?id=${_id}`);
-        //const data = await response.json();
-
-        //const text = await response.text();
-    }
-    
     return (
         <Accordion open={open} icon={<Icon open={open} />}>
             <AccordionHeader onClick={handleOpen} className={`flex justify-between items-center ${data.length >= num ? 'text-green-500' : ''}`}>{title} ({data.length}/{num})</AccordionHeader>
@@ -302,7 +296,7 @@ const CourseDropdowns = ({ title, data, open, handleOpen, num }) => {
                                         <td className="border border-gray-300 px-4 py-2">{row.column7 ?? "—"}</td>
                                         <td className="border border-gray-300 px-4 py-2">{row.owner ?? "—"}</td>
                                         <td className="border border-gray-300 px-4 py-2">
-                                            <Button>Edit</Button><Button onClick={del(row._id)}>Delete</Button>
+                                            <Button>Edit</Button><Button>Delete</Button>
                                         </td>
                                     </tr>
                                 ))
