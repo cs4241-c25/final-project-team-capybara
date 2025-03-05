@@ -53,7 +53,7 @@ const Register: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[#AC2B37] text-black">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#AC2B37] text-black font-body">
       <div className="bg-white p-8 rounded-lg shadow-lg w-96">
         <img src="/wpi.png" alt="WPI Logo" className="h-12 w-auto mx-auto mb-4" />
         <h1 className="text-2xl font-bold text-center mb-6">Create a New Account</h1>
@@ -86,7 +86,7 @@ const Register: React.FC = () => {
 
           <button
             type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition duration-200"
+            className="cursor-pointer w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition duration-200"
           >
             Sign Up
           </button>
