@@ -2,7 +2,7 @@ import express from "express";
 import ViteExpress from "vite-express";
 import multer from "multer";
 import ExcelJS from "exceljs";
-import { MongoClient, WithId } from "mongodb";
+import { MongoClient, WithId, ObjectId } from "mongodb";
 import fs from "fs";
 import session from "express-session";
 import bcrypt from "bcrypt";
@@ -34,6 +34,78 @@ app.use(
     saveUninitialized: false,
   })
 );
+
+function determineCategory(courseType: string, courseNum: string) {
+  const categoryInfo = [
+    {
+      name: "humanities",
+      limit: 5,
+      matches: [
+        "AR", "EN", "TH", "MU", "AB", "CN", "GN", "SP",
+        "WR", "RH", "HI", "HU", "INTL", "PY", "RE",
+      ],
+    },
+    {
+      name: "wellness",
+      limit: 4,
+      matches: ["WPE", "PE"],
+    },
+    {
+      name: "social",
+      limit: 2,
+      matches: [
+        "ECON", "ENV", "GOV", "PSY", "SD", "SOC", "SS", "STS", "DEV",
+      ],
+      specialCaseID2050: true,
+    },
+    {
+      name: "iqp",
+      limit: 3,
+      matches: ["CDR"],
+      specialCaseIDIQP: true,
+    },
+    {
+      name: "cs",
+      limit: 18,
+      matches: ["CS"],
+    },
+    {
+      name: "math",
+      limit: 7,
+      matches: ["MA"],
+    },
+    {
+      name: "sciences",
+      limit: 5,
+      matches: [
+        "AE", "BB", "BME", "CE", "CHE", "ECE",
+        "ES", "GE", "ME", "PH", "RBE", "CH",
+      ],
+    },
+    {
+      name: "free",
+      limit: 999999,
+      matches: [],    // fallback if none match or categories are full
+    },
+  ];
+
+  // Iterate over categories to find a match
+  for (const info of categoryInfo) {
+    if (info.specialCaseID2050 && courseType === "ID" && courseNum === "2050") {
+      return { category: info.name, limit: info.limit };
+    }
+    if (info.specialCaseIDIQP && courseType === "ID" && courseNum === "IQP") {
+      return { category: info.name, limit: info.limit };
+    }
+
+    // Otherwise, see if courseType is in matches array
+    if (info.matches.includes(courseType)) {
+      return { category: info.name, limit: info.limit };
+    }
+  }
+
+  return { category: "free", limit: 999999 };
+}
 
 /* ========================
    Excel Data Upload Route
@@ -95,10 +167,10 @@ app.post("/upload", upload.single("file"), async (req, res) => {
         item.column1 === newData.column1 &&
         item.column2 === newData.column2
     );
-    if(newData.column4 =="NR"){
+    if (newData.column4 == "NR") {
       return;
     }
-    if (existingIndex !== -1 && newData.column2!="MQP") {
+    if (existingIndex !== -1 && newData.column2 != "MQP") {
       // Replace the old entry with the new one
       list[existingIndex] = newData;
     } else {
@@ -163,6 +235,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
           column7: rowValues[5] ?? null,
 
           owner: username,
+          added: false,
         }; if (!isFull(humanities, 5) && (
           courseType === 'AR' || courseType === 'EN' || courseType === 'TH' ||
           courseType === 'MU' || courseType === 'AB' || courseType === 'CN' ||
@@ -259,6 +332,142 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   }
 });
 
+/* --------------------------
+   /delete endpoint
+--------------------------- */
+app.get("/delete", async (req, res) => {
+  try {
+    if (!req.session.user) {
+      return res.status(401).json({ success: false, message: "Not authorized" });
+    }
+
+    const username = req.session.user.username;
+
+    const db = client.db(dbName);
+    const id = req.query.id as string;
+    const type = req.query.type as string;
+
+    const collections: Record<string, string> = {
+      humanities: "humanities",
+      wellness: "wellness",
+      social: "social",
+      iqp: "iqp",
+      cs: "cs",
+      math: "math",
+      sciences: "sciences",
+      free: "free",
+    };
+
+    const doc = await db.collection(collections[type]).findOne({
+      _id: new ObjectId(id),
+      owner: username,
+    });
+
+    if (!doc) {
+      return res.status(404).json({
+        success: false,
+        message: "Document not found or you do not own it",
+      });
+    }
+
+    if (!doc.added) {
+      return res.status(403).json({
+        success: false,
+        message: "Cannot delete a course that was not marked as added",
+      });
+    }
+
+    await db.collection(collections[type]).deleteOne({ _id: doc._id });
+
+    const data = await db
+      .collection(collections[type])
+      .find({ owner: username })
+      .toArray();
+
+    res.json(data);
+  } catch (error) {
+    console.error("Error deleting data:", error);
+    res.status(500).json({ error: "Error deleting data" });
+  }
+});
+
+/* --------------------------
+   /addCourse endpoint
+--------------------------- */
+app.post("/addCourse", async (req, res) => {
+  try {
+    // 1) Verify user is logged in
+    if (!req.session.user) {
+      return res.status(401).json({ success: false, message: "Not authorized" });
+    }
+
+    const username = req.session.user.username;
+    const { courseType, courseNum, courseTitle } = req.body;
+
+    // Basic validation
+    if (!courseType || !courseNum || !courseTitle) {
+      return res.status(400).json({
+        success: false,
+        message: "courseType, courseNum, and courseTitle are required.",
+      });
+    }
+
+    // 2) Determine the correct category based on your logic
+    const { category, limit } = determineCategory(courseType, courseNum);
+    const db = client.db(dbName);
+    const collection = db.collection(category);
+
+    // 3) Check how many items the user already has in that category
+    const currentCount = await collection.countDocuments({ owner: username });
+
+    // 4) See if the user already has the same (courseType, courseNum)
+    const existingDoc = await collection.findOne({
+      owner: username,
+      column1: courseType, // where your /upload uses column1 for courseType
+      column2: courseNum,  // column2 for courseNum
+    });
+
+    // 5) If doc doesn’t exist, but category is full => return error
+    if (!existingDoc && currentCount >= limit) {
+      return res.status(400).json({
+        success: false,
+        message: `Cannot add more courses to the '${category}' category. It is already full.`,
+      });
+    }
+
+    // 6) If it exists => update. If not => insert
+    if (existingDoc) {
+      // Replace the doc's fields, set added = true
+      await collection.updateOne(
+        { _id: existingDoc._id },
+        {
+          $set: {
+            column3: courseTitle, // updating the title
+            added: true,          // user specifically added it
+          },
+        }
+      );
+    } else {
+      // Insert
+      const newData = {
+        column1: courseType, // e.g. "CS"
+        column2: courseNum,  // e.g. "2303"
+        column3: courseTitle,
+        owner: username,
+        added: true,
+      };
+      await collection.insertOne(newData);
+    }
+
+    // 7) Return the updated list from that category
+    const data = await collection.find({ owner: username }).toArray();
+    res.json({ success: true, category, data });
+  } catch (error) {
+    console.error("Error adding course:", error);
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    res.status(500).json({ success: false, message: errorMessage });
+  }
+});
 
 /* ========================
    Authentication Routes
