@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: "Minion Pro";
+    font-style: normal;
+    font-weight: normal;
+    src: url("/MinionPro-Semibold.otf")
+}
+
+@font-face {
+    font-family: "Minion Pro";
+    font-style: normal;
+    font-weight: bold;
+    src: url("/MinionPro-Bold.otf")
+}
+
+@font-face {
+    font-family: "Myriad Pro";
+    font-style: normal;
+    font-weight: 300;
+    src: url("/MyriadPro-Light.otf")
+}
+
+@font-face {
+    font-family: "Myriad Pro";
+    font-style: normal;
+    font-weight: normal;
+    src: url("/MYRIADPRO-REGULAR.OTF")
+}
+
+@font-face {
+    font-family: "Myriad Pro";
+    font-style: normal;
+    font-weight: bold;
+    src: url("/MYRIADPRO-BOLD.OTF")
+}
+
+@theme {
+  --color-gray-1: #f5f5f5;
+  --color-gray-2: #cecfd0;
+  --color-gray-3: #ebebeb;
+  --color-dark-gray: #34383b;
+  --color-wpi-red: #AC2B37;
+  --color-wpi-gray: #A9B0B7;
+  --color-shadow-red: #902934;
+  --color-confirmation: #60993E;
+    
+  --font-main: "Minion Pro", "serif";
+  --font-body: "Myriad Pro", "sans-serif";
+}

@@ -10,7 +10,6 @@ import App from "./App";
 import Login from "./Login";
 import Register from "./Register";
 import Tracker from "./Tracker";
-import Tutorial from "./Tutorial";
 
 function AppRouter() {
   return (
@@ -21,7 +20,6 @@ function AppRouter() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/tracker" element={<Tracker />} />
-        <Route path="/tutorial" element={<Tutorial />} />
         <Route path="/main" element={ <App />}/>
       </Routes>
     </Router>

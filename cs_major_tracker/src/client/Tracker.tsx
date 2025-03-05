@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import {useNavigate} from "react-router-dom";
-import {Accordion, AccordionHeader, AccordionBody, AccordionProps, Card, Button} from "@material-tailwind/react";
+import {Accordion, AccordionHeader, AccordionBody, AccordionProps, Card, Button, Typography} from "@material-tailwind/react";
 import { PDFDocument } from "pdf-lib";
 
 import Sidebar from "./Sidebar";
 import Header from "./Header";
+
+const address = 'http://localhost:3000/';
+//const address = 'https://final-project-team-capybara.onrender.com/';
 
 function Tracker() {
     const navigate = useNavigate();
@@ -30,7 +33,7 @@ function Tracker() {
     useEffect(() => {
         const fetchData = async (type: string, setData: React.Dispatch<React.SetStateAction<any[]>>) => {
             try {
-                const response = await fetch(`http://localhost:3000/data?type=${type}`);
+                const response = await fetch(address + `data?type=${type}`);
                 const data = await response.json();
                 setData(data);
             } catch (error) {
@@ -95,7 +98,7 @@ function Tracker() {
 
     const handleLogout = async () => {
         try {
-            const res = await fetch("http://localhost:3000/logout", {
+            const res = await fetch(address + "logout", {
                 method: "POST",
                 credentials: "include",
             });
@@ -223,11 +226,13 @@ function Tracker() {
         <>
         <Header></Header>
 
-        <main className="min-h-screen bg-[#AC2B37] flex flex-col">
+        <main className="min-h-screen bg-gray-1 flex flex-col">
             <div className="flex flex-col items-center flex-grow text-black">
-                <h1 className="text-4xl font-bold mt-6 mb-2">CS Major Tracker</h1>
-                <h2 id = "percentage" ></h2>
-                <div>
+                <div className="bg-gray-3 flex flex-col items-center justify-center flex-grow w-full p-9">
+                    <h1 className="text-4xl font-body font-bold mt-6 mb-2">CS Major Tracker</h1>
+                    <h2 id = "percentage" ></h2>
+                </div>
+                <div className="my-10">
                     <CourseDropdowns title="Humanities Requirement" data={humanitiesData} open={openAcc1} handleOpen={handleOpenAcc1} num={5}/>
                     <CourseDropdowns title="Wellness Requirement" data={wellnessData} open={openAcc2} handleOpen={handleOpenAcc2} num={4}/>
                     <CourseDropdowns title="Social Science Requirement" data={socialData} open={openAcc3} handleOpen={handleOpenAcc3} num={2}/>
@@ -237,7 +242,7 @@ function Tracker() {
                     <CourseDropdowns title="Science Requirement" data={scienceData} open={openAcc7} handleOpen={handleOpenAcc7} num={5}/>
                     <CourseDropdowns title="Free Elective Requirement" data={freeData} open={openAcc8} handleOpen={handleOpenAcc8} num={3}/>
                 </div>
-                <Button className="mt-3" variant="gradient" onClick={onButtonClick}> Download Tracker PDF </Button>
+                <Button className="mb-10 font-body" variant="gradient" onClick={onButtonClick}> Download Tracker PDF </Button>
             </div>
         </main>
         <aside><Sidebar></Sidebar></aside>
@@ -263,41 +268,31 @@ function Icon({ open }) {
 
 // @ts-ignore
 const CourseDropdowns = ({ title, data, open, handleOpen, num }) => {
+    const headings = ["Column 1", "Column 2", "Column 3", "Column 4", "Column 5", "Column 6", "Column 7", "Owner"];
+    
     return (
         <Accordion open={open} icon={<Icon open={open} />}>
-            <AccordionHeader onClick={handleOpen} className={`flex justify-between items-center ${data.length >= num ? 'text-green-500' : ''}`}>{title} ({data.length}/{num})</AccordionHeader>
+            <AccordionHeader onClick={handleOpen} className={`cursor-pointer font-body font-normal flex justify-between items-center ${data.length >= num ? 'text-confirmation' : ''}`}>{title} ({data.length}/{num})</AccordionHeader>
             <AccordionBody>
                 <div className="mt-8 w-full max-w-4xl">
-                    <Card className="mt-8 mb-5 w-full max-w-4xl overflow-auto rounded-[15px]">
-                        <table className="w-full border-collapse border border-gray-300">
+                    <Card className="mt-8 mb-5 w-full max-w-4xl overflow-auto  border-gray-3 border">
+                        <table className="font-body w-full w-min-max text-left">
                             <thead>
                             <tr className="bg-gray-200">
-                                <th className="border-b border-gray-300 px-4 py-2">Column 1</th>
-                                <th className="border-b border-gray-300 px-4 py-2">Column 2</th>
-                                <th className="border-b border-gray-300 px-4 py-2">Column 3</th>
-                                <th className="border-b border-gray-300 px-4 py-2">Column 4</th>
-                                <th className="border-b border-gray-300 px-4 py-2">Column 5</th>
-                                <th className="border-b border-gray-300 px-4 py-2">Column 6</th>
-                                <th className="border-b border-gray-300 px-4 py-2">Column 7</th>
-                                <th className="border-b border-gray-300 px-4 py-2">Owner</th>
-                                <th className="border-b border-gray-300 px-4 py-2"></th>
+                                {headings.map((h) => (
+                                    <th className="border-b border-gray-300 p-4 min-w-[100px]">
+                                        <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70">{h}</Typography>
+                                    </th>
+                                ))}   
                             </tr>
                             </thead>
                             <tbody>
                             {data.length > 0 ? (
-                                data.map((row: { _id: any; column1: any; column2: any; column3: any; column4: any; column5: any; column6: any; column7: any; owner: any; }, index: React.Key | null | undefined) => (
-                                    <tr key={index} className="bg-white border border-gray-300">
-                                        <td className="border border-gray-300 px-4 py-2">{row.column1 ?? "—"}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{row.column2 ?? "—"}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{row.column3 ?? "—"}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{row.column4 ?? "—"}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{row.column5 ?? "—"}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{row.column6 ?? "—"}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{row.column7 ?? "—"}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{row.owner ?? "—"}</td>
-                                        <td className="border border-gray-300 px-4 py-2">
-                                            <Button>Edit</Button><Button>Delete</Button>
-                                        </td>
+                                data.map((row: { column1: any; column2: any; column3: any; column4: any; column5: any; column6: any; column7: any; owner: any; }, index: React.Key | null | undefined) => (
+                                    <tr key={index} className="even:bg-gray-1">
+                                        {Object.values(row).slice(1).map((col) => (
+                                            <td className="p-4 text-black">{col ?? "—"}</td>
+                                        ))}
                                     </tr>
                                 ))
                             ) : (
