@@ -10,8 +10,8 @@ import bcrypt from "bcrypt";
 const app = express();
 const upload = multer({ dest: "uploads/" });
 
-const url = "mongodb://localhost:27017";
-// const url = "mongodb+srv://cierra:RiC9tHbe0FHHEPga@cluster0.qzbsl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+// const url = "mongodb://localhost:27017";
+const url = "mongodb+srv://cierra:RiC9tHbe0FHHEPga@cluster0.qzbsl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const dbName = "course_collection";
 const client = new MongoClient(url);
 const saltRounds = 10; // For bcrypt
@@ -163,25 +163,21 @@ app.post("/upload", upload.single("file"), async (req, res) => {
         if (courseType === 'CS' && !systems_requirement && (courseNum === '3013' || courseNum === '4513' || courseNum === '4515' || courseNum === '4516' || courseNum === '502' || courseNum === '533' || courseNum === '535')) {
           systems_requirement = true;
           cs_completion++;
-          cs.push(formattedData);
         }
         // second bin check
         if (courseType === 'CS' && !theory_requirement && (courseNum === '3133' || courseNum === '4120' || courseNum === '4123' || courseNum === '4533' || courseNum === '4536' || courseNum === '5003' || courseNum === '5084' || courseNum === '503' || courseNum === '536' || courseNum === '544' || courseNum === '584')) {
           theory_requirement = true;
           cs_completion++;
-          cs.push(formattedData);
         }
         // third bin check
         if (courseType === 'CS' && !design_requirement && (courseNum === '3041' || courseNum === '3431' || courseNum === '3733' || courseNum === '4233' || courseNum === '509' || courseNum === '542' || courseNum === '546' || courseNum === '561' || courseNum === '562')) {
           design_requirement = true;
           cs_completion++;
-          cs.push(formattedData);
         }
         // fourth bin check
         if (!social_requirement && ((courseType === 'CS' && courseNum === '3043') || ((courseType === 'GOV' || courseType === 'ID') && (courseNum === '2314' || courseNum === '2315')) || (courseType === 'IMGD' && (courseNum === '2000' || courseNum === '2001')) || (courseType === 'RBE' && courseNum === '3100'))) {
           social_requirement = true;
           cs_completion++;
-          cs.push(formattedData);
         }
         // 4000 or grad level check
         if (cs_4000_num < 5 && (courseType === 'CS' && Number(courseNum.charAt(0)) >= 4)) {
@@ -189,26 +185,21 @@ app.post("/upload", upload.single("file"), async (req, res) => {
           if (cs_4000_num == 5) {
             cs_4000_requirement = true;
           }
-          cs_completion++;
-          cs.push(formattedData);
         }
         // stats requirement
         if (!stat_requirement && (courseType === 'MA' && (courseNum === '2611' || courseNum === '2612'))) {
           stat_requirement = true;
           math_completion++;
-          math.push(formattedData);
         }
         // prob requirement
         if (!prob_requirement && (courseType === 'MA' && (courseNum === '2621' || courseNum === '2631'))) {
           prob_requirement = true;
           math_completion++;
-          math.push(formattedData);
         }
         // science requirement
         if (science_completion < 3 && (courseType === 'BB' || courseType === 'CH' || courseType === 'GE' || courseType === 'PH')) {
           science_completion++;
           if (science_completion == 3) { science_requirement = true; }
-          sciences.push(formattedData);
         }
         // mqp
         if (courseType === 'CDR' && courseNum === 'MQP') {
@@ -223,7 +214,6 @@ app.post("/upload", upload.single("file"), async (req, res) => {
         if (!isFull(iqp, 1) && (courseType == 'CDR' && courseNum == 'IQP')) {
             iqp.push(formattedData);
             iqp_requirement = true;
-            iqp.push(formattedData);
         }
         // hua
         if (!hua_requirement && courseType == 'HU' && (courseNum == '3900' || courseNum === '3910')) {
@@ -236,16 +226,13 @@ app.post("/upload", upload.single("file"), async (req, res) => {
           humanities.push(formattedData);
           if (Number(courseNum.charAt(0)) > 1) { hua_2000_requirement = true; }
         }
-        else if (courseType == 'HU' && (courseNum == '3900' || courseNum === '3910')) {
-          humanities.push(formattedData);
-        }
         else if (!isFull(wellness, 4) && (courseType == 'WPE' || courseType == 'PE')) {
           wellness.push(formattedData);
         }
         else if (!isFull(social, 2) && ((courseType == 'ID' && courseNum == '2050') || courseType == 'ECON' || courseType == 'ENV' || courseType == 'GOV' || courseType == 'PSY' || courseType == 'SD' || courseType == 'SOC' || courseType == 'SS' || courseType == 'STS' || courseType == 'DEV')) {
           social.push(formattedData);
         }
-        else if (!isFull(cs, 6 + cs_completion) && (courseType == 'CS')) {
+        else if (!isFull(cs, 11 + cs_completion) && (courseType == 'CS' && courseNum != 'MQP')) {
           cs.push(formattedData);
         }
         else if (!isFull(math, 5 + math_completion) && (courseType == 'MA')) {
