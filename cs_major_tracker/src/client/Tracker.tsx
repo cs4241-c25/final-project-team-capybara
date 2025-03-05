@@ -199,7 +199,6 @@ function Tracker() {
             field.setFontSize(7);
             field.setText(iqpData[i].column1 + iqpData[i].column2 + " - " + iqpData[i].column3);
             num++;
-            i--;
         }
 
         num = 15;
@@ -232,6 +231,9 @@ function Tracker() {
             field.setFontSize(7);
             field.setText(scienceData[i].column1 + scienceData[i].column2 + " - " + scienceData[i].column3);
             num++;
+            if (num === 48) {
+                break;
+            }
         }
 
         const fields = form.getFields();
@@ -413,7 +415,7 @@ function Tracker() {
                 <h1 className="text-4xl font-bold mt-6 mb-2">CS Major Tracker</h1>
                 <h2 id = "percentage" ></h2>
                 <div>
-                    <CourseDropdowns title="Humanities Requirement" data={humanitiesData} open={openAcc1} handleOpen={handleOpenAcc1} num={5} description={humanities_description()}/>
+                    <CourseDropdowns title="Humanities Requirement" data={humanitiesData} open={openAcc1} handleOpen={handleOpenAcc1} num={6} description={humanities_description()}/>
                     <CourseDropdowns title="Wellness Requirement" data={wellnessData} open={openAcc2} handleOpen={handleOpenAcc2} num={4} description={undefined}/>
                     <CourseDropdowns title="Social Science Requirement" data={socialData} open={openAcc3} handleOpen={handleOpenAcc3} num={2} description={undefined}/>
                     <CourseDropdowns title="IQP Requirement" data={iqpData} open={openAcc4} handleOpen={handleOpenAcc4} num={3} description={undefined}/>

@@ -201,28 +201,30 @@ app.post("/upload", upload.single("file"), async (req, res) => {
           science_completion++;
           if (science_completion == 3) { science_requirement = true; }
         }
+
         // mqp
         if (courseType === 'CDR' && courseNum === 'MQP') {
           mqp_requirement = true;
         }
-        if (mqp_num < 3 && courseType === 'CS' && courseNum === 'MQP') {
+        else if (mqp_num < 3 && courseType === 'CS' && courseNum === 'MQP') {
           cs_completion++;
           mqp_num++;
           cs.push(formattedData);
         }
         // iqp
-        if (!isFull(iqp, 1) && (courseType == 'CDR' && courseNum == 'IQP')) {
+        else if (!isFull(iqp, 3) && (courseType == 'CDR' && courseNum == 'IQP')) {
             iqp.push(formattedData);
             iqp_requirement = true;
         }
+        else if (!isFull(iqp, 3) && courseType == 'ID' && courseNum == 'IQP') {
+          iqp.push(formattedData);
+        }
         // hua
-        if (!hua_requirement && courseType == 'HU' && (courseNum == '3900' || courseNum === '3910')) {
+        else if (!hua_requirement && courseType == 'CDR' && courseNum == 'HUA') {
           hua_requirement = true;
-          humanities.push(formattedData);
           hua_num++;
         }
-
-        if (!isFull(humanities, 5 + hua_num) && (courseType == 'AR' || courseType == 'EN' || courseType == 'TH' || courseType == 'MU' || courseType == 'AB' || courseType == 'CN' || courseType == 'GN' || courseType == 'SP' || courseType == 'WR' || courseType == 'RH' || courseType == 'HI' || courseType == 'HU' || courseType == 'INTL' || courseType == 'PY' || courseType == 'RE')) {
+        else if (!isFull(humanities, 5 + hua_num) && (courseType == 'AR' || courseType == 'EN' || courseType == 'TH' || courseType == 'MU' || courseType == 'AB' || courseType == 'CN' || courseType == 'GN' || courseType == 'SP' || courseType == 'WR' || courseType == 'RH' || courseType == 'HI' || courseType == 'HU' || courseType == 'INTL' || courseType == 'PY' || courseType == 'RE')) {
           humanities.push(formattedData);
           if (Number(courseNum.charAt(0)) > 1) { hua_2000_requirement = true; }
         }
