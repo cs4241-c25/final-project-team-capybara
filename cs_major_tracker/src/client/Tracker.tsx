@@ -30,18 +30,28 @@ function Tracker() {
     const [scienceData, setScience] = useState<any[]>([]);
     const [freeData, setFree] = useState<any[]>([]);
 
-    useEffect(() => {
-        const fetchData = async (type: string, setData: React.Dispatch<React.SetStateAction<any[]>>) => {
-            try {
-                const response = await fetch(address + `data?type=${type}`);
-                const data = await response.json();
-                setData(data);
-            } catch (error) {
-                console.error(`Error fetching ${type} data:`, error);
-                navigate("/login");
-            }
-        };
+    const fetchData = async (
+        type: string, 
+        setData: React.Dispatch<React.SetStateAction<any[]>>
+    ) => {
+        try {
+            const response = await fetch(address + `data?type=${type}`);
+            const data = await response.json();
+            console.log(data);
 
+            if (!data.success && data.message === "Not authorized") {
+                navigate("/login");
+                localStorage.setItem("authenticated", "false");
+                return;
+            }
+
+            setData(data);
+        } catch (error) {
+            console.error(`Error fetching ${type} data:`, error);
+        }
+    };
+
+    useEffect(() => {
         fetchData("humanities", setHumanities);
         fetchData("wellness", setWellness);
         fetchData("social", setSocial);
@@ -50,7 +60,7 @@ function Tracker() {
         fetchData("math", setMath);
         fetchData("sciences", setScience);
         fetchData("free", setFree);
-    }, []);
+    }, [navigate]);
 
     useEffect(() => {
         const getPercent = async () => {
