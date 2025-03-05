@@ -268,7 +268,7 @@ const CourseDropdowns = ({ title, data, open, handleOpen, num }) => {
     
     return (
         <Accordion open={open} icon={<Icon open={open} />}>
-            <AccordionHeader onClick={handleOpen} className={`font-body font-normal flex justify-between items-center ${data.length >= num ? 'text-confirmation' : ''}`}>{title} ({data.length}/{num})</AccordionHeader>
+            <AccordionHeader onClick={handleOpen} className={`cursor-pointer font-body font-normal flex justify-between items-center ${data.length >= num ? 'text-confirmation' : ''}`}>{title} ({data.length}/{num})</AccordionHeader>
             <AccordionBody>
                 <div className="mt-8 w-full max-w-4xl">
                     <Card className="mt-8 mb-5 w-full max-w-4xl overflow-auto  border-gray-3 border">

@@ -26,14 +26,14 @@ function Header() {
     
     return (        
         <header className="bg-wpi-red border-b-2 border-shadow-red p-4 flex items-center">
-            <span onClick={openNav} className="hover:bg-shadow-red pl-[6px] py-2"><Bars3Icon className="h-5 w-5 mr-3 ml-1 fill-white"></Bars3Icon></span>
+            <span onClick={openNav} className="cursor-pointer hover:bg-shadow-red pl-[6px] py-2"><Bars3Icon className="h-5 w-5 mr-3 ml-1 fill-white"></Bars3Icon></span>
             <a href="/main"><img src="/wpi.png" alt="WPI Logo" className="h-12 w-auto ml-4" /></a>
 
             <Button
               variant="outlined"
               color="white"
               onClick={handleLogout}
-              className="hover:bg-shadow-red text-white font-body font-bold px-4 py-2 mx-4 rounded ml-auto"
+              className="cursor-pointer hover:bg-shadow-red text-white font-body font-bold px-4 py-2 mx-4 rounded ml-auto"
             >
               Logout
             </Button>
