@@ -33,7 +33,7 @@ function Header() {
               variant="outlined"
               color="white"
               onClick={handleLogout}
-              className="hover:bg-shadow-red text-white px-4 py-2 mx-4 rounded ml-auto"
+              className="hover:bg-shadow-red text-white font-body font-bold px-4 py-2 mx-4 rounded ml-auto"
             >
               Logout
             </Button>

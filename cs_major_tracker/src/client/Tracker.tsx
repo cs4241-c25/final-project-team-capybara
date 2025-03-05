@@ -225,7 +225,7 @@ function Tracker() {
         <main className="min-h-screen bg-gray-1 flex flex-col">
             <div className="flex flex-col items-center flex-grow text-black">
                 <div className="bg-gray-3 flex flex-col items-center justify-center flex-grow w-full p-9">
-                    <h1 className="text-4xl font-bold mt-6 mb-2">CS Major Tracker</h1>
+                    <h1 className="text-4xl font-body font-bold mt-6 mb-2">CS Major Tracker</h1>
                     <h2 id = "percentage" ></h2>
                 </div>
                 <div className="my-10">
@@ -238,7 +238,7 @@ function Tracker() {
                     <CourseDropdowns title="Science Requirement" data={scienceData} open={openAcc7} handleOpen={handleOpenAcc7} num={5}/>
                     <CourseDropdowns title="Free Elective Requirement" data={freeData} open={openAcc8} handleOpen={handleOpenAcc8} num={3}/>
                 </div>
-                <Button className="mb-10" variant="gradient" onClick={onButtonClick}> Download Tracker PDF </Button>
+                <Button className="mb-10 font-body" variant="gradient" onClick={onButtonClick}> Download Tracker PDF </Button>
             </div>
         </main>
         <aside><Sidebar></Sidebar></aside>
@@ -268,11 +268,11 @@ const CourseDropdowns = ({ title, data, open, handleOpen, num }) => {
     
     return (
         <Accordion open={open} icon={<Icon open={open} />}>
-            <AccordionHeader onClick={handleOpen} className={`flex justify-between items-center ${data.length >= num ? 'text-confirmation' : ''}`}>{title} ({data.length}/{num})</AccordionHeader>
+            <AccordionHeader onClick={handleOpen} className={`font-body font-normal flex justify-between items-center ${data.length >= num ? 'text-confirmation' : ''}`}>{title} ({data.length}/{num})</AccordionHeader>
             <AccordionBody>
                 <div className="mt-8 w-full max-w-4xl">
                     <Card className="mt-8 mb-5 w-full max-w-4xl overflow-auto  border-gray-3 border">
-                        <table className="w-full w-min-max text-left">
+                        <table className="font-body w-full w-min-max text-left">
                             <thead>
                             <tr className="bg-gray-200">
                                 {headings.map((h) => (
