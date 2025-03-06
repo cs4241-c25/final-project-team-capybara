@@ -145,6 +145,7 @@ function Tracker() {
     fetchData("math", setMath);
     fetchData("sciences", setScience);
     fetchData("free", setFree);
+    fetchData("boolean", setBooleanData);
   };
 
   // This ensures the data is always fresh if needed
@@ -699,14 +700,10 @@ const CourseDropdowns = ({
   onDelete,
 }: CourseDropdownsProps) => {
   const headings = [
-    "Column 1",
-    "Column 2",
-    "Column 3",
-    "Column 4",
-    "Column 5",
-    "Column 6",
-    "Column 7",
-    "Owner",
+    "Course Type",
+    "Course Num",
+    "Course Title",
+    "Grade",
     "Action",
   ];
 
@@ -748,10 +745,6 @@ const CourseDropdowns = ({
                       <td className="p-4 text-black">{row.column2 ?? "—"}</td>
                       <td className="p-4 text-black">{row.column3 ?? "—"}</td>
                       <td className="p-4 text-black">{row.column4 ?? "—"}</td>
-                      <td className="p-4 text-black">{row.column5 ?? "—"}</td>
-                      <td className="p-4 text-black">{row.column6 ?? "—"}</td>
-                      <td className="p-4 text-black">{row.column7 ?? "—"}</td>
-                      <td className="p-4 text-black">{row.owner ?? "—"}</td>
                       <td className="p-4">
                         {row.added ? (
                           <button
