@@ -709,7 +709,7 @@ function AddCoursePanel({
       setStatus("Adding course...");
   
       try {
-        const response = await fetch(address + "/addCourse", {
+        const response = await fetch(address + "addCourse", {
           method: "POST",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
