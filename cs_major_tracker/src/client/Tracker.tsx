@@ -21,9 +21,6 @@ import {
 } from "@heroicons/react/24/outline";
 import { XCircleIcon } from "@heroicons/react/16/solid";
 
-//const address = "http://localhost:3000/";
-const address = 'https://final-project-team-capybara.onrender.com/';
-
 function Tracker() {
   const navigate = useNavigate();
 
@@ -51,7 +48,7 @@ function Tracker() {
     setData: React.Dispatch<React.SetStateAction<any[]>>
   ) => {
     try {
-      const response = await fetch(address + `data?type=${type}`, {
+      const response = await fetch(`/data?type=${type}`, {
         credentials: "include",
       });
       const data = await response.json();
@@ -191,7 +188,7 @@ function Tracker() {
   // 1) Our handleDelete function
   const handleDelete = async (id: string, category: string) => {
     try {
-      const url = address + `delete?id=${id}&type=${category}`;
+      const url = `/delete?id=${id}&type=${category}`;
       const response = await fetch(url, {
         method: "GET",
         credentials: "include",
@@ -882,7 +879,7 @@ function AddCoursePanel({
       setStatus("Adding course...");
   
       try {
-        const response = await fetch(address + "addCourse", {
+        const response = await fetch("/addCourse", {
           method: "POST",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
