@@ -20,7 +20,7 @@ function Tutorial () {
 
     return (
         <section id="tutorial" className="min-h-screen bg-dark-gray flex flex-col items-center">
-            <Card className="my-6 w-[60%]">
+            <Card className="my-6 w-[70%]">
                 <CardBody className="flex flex-col p-8 gap-2">
                     <Typography variant="h2" className="text-wpi-red font-body font-normal">Tutorial</Typography><br />
                     <hr className="mt-[-20px] mb-6"></hr>
@@ -98,28 +98,28 @@ function TutStep(props) {
             return (
                 <>
                     <Typography className="font-body">Open Workday and click on <em>Academics</em> in the sidebar on the right.</Typography>
-                    <img src="/tutorial/t1.png" className="max-w-[60%] self-center"></img><br />
+                    <img src="/tutorial/t1.png" className="max-h-[20rem] self-center"></img><br />
                 </>
             );
         case 1:
             return (
                 <>
                     <Typography className="font-body">Next, click on <em>View My Academic Record</em> in the sidebar on the right.</Typography>
-                    <img src="/tutorial/t2.png" className="max-w-[60%] self-center"></img><br />
+                    <img src="/tutorial/t2.png" className="max-h-[20rem] self-center"></img><br />
                 </>
             );
         case 2:
             return (
                 <>
                     <Typography className="font-body">Click on the <em>Export to Excel</em> button in the top right corner.</Typography>
-                    <img src="/tutorial/t3.png" className="max-w-[70%] self-center"></img><br />
+                    <img src="/tutorial/t3.png" className="max-h-[20rem] self-center"></img><br />
                 </>
             );
         case 3:
             return (
                 <>
                     <Typography className="font-body">A modal will appear prompting you to export the document. Click <em>Download</em>.</Typography>
-                    <img src="/tutorial/t4.png" className="max-w-[50%] self-center"></img><br />
+                    <img src="/tutorial/t4.png" className="max-h-[20rem] self-center"></img><br />
 
                     <Typography className="font-body">The excel file should download to your computer shortly.</Typography>
                 </>
