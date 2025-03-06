@@ -10,8 +10,8 @@ import Header from "./Header";
 import {CheckCircleIcon, QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
 import {XCircleIcon} from "@heroicons/react/16/solid";
 
-const address = "http://localhost:3000/";
-// const address = 'https://final-project-team-capybara.onrender.com/';
+//const address = "http://localhost:3000/";
+const address = 'https://final-project-team-capybara.onrender.com/';
 
 function Tracker() {
   const navigate = useNavigate();
@@ -709,7 +709,7 @@ function AddCoursePanel({
       setStatus("Adding course...");
   
       try {
-        const response = await fetch("http://localhost:3000/addCourse", {
+        const response = await fetch(address + "/addCourse", {
           method: "POST",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
