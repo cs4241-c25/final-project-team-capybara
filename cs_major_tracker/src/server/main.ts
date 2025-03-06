@@ -1,4 +1,5 @@
 import express from "express";
+import * as dotenv from 'dotenv';
 import ViteExpress from "vite-express";
 import multer from "multer";
 import ExcelJS from "exceljs";
@@ -7,11 +8,13 @@ import fs from "fs";
 import session from "express-session";
 import bcrypt from "bcrypt";
 
+dotenv.config()
+
 const app = express();
 const upload = multer({ dest: "uploads/" });
 
-//const url = "mongodb://localhost:27017";
-const url = "mongodb+srv://cierra:RiC9tHbe0FHHEPga@cluster0.qzbsl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+console.log("ENV: ", process.env.DATABASE_URL);
+const url = process.env.DATABASE_URL;
 const dbName = "course_collection";
 const client = new MongoClient(url);
 const saltRounds = 10; // For bcrypt
