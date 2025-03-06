@@ -133,7 +133,8 @@ app.get("/data", async (req, res) => {
       cs: "cs",
       math: "math",
       sciences: "sciences",
-      free: "free"
+      free: "free",
+      boolean: "boolean"
     };
 
     console.log(type);
@@ -200,6 +201,27 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     const math: any[] = [];
     const sciences: any[] = [];
     const free: any[] = [];
+    const boolean: any[] = [];
+
+    let hua_2000_requirement = false;
+    let hua_requirement = false;
+    let iqp_requirement = false;
+    let systems_requirement = false;
+    let theory_requirement = false;
+    let design_requirement = false;
+    let social_requirement = false;
+    let cs_4000_requirement = false;
+    let mqp_requirement = false;
+    let prob_requirement = false;
+    let stat_requirement = false;
+    let science_requirement = false;
+
+    let cs_completion = 0;
+    let math_completion = 0;
+    let science_completion = 0;
+    let cs_4000_num = 0;
+    let mqp_num = 0;
+    let hua_num = 0;
 
     const firstRow = worksheet.getRow(1);
     const firstCellValue = firstRow.getCell(1).text.trim();
@@ -236,15 +258,75 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 
           owner: username,
           added: false,
-        }; if (!isFull(humanities, 5) && (
-          courseType === 'AR' || courseType === 'EN' || courseType === 'TH' ||
-          courseType === 'MU' || courseType === 'AB' || courseType === 'CN' ||
-          courseType === 'GN' || courseType === 'SP' || courseType === 'WR' ||
-          courseType === 'RH' || courseType === 'HI' || courseType === 'HU' ||
-          courseType === 'INTL' || courseType === 'PY' || courseType === 'RE'
-        )) {
-          insertOrReplace(humanities, formattedData, 5);
+        };
 
+        // first bin check
+        if (courseType === 'CS' && !systems_requirement && (courseNum === '3013' || courseNum === '4513' || courseNum === '4515' || courseNum === '4516' || courseNum === '502' || courseNum === '533' || courseNum === '535')) {
+          systems_requirement = true;
+          cs_completion++;
+        }
+        // second bin check
+        if (courseType === 'CS' && !theory_requirement && (courseNum === '3133' || courseNum === '4120' || courseNum === '4123' || courseNum === '4533' || courseNum === '4536' || courseNum === '5003' || courseNum === '5084' || courseNum === '503' || courseNum === '536' || courseNum === '544' || courseNum === '584')) {
+          theory_requirement = true;
+          cs_completion++;
+        }
+        // third bin check
+        if (courseType === 'CS' && !design_requirement && (courseNum === '3041' || courseNum === '3431' || courseNum === '3733' || courseNum === '4233' || courseNum === '509' || courseNum === '542' || courseNum === '546' || courseNum === '561' || courseNum === '562')) {
+          design_requirement = true;
+          cs_completion++;
+        }
+        // fourth bin check
+        if (!social_requirement && ((courseType === 'CS' && courseNum === '3043') || ((courseType === 'GOV' || courseType === 'ID') && (courseNum === '2314' || courseNum === '2315')) || (courseType === 'IMGD' && (courseNum === '2000' || courseNum === '2001')) || (courseType === 'RBE' && courseNum === '3100'))) {
+          social_requirement = true;
+          cs_completion++;
+        }
+        // 4000 or grad level check
+        if (cs_4000_num < 5 && (courseType === 'CS' && Number(courseNum.charAt(0)) >= 4)) {
+          cs_4000_num++;
+          if (cs_4000_num == 5) {
+            cs_4000_requirement = true;
+          }
+        }
+        // stats requirement
+        if (!stat_requirement && (courseType === 'MA' && (courseNum === '2611' || courseNum === '2612'))) {
+          stat_requirement = true;
+          math_completion++;
+        }
+        // prob requirement
+        if (!prob_requirement && (courseType === 'MA' && (courseNum === '2621' || courseNum === '2631'))) {
+          prob_requirement = true;
+          math_completion++;
+        }
+        // science requirement
+        if (science_completion < 3 && (courseType === 'BB' || courseType === 'CH' || courseType === 'GE' || courseType === 'PH')) {
+          science_completion++;
+          if (science_completion == 3) { science_requirement = true; }
+        }
+        // mqp
+        if (courseType === 'CDR' && courseNum === 'MQP') {
+          mqp_requirement = true;
+        }
+        else if (mqp_num < 3 && courseType === 'CS' && courseNum === 'MQP') {
+          cs_completion++;
+          insertOrReplace(cs, formattedData, 11 + cs_completion);
+          mqp_num++;
+        }
+        // iqp
+        else if (!isFull(iqp, 1) && ((courseType == 'CDR' && courseNum == 'IQP'))) {
+          insertOrReplace(iqp, formattedData, 1);
+          iqp_requirement = true;
+        }
+        // hua
+        else if (!hua_requirement && courseType == 'CDR' && courseNum == 'HUA') {
+          hua_requirement = true;
+          hua_num++;
+        }
+        else if (courseType == 'AR' || courseType == 'EN' || courseType == 'TH' || courseType == 'MU' || courseType == 'AB' || courseType == 'CN' || courseType == 'GN' || courseType == 'SP' || courseType == 'WR' || courseType == 'RH' || courseType == 'HI' || courseType == 'HU' || courseType == 'INTL' || courseType == 'PY' || courseType == 'RE') {
+          insertOrReplace(humanities, formattedData, 5 + hua_num);
+          if (Number(courseNum.charAt(0)) > 1) { hua_2000_requirement = true; }
+        }
+        else if (courseType == 'HU' && (courseNum == '3900' || courseNum === '3910')) {
+          insertOrReplace(humanities, formattedData, 5 + hua_num);
         } else if (!isFull(wellness, 4) && (courseType === 'WPE' || courseType === 'PE')) {
           wellness.push(formattedData);
         } else if (!isFull(social, 2) && (
@@ -255,25 +337,17 @@ app.post("/upload", upload.single("file"), async (req, res) => {
         )) {
           insertOrReplace(social, formattedData, 2);
 
-        } else if (!isFull(iqp, 3) && (
-          courseType === 'CDR' || (courseType === 'ID' && courseNum === 'IQP')
-        )) {
-          insertOrReplace(iqp, formattedData, 3);
+        } else if (courseType === 'ID' && courseNum === 'IQP') {
+          iqp_requirement = true;
 
-        } else if (!isFull(cs, 18) && (courseType === 'CS')) {
-          insertOrReplace(cs, formattedData, 18);
+        } else if (courseType == 'CS' && courseNum != 'MQP') {
+          insertOrReplace(cs, formattedData, 11 + cs_completion);
 
-        } else if (!isFull(math, 7) && (courseType === 'MA')) {
-          insertOrReplace(math, formattedData, 7);
+        } else if (courseType == 'MA') {
+          insertOrReplace(math, formattedData, 5 + math_completion);
 
-        } else if (
-          !isFull(sciences, 5) &&
-          (courseType === 'AE' || courseType === 'BB' || courseType === 'BME' ||
-            courseType === 'CE' || courseType === 'CHE' || courseType === 'ECE' ||
-            courseType === 'ES' || courseType === 'GE' || courseType === 'ME' ||
-            courseType === 'PH' || courseType === 'RBE' || courseType === 'CH')
-        ) {
-          insertOrReplace(sciences, formattedData, 5);
+        } else if (courseType == 'AE' || courseType == 'BB' || courseType == 'BME' || courseType == 'CE' || courseType == 'CHE' || courseType == 'ECE' || courseType == 'ES' || courseType == 'GE' || courseType == 'ME' || courseType == 'PH' || courseType == 'RBE' || courseType == 'CH') {
+          insertOrReplace(sciences, formattedData, 2 + science_completion);
 
         } else {
           // If none of the above match or categories are full, push to free
@@ -281,6 +355,23 @@ app.post("/upload", upload.single("file"), async (req, res) => {
         }
       }
     });
+
+    const boolean_data = {
+      hua_2000: hua_2000_requirement,
+      hua: hua_requirement,
+      iqp: iqp_requirement,
+      systems: systems_requirement,
+      theory: theory_requirement,
+      design: design_requirement,
+      social: social_requirement,
+      cs_4000: cs_4000_requirement,
+      mqp: mqp_requirement,
+      prob: prob_requirement,
+      stat: stat_requirement,
+      science: science_requirement,
+      owner: username,
+    }
+    boolean.push(boolean_data);
 
     console.log("Filtered & Formatted CS Data:", JSON.stringify(cs, null, 2));
 
@@ -294,6 +385,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     const collection_math = db.collection("math");
     const collection_sciences = db.collection("sciences");
     const collection_free = db.collection("free");
+    const collection_boolean = db.collection("boolean");
     await Promise.all([
       collection.deleteMany({ owner: username }),
       collection_humanities.deleteMany({ owner: username }),
@@ -304,6 +396,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
       collection_math.deleteMany({ owner: username }),
       collection_sciences.deleteMany({ owner: username }),
       collection_free.deleteMany({ owner: username }),
+      collection_boolean.deleteMany({ owner: username }),
     ]);
 
 
@@ -315,6 +408,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     if (math.length > 0) { await collection_math.insertMany(math); }
     if (sciences.length > 0) { await collection_sciences.insertMany(sciences); }
     if (free.length > 0) { await collection_free.insertMany(free); }
+    await collection_boolean.insertMany(boolean);
 
     console.log("Data inserted into MongoDB!");
 
@@ -323,7 +417,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 
     res.json({
       message: "Data processed and inserted into MongoDB",
-      data: humanities, wellness, social, iqp, cs, math, sciences, free,
+      data: humanities, wellness, social, iqp, cs, math, sciences, free, boolean,
     });
   } catch (error) {
     console.error("Error processing file:", error);

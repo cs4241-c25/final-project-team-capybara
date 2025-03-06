@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Accordion, AccordionHeader, AccordionBody, Card, Button, Typography } from "@material-tailwind/react";
+import { Accordion, AccordionHeader, AccordionBody, Card, Button, Typography, Tooltip } from "@material-tailwind/react";
 import Papa from "papaparse";
 import { PDFDocument } from "pdf-lib";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
+
+import {CheckCircleIcon, QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
+import {XCircleIcon} from "@heroicons/react/16/solid";
 
 const address = "http://localhost:3000/";
 // const address = 'https://final-project-team-capybara.onrender.com/';
@@ -29,6 +32,7 @@ function Tracker() {
   const [mathData, setMath] = useState<any[]>([]);
   const [scienceData, setScience] = useState<any[]>([]);
   const [freeData, setFree] = useState<any[]>([]);
+  const [booleanData, setBooleanData] = useState<any[]>([]);
 
   const fetchData = async (
     type: string,
@@ -60,6 +64,7 @@ function Tracker() {
     fetchData("math", setMath);
     fetchData("sciences", setScience);
     fetchData("free", setFree);
+    fetchData("boolean", setBooleanData);
   }, [navigate]);
 
   // Calculate and display “% of graduation requirement”
@@ -68,7 +73,7 @@ function Tracker() {
       const percent = document.getElementById("percentage");
       let total_courses = 0;
 
-      if (humanitiesData.length > 5) total_courses += 5;
+      if (humanitiesData.length > 6) total_courses += 6;
       else total_courses += humanitiesData.length;
 
       if (wellnessData.length > 4) total_courses += 4;
@@ -77,7 +82,7 @@ function Tracker() {
       if (socialData.length > 2) total_courses += 2;
       else total_courses += socialData.length;
 
-      if (iqpData.length > 3) total_courses += 3;
+      if (iqpData.length == 1) total_courses += 3;
       else total_courses += iqpData.length;
 
       if (csData.length > 18) total_courses += 18;
@@ -92,7 +97,7 @@ function Tracker() {
       if (freeData.length > 3) total_courses += 3;
       else total_courses += freeData.length;
 
-      const percentage = (total_courses / 47) * 100;
+      const percentage = (total_courses / 48) * 100;
       if (percent) {
         if (percentage > 50) {
           percent.innerText = `Congrats! You have completed ${percentage.toFixed(2)}% of your graduation requirement.`;
@@ -121,23 +126,40 @@ function Tracker() {
     refreshAllData();
   }, []);
 
-  const handleLogout = async () => {
-    try {
-      const res = await fetch(address + "logout", {
-        method: "POST",
-        credentials: "include",
+  const [checks, setChecks] = useState({
+    hua_2000: false,
+    hua: false,
+    iqp: false,
+    systems: false,
+    theory: false,
+    design: false,
+    social: false,
+    cs_4000: false,
+    mqp: false,
+    prob: false,
+    stat: false,
+    science: false,
+  });
+
+  useEffect(() => {
+    if (booleanData.length > 0) {
+      // @ts-ignore
+      setChecks({
+        hua_2000: booleanData[0].hua_2000,
+        hua: booleanData[0].hua,
+        iqp: booleanData[0].iqp,
+        systems: booleanData[0].systems,
+        theory: booleanData[0].theory,
+        design: booleanData[0].design,
+        social: booleanData[0].social,
+        cs_4000: booleanData[0].cs_4000,
+        mqp: booleanData[0].mqp,
+        prob: booleanData[0].prob,
+        stat: booleanData[0].stat,
+        science: booleanData[0].science,
       });
-      if (res.ok) {
-        localStorage.removeItem("authenticated");
-        localStorage.removeItem("username");
-        navigate("/login");
-      } else {
-        console.error("Logout failed");
-      }
-    } catch (err) {
-      console.error("Error logging out:", err);
     }
-  };
+  }, [booleanData]);
 
   // Handle delete (for courses marked added===true)
   const handleDelete = async (id: string, category: string) => {
@@ -216,6 +238,9 @@ function Tracker() {
 
     let num = 1;
     for (let i = 0; i < humanitiesData.length; i++) {
+      if (humanitiesData[i].column1 == "HU" && (humanitiesData[i].column2 == "3900" || humanitiesData[i].column3 == "3910")) {
+        continue;
+      }
       const field = form.getTextField(`Course${num}`);
       field.setFontSize(7);
       field.setText(humanitiesData[i].column1 + humanitiesData[i].column2 + " - " + humanitiesData[i].column3);
@@ -239,11 +264,13 @@ function Tracker() {
     }
 
     num = 12;
-    for (let i = 0; i < iqpData.length; i++) {
-      const field = form.getTextField(`Course${num}`);
-      field.setFontSize(7);
-      field.setText(iqpData[i].column1 + iqpData[i].column2 + " - " + iqpData[i].column3);
-      num++;
+    if (checks.iqp) {
+      for (let i = 0; i < 3; i++) {
+        const field = form.getTextField(`Course${num}`);
+        field.setFontSize(7);
+        field.setText("IQP");
+        num++;
+      }
     }
 
     num = 15;
@@ -276,6 +303,9 @@ function Tracker() {
       field.setFontSize(7);
       field.setText(scienceData[i].column1 + scienceData[i].column2 + " - " + scienceData[i].column3);
       num++;
+      if (num === 48) {
+        break;
+      }
     }
 
     form.flatten();
@@ -291,6 +321,158 @@ function Tracker() {
     document.body.removeChild(link);
   };
 
+  const humanities_description = () => {
+    return (
+        <p className="ml-1">
+          <Tooltip placement="right-start" content={
+            <div className="p-2 max-w-xs text-left">
+              <p className="text-sm font-semibold mb-2">Humanities Checklist</p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2">
+                  <span className="text-sm">At least one class is 2000-level or above</span>
+                  {checks.hua_2000 ? (
+                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                  ) : (
+                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                  )}
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-sm">HUA project is completed</span>
+                  {checks.hua ? (
+                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                  ) : (
+                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                  )}
+                </li>
+              </ul>
+            </div>
+          }>
+            <QuestionMarkCircleIcon className="w-6 h-6 text-blue-300" />
+          </Tooltip>
+        </p>
+    )
+  }
+
+  const cs_description = () => {
+    return (
+        <p className="ml-1">
+          <Tooltip placement="right-start" content={
+            <div className="p-2 max-w-xs text-left">
+              <p className="text-sm font-semibold mb-2">Computer Science Checklist</p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2">
+                  <span className="text-sm">Systems Requirement</span>
+                  {checks.systems ? (
+                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                  ) : (
+                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                  )}
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-sm">Theory Requirement</span>
+                  {checks.theory ? (
+                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                  ) : (
+                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                  )}
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-sm">Design Requirement</span>
+                  {checks.design ? (
+                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                  ) : (
+                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                  )}
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-sm">Social Requirement</span>
+                  {checks.social ? (
+                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                  ) : (
+                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                  )}
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-sm">5/3 units 4000-level</span>
+                  {checks.cs_4000 ? (
+                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                  ) : (
+                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                  )}
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-sm">MQP Requirement</span>
+                  {checks.mqp ? (
+                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                  ) : (
+                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                  )}
+                </li>
+              </ul>
+            </div>
+          }>
+            <QuestionMarkCircleIcon className="w-6 h-6 text-blue-300" />
+          </Tooltip>
+        </p>
+    )
+  }
+
+  const math_description = () => {
+    return (
+        <p className="ml-1">
+          <Tooltip placement="right-start" content={
+            <div className="p-2 max-w-xs text-left">
+              <p className="text-sm font-semibold mb-2">Humanities Checklist</p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2">
+                  <span className="text-sm">Stats Requirement</span>
+                  {checks.stat ? (
+                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                  ) : (
+                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                  )}
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-sm">Probability Requirement</span>
+                  {checks.prob ? (
+                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                  ) : (
+                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                  )}
+                </li>
+              </ul>
+            </div>
+          }>
+            <QuestionMarkCircleIcon className="w-6 h-6 text-blue-300" />
+          </Tooltip>
+        </p>
+    )
+  }
+
+  const science_description = () => {
+    return (
+        <p className="ml-1">
+          <Tooltip placement="right-start" content={
+            <div className="p-2 max-w-xs text-left">
+              <p className="text-sm font-semibold mb-2">Humanities Checklist</p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2">
+                  <span className="text-sm">3 courses from BB, CH, GE, PH</span>
+                  {checks.science ? (
+                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                  ) : (
+                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                  )}
+                </li>
+              </ul>
+            </div>
+          }>
+            <QuestionMarkCircleIcon className="w-6 h-6 text-blue-300" />
+          </Tooltip>
+        </p>
+    )
+  }
+
   return (
     <>
       <Header />
@@ -302,78 +484,14 @@ function Tracker() {
             <h2 id="percentage"></h2>
           </div>
           <div className="my-10">
-            <CourseDropdowns
-              title="Humanities Requirement"
-              data={humanitiesData}
-              open={openAcc1}
-              handleOpen={handleOpenAcc1}
-              num={5}
-              category="humanities"
-              onDelete={handleDelete}
-            />
-            <CourseDropdowns
-              title="Wellness Requirement"
-              data={wellnessData}
-              open={openAcc2}
-              handleOpen={handleOpenAcc2}
-              num={4}
-              category="wellness"
-              onDelete={handleDelete}
-            />
-            <CourseDropdowns
-              title="Social Science Requirement"
-              data={socialData}
-              open={openAcc3}
-              handleOpen={handleOpenAcc3}
-              num={2}
-              category="social"
-              onDelete={handleDelete}
-            />
-            <CourseDropdowns
-              title="IQP Requirement"
-              data={iqpData}
-              open={openAcc4}
-              handleOpen={handleOpenAcc4}
-              num={3}
-              category="iqp"
-              onDelete={handleDelete}
-            />
-            <CourseDropdowns
-              title="Computer Science Requirement"
-              data={csData}
-              open={openAcc5}
-              handleOpen={handleOpenAcc5}
-              num={18}
-              category="cs"
-              onDelete={handleDelete}
-            />
-            <CourseDropdowns
-              title="Math Requirement"
-              data={mathData}
-              open={openAcc6}
-              handleOpen={handleOpenAcc6}
-              num={7}
-              category="math"
-              onDelete={handleDelete}
-            />
-            <CourseDropdowns
-              title="Science Requirement"
-              data={scienceData}
-              open={openAcc7}
-              handleOpen={handleOpenAcc7}
-              num={5}
-              category="sciences"
-              onDelete={handleDelete}
-            />
-            <CourseDropdowns
-              title="Free Elective Requirement"
-              data={freeData}
-              open={openAcc8}
-              handleOpen={handleOpenAcc8}
-              num={3}
-              category="free"
-              onDelete={handleDelete}
-            />
+            <CourseDropdowns title="Humanities Requirement" data={humanitiesData} open={openAcc1} handleOpen={handleOpenAcc1} num={6} description={humanities_description()}/>
+            <CourseDropdowns title="Wellness Requirement" data={wellnessData} open={openAcc2} handleOpen={handleOpenAcc2} num={4} description={undefined}/>
+            <CourseDropdowns title="Social Science Requirement" data={socialData} open={openAcc3} handleOpen={handleOpenAcc3} num={2} description={undefined}/>
+            <CourseDropdowns title="IQP Requirement" data={iqpData} open={openAcc4} handleOpen={handleOpenAcc4} num={1} description={undefined}/>
+            <CourseDropdowns title="Computer Science Requirement" data={csData} open={openAcc5} handleOpen={handleOpenAcc5} num={18} description={cs_description()}/>
+            <CourseDropdowns title="Math Requirement" data={mathData} open={openAcc6} handleOpen={handleOpenAcc6} num={7} description={math_description()}/>
+            <CourseDropdowns title="Science Requirement" data={scienceData} open={openAcc7} handleOpen={handleOpenAcc7} num={5} description={science_description()}/>
+            <CourseDropdowns title="Free Elective Requirement" data={freeData} open={openAcc8} handleOpen={handleOpenAcc8} num={3} description={undefined}/>
           </div>
           <Button className="mb-10 font-body" variant="gradient" onClick={onButtonClick}>
             Download Tracker PDF
@@ -408,7 +526,7 @@ function Icon({ open }) {
 }
 
 // @ts-ignore
-const CourseDropdowns = ({ title, data, open, handleOpen, num, category, onDelete }) => {
+const CourseDropdowns = ({ title, data, open, handleOpen, num, description }) => {
   const headings = [
     "Column 1",
     "Column 2",
@@ -421,15 +539,14 @@ const CourseDropdowns = ({ title, data, open, handleOpen, num, category, onDelet
     "Action",
   ];
 
+
   return (
     <Accordion open={open} icon={<Icon open={open} />}>
-      <AccordionHeader
-        onClick={handleOpen}
-        className={`cursor-pointer font-body font-normal flex justify-between items-center ${
-          data.length >= num ? "text-confirmation" : ""
-        }`}
-      >
-        {title} ({data.length}/{num})
+      <AccordionHeader onClick={handleOpen} className={`flex ${data.length >= num ? 'text-green-500' : ''}`}>
+        <p className={'flex justify-start'}>
+          {title} ({data.length}/{num})
+          {description}
+        </p>
       </AccordionHeader>
       <AccordionBody>
         <div className="mt-8 w-full max-w-4xl">
