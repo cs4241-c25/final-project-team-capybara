@@ -119,9 +119,9 @@ function TutStep(props) {
             return (
                 <>
                     <Typography className="font-body">A modal will appear prompting you to export the document. Click <em>Download</em>.</Typography>
-                    <img src="/tutorial/t4.png" className="max-h-[20rem] self-center"></img><br />
+                    <img src="/tutorial/t4.png" className="h-[16rem] self-center"></img><br />
 
-                    <Typography className="font-body">The excel file should download to your computer shortly.</Typography>
+                    <Typography className="font-body">The excel file should download to your computer shortly.</Typography><br></br>
                 </>
             );
         default:
