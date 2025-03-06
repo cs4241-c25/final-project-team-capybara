@@ -506,56 +506,67 @@ app.post("/addCourse", async (req, res) => {
       });
     }
 
-    // 2) Determine the correct category based on your logic
+    // 2) Determine the correct category
     const { category, limit } = determineCategory(courseType, courseNum);
     const db = client.db(dbName);
-    const collection = db.collection(category);
 
     // 3) Check how many items the user already has in that category
+    const collection = db.collection(category);
     const currentCount = await collection.countDocuments({ owner: username });
 
     // 4) See if the user already has the same (courseType, courseNum)
     const existingDoc = await collection.findOne({
       owner: username,
-      column1: courseType, // where your /upload uses column1 for courseType
-      column2: courseNum,  // column2 for courseNum
+      column1: courseType,
+      column2: courseNum,
     });
 
-    // 5) If doc doesn’t exist, but category is full => return error
-    if (!existingDoc && currentCount >= limit) {
+    // If doc already exists in that category, return error
+    if (existingDoc) {
       return res.status(400).json({
         success: false,
-        message: `Cannot add more courses to the '${category}' category. It is already full.`,
+        message: "Cannot add a course you've already taken in this category",
       });
     }
 
-    // 6) If it exists => update. If not => insert
-    if (existingDoc) {
-      // Replace the doc's fields, set added = true
-      await collection.updateOne(
-        { _id: existingDoc._id },
-        {
-          $set: {
-            column3: courseTitle, // updating the title
-            added: true,          // user specifically added it
-          },
-        }
-      );
-    } else {
-      // Insert
-      const newData = {
-        column1: courseType, // e.g. "CS"
-        column2: courseNum,  // e.g. "2303"
-        column3: courseTitle,
-        owner: username,
-        added: true,
-      };
-      await collection.insertOne(newData);
+    // 5a) If category is full => fallback to 'free'
+    let finalCategory = category;
+    if (currentCount >= limit) {
+      finalCategory = "free";
     }
 
-    // 7) Return the updated list from that category
-    const data = await collection.find({ owner: username }).toArray();
-    res.json({ success: true, category, data });
+    // 5b) Insert into finalCategory
+    const finalCollection = db.collection(finalCategory);
+
+    // If the user already has that course in finalCategory, abort
+    const existingInFree = await finalCollection.findOne({
+      owner: username,
+      column1: courseType,
+      column2: courseNum,
+    });
+    if (existingInFree) {
+      return res.status(400).json({
+        success: false,
+        message: "Cannot add a course you've already taken (even in free).",
+      });
+    }
+
+    const newData = {
+      column1: courseType,
+      column2: courseNum,
+      column3: courseTitle,
+      owner: username,
+      added: true,
+    };
+    await finalCollection.insertOne(newData);
+
+    // 6) Return the updated list from finalCategory
+    const data = await finalCollection.find({ owner: username }).toArray();
+    res.json({
+      success: true,
+      category: finalCategory,
+      data,
+    });
   } catch (error) {
     console.error("Error adding course:", error);
     const errorMessage = error instanceof Error ? error.message : String(error);
