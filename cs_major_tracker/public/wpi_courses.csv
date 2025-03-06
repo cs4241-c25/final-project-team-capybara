@@ -1,0 +1,1725 @@
+courseType,courseNumber,courseTitle
+AB,1531,Elementary Arabic I
+AB,1532,Elementary Arabic II
+AB,1533,Elementary Arabic III
+AB,2531,Intermediate Arabic I
+AB,2532,Intermediate Arabic II
+AB,2533,Intermediate Arabic III
+ACC,2060,Financial Statements For Decision Making
+AE,2110,Introduction to Incompressible Fluid Dynamics
+AE,2210,Introduction to Thermal Engineering
+AE,230X,Introduction to Dynamics for Aerospace Engineering
+AE,2310,Introduction to Aerospace Control Systems
+AE,2320,Introduction to Orbital Mechanics
+AE,2410,Introduction to Aerospace Structures
+AE,2550,Atmospheric And Space Environments
+AE,3010,Experimentation and Data Science with Aerospace Engineering Applications
+AE,3110,Fundamentals of Compressible Fluid Dynamics
+AE,3120,Fundamentals of Aerodynamics
+AE,3310,Fundamentals of Navigation and Communication
+AE,3420,Fundamentals of Aerospace Structures
+AE,3430,Fundamentals of Composite Materials
+AE,4210,Fundamentals of Air-Breathing Propulsion
+AE,4220,Fundamentals of Rocket Propulsion
+AE,4310,Fundamentals of Aircraft Dynamics and Control
+AE,4320,Fundamentals of Spacecraft Dynamics and Control
+AE,4410,Fundamentals of Structural Dynamics
+AE,4510,Aircraft Design
+AE,4520,Spacecraft and Mission Design
+AE,5032,Aerospace Engineering Seminar
+AE,5093,ST: Scientific Deep Learning for Engineers
+AE,5131,Incompressible Fluid Dynamics
+AE,5132,Compressible Fluid Dynamics
+AE,5133,Kinetic Theory of Gases and Applications
+AE,5231,Air Breathing Propulsion
+AE,5232,Spacecraft Propulsion
+AE,5233,Combustion
+AE,5234,Sustainable Energy Systems
+AE,5331,Linear Control Systems
+AE,5333,Optimal Control for Aerospace Applications
+AE,5334,Spacecraft Dynamics and Control
+AE,5431,Solid Mechanics for Aerospace Structures (2
+AE,5432,Composite Materials
+AE,5531,Applied Computational Methods for Partial Differential Equations
+AE,601,ST: Scientific Deep Learning for Engineers and Scientists
+AE,6433,Aeroelasticity
+AR,1100,Essentials Of Art
+AR,1101,Digital Imaging And Computer Art
+AR,1111,Introduction To Art History
+AR,1400,Digital Photography
+AR,2048,Technical Art And Character Rigging
+AR,2101,3d Modeling I
+AR,2111,Modern Art
+AR,2114,Modern Architecture In The American Era, 1750-2001 And Beyond
+AR,2115,Topics in Architecture since 1960
+AR,2202,Figure Drawing
+AR,2222,2d Animation I
+AR,2301,Graphic Design
+AR,2333,3d Animation I
+AR,2401,Video Production
+AR,2700,Digital Painting
+AR,2740,3d Environmental Modeling
+AR,2750,Topics In Studio Art: Kinetic Art
+AR,2750,Topics In Studio Art: Art in the Makerspace
+AR,2750,Topics In Studio Art: Aesthetics, Visual Design, and UI
+AR,2750,Topics In Studio Art: Contemporary Miniature Painting
+AR,2750,Topics In Studio Art: Digital Photography
+AR,2750,Topics In Studio Art: Tessellations as Art
+AR,2750,Topics In Studio Art: Mythical Creatures and Mountains
+AR,3101,3d Modeling II
+AR,3112,Modernism, Mass Culture, And The Avant-Garde
+AR,3150,Light, Vision And Understanding
+AR,3200,Interactive Electronic Arts
+AR,3210,Human Figure in Motion
+AR,3222,2d Animation II
+AR,3333,3d Animation II
+AR,3700,Concept Art And Creative Illustration
+ARCH,500,Thesis Research Seminar
+AREN,2002,Architectural Design I
+AREN,2004,Architectural Design II - Light And Lighting Systems
+AREN,2023,Introduction To Architectural Engineering Systems
+AREN,2025,Building Electrical Systems
+AREN,3002,Architectural Design III
+AREN,3003,Principles Of Hvac Design For Buildings
+AREN,3006,Advanced Hvac System Design
+AREN,3020,Architectural Design IV - Building Energy Simulation
+AREN,3022,Architectural Design V - Building Envelope Design
+AREN,3024,Building Physics
+AREN,400X,AI-Aided Parametric Design and Fabrication
+AS,1001,Heritage and Values I (General Military Course)
+AS,1002,Heritage and Values II (General Military Course)
+AS,1003,Heritage and Values III (General Military Course)
+AS,1004,Heritage and Values IV (General Military Course)
+AS,2001,Team and Leadership Fundamentals I (General Military Course)
+AS,2002,Team and Leadership Fundamentals II (General Military Course)
+AS,2003,Team and Leadership Fundamentals III (General Military Course)
+AS,2004,Team and Leadership Fundamentals IV (General Military Course)
+AS,3001,Leading People and Effective Communication I (Professional Officer Course)
+AS,3002,Leading People and Effective Communication II (Professional Officer Course)
+AS,3003,Leading People and Effective Communication III (Professional Officer Course)
+AS,3004,Leading People and Effective Communication IV (Professional Officer Course)
+AS,4001,National Security/Commissioning Preparation I (Professional Officer Course)
+AS,4002,National Security/Commissioning Preparation II (Professional Officer Course)
+AS,4003,National Security/Commissioning Preparation III (Professional Officer Course)
+AS,4004,National Security/Commissioning Preparation IV (Professional Officer Course)
+BB,1001,Introduction To Biology
+BB,1002,Environmental Biology
+BB,1003,Explrng Bioinfmtcs & Compu Bio
+BB,1004,Human Biology
+BB,1101,Foundations of Cellular and Molecular Biotechnology
+BB,1102,Foundations of Ecology and Environmental Biology
+BB,1801,Foundations of Biology and Biotechnology Laboratory
+BB,2003,Fundamentals Of Microbiology
+BB,2030,Plant Diversity
+BB,2040,Principles Of Ecology
+BB,2101,Foundations of Physiology
+BB,2550,Cell Biology
+BB,2802,Enzymes, Proteins, and Purification Laboratory
+BB,2803,Anatomy and Physiology Laboratory
+BB,2804,Ecology, Environment, and Animal Behavior Laboratory
+BB,2815,Microbial and Molecular Investigations Laboratory (
+BB,2920,Genetics
+BB,292X,Urban Ecology and Environmental Justice
+BB,3003,Medical Microbiology: Plagues Of The Modern World
+BB,3060,Animal Behavior
+BB,3080,Neurobiology
+BB,3101,Human Anatomy & Physiology: Movement And Communication
+BB,3102,Human Anatomy & Physiology: Transport And Maintenance
+BB,3120,Plant Physiology
+BB,3620,Developmental Biology
+BB,3813,Animal Cell Culture Techniques Laboratory
+BB,3815,Physiologic Systems Laboratory
+BB,3821,Microscopy Laboratory
+BB,3825,Plant Physiology Laboratory
+BB,3827,Molecular Biology and Genetic Engineering Laboratory
+BB,3830,Immunotherapies Laboratory
+BB,3840,Design and Expression of Biomolecules Laboratory
+BB,3870,Cell Culture Models Laboratory
+BB,3920,Immunology
+BB,3950,Molecular Biology
+BB,4001,Bioinformatics
+BB,402X,Quantitative Biology
+BB,4050,Cancer Biology
+BB,4190,Regulation Of Gene Expression
+BB,4260,Synthetic Biology
+BB,4900,Advanced Topics in Biology and Biotechnology
+BB,501,Seminar
+BB,504,Molecular Biology of the Cell
+BB,505,Fermentation Biology
+BB,508,Animal Cell Culture
+BB,509,Scale Up Of Bioprocessing
+BB,526,Synthetic Biology
+BB,550,Cancer Biology
+BB,552,Scientific Writing And Proposal Development
+BB,554,Journal Club
+BB,560,Methods Of Protein Purification And Downstream Processing
+BB,561,Model Systems: Experimental Approaches And Applications
+BB,562,Cell Cycle Regulation
+BB,565,Virology
+BB,570,ST: Quantitative Biology
+BB,570,ST: Biomanufacturing Process Control and Statistical Tools
+BB,570,ST: Medical Immunology
+BB,570,ST: Advanced Topics in Biotechnology
+BB,570,ST: Genetic Engineering of Expression Systems
+BB,570,ST: Practical Process Control
+BB,570,ST: Antibody Therapeutics
+BB,575,Advanced Genetics And Cellular Biology
+BB,581,Bioinformatics
+BB,590,Advanced Topics in Biology and Biotechnology
+BCB,1003,Explrng Bioinfmtcs & Compu Bio
+BCB,4001,Bioinformatics
+BCB,402X,Quantitative Biology
+BCB,501,Bioinformatics
+BCB,504,Statistical Methods In Genetics And Bioinformatics
+BCB,510,BCB Seminar
+BCB,555,Journal Club in Quantitative Cell Biology
+BCB,590,ST: Quantitative Biology
+BCB,590,ST: RNASeq Analysis
+BCB,590,ST: Bioinformatics of Host-Pathogen Interactions
+BME,1004,Introduction To Programming In Matlab
+BME,2001,Introduction To Biomaterials
+BME,2210,Biomedical Signals, Instruments And Measurements
+BME,2211,Biomedical Data Analysis
+BME,2502,Introduction To Biomechanics: Stress Analysis
+BME,2610,Introduction To Bioprocess Engineering
+BME,3012,Biomedical Sensors Laboratory: Techniques
+BME,3013,. Biomedical Instrumentation Laboratory: Techniques
+BME,3014,Physiological Signals Laboratory: Techniques
+BME,3111,Physiology And Engineering
+BME,3112,Human Physiology for Biomedical Engineers
+BME,311X,Clinical Devices Laboratory: Techniques
+BME,3300,Biomedical Engineering Design
+BME,3505,Solid Biomechanics Laboratory: Techniques
+BME,3507,Skeletal Biomechanics Laboratory: Techniques
+BME,3610,Transport Analysis In Bioengineering
+BME,3811,Biomaterials Laboratory: Techniques
+BME,3813,Cellular Engineering Laboratory: Techniques
+BME,4011,Biomedical Signal Analysis
+BME,4012,Biomedical Sensors and Instrumentation Laboratory: Applications
+BME,4023,Biomedical Instrumentation Design
+BME,4201,Biomedical Imaging
+BME,4301,Biomedical Capstone - Design from the Margins
+BME,4503,Computational Biomechanics
+BME,4504,Biomechanics
+BME,4505,Solid Biomechanics Laboratory: Applications
+BME,4507,Skeletal Biomechanics Laboratory: Applications
+BME,4606,Biofluids
+BME,4607,Biotransport Laboratory: Application
+BME,4813,Cellular Engineering Laboratory: Applications
+BME,4814,Biomaterials
+BME,4828,Biomaterial - Tissue Interactions
+BME,4831,Drug Delivery
+BME,520,Biomechanics And Robotics
+BME,523,Biomedical Instrumentation
+BME,531,Biomaterials In The Design Of Medical Devices
+BME,532,Medical Device Regulation
+BME,533,Medical Device Innovation and Development
+BME,552,Tissue Mechanics
+BME,553,Biomechanics Of Orthopaedic Devices
+BME,560,Physiology For Engineers
+BME,562,Laboratory Animal Surgery
+BME,580,Biomedical Robotics
+BME,591,Graduate Seminar
+BME,592,Healthcare Systems And Clinical Practice
+BME,593,Scientific Communication
+BME,595,ST: Value Creation for Graduate Research
+BME,595,ST: Medical Devices for Global Health
+BME,595,ST: Computational Modeling for Biofluid and Medical Devices
+BME,595,ST: Wearable/Mobile Sensors and Systems
+BME,595,ST: Biofabrication
+BME,595,ST: Lab Automation
+BUS,1020,Global Environment Of Business Decisions
+BUS,2001,WPI Means Business
+BUS,2020,The Legal Environment Of Business Decisions
+BUS,2080,Data Analysis For Decision Making
+BUS,500,Business Law, Ethics And Social Responsibility
+BUS,546,Managing Technological Innovation
+BUS,590,Strategic Management
+BUS,594,Data-driven Business Strategy
+BUS,596,Master Of Science Capstone Project
+BUS,599,Capstone Project
+BUS,631,Research Methods and the Research Process
+BUS,632,Qualitative Research Methods
+BUS,633,Quantitative Research Method
+BUS,651,Seminar on Designing and Conducting Research Studies
+BUS,691,Graduate Seminar
+CE,1030,Civil Engineering And Computer Fundamentals
+CE,2000,Analytical Mechanics I
+CE,2001,Analytical Mechanics II
+CE,2002,Introduction To Analysis And Design
+CE,2020,Land Surveying
+CE,3006,Design Of Steel Structures
+CE,3008,Design Of Reinforced Concrete Structures
+CE,3010,Structural Engineering.
+CE,3020,Project Management
+CE,3022,Legal Aspects Of Professional Practice
+CE,3025,Project Evaluation
+CE,3026,Materials Of Construction
+CE,303X,Virtual Design and Construction (VDC)
+CE,3041,Soil Mechanics
+CE,3044,Foundation Engineering
+CE,3050,Traffic Engineering
+CE,3059,Environmental Engineering
+CE,3060,Water Treatment
+CE,3061,Waste Water Treatment
+CE,3062,Hydraulics
+CE,3070,Urban And Environmental Planning
+CE,3074,Environmental Analysis
+CE,4044,Foundation Engineering
+CE,4060,Environmental Engineering Laboratory
+CE,4061,Hydrology
+CE,4063,Transport & Transformations In The Environment
+CE,4071,Land Use Development And Controls
+CE,4600,Hazardous And Industrial Waste Management
+CE,460X,Environmental Engineering Laboratory II
+CE,501,Professional Practice
+CE,514,Continuum Mechanics
+CE,519,Advanced Structural Analysis
+CE,5303,Applied Finite Element Methods In Engineering
+CE,531,Advanced Design Of Steel Structures
+CE,534,Structural Design For Fire Conditions
+CE,561,Advanced Principles Of Wastewater Treatment
+CE,562,Biosystems In Environmental Engineering
+CE,563,Industrial Waste Treatment
+CE,565,Surface Water Quality Modeling
+CE,570,Contaminant Fate And Transport
+CE,571,Water Chemistry
+CE,574,Water Resources Management
+CE,583,Contracts And Law For Civil Engineers
+CE,584,Advanced Cost Estimating Procedures
+CE,587,Building Information Modeling (BIM)
+CE,590,ST: Degradation of Infrastructure
+CE,590,ST: Advanced Geotechnical Engineering
+CE,590,ST: Bridge Design and Construction
+CE,590,SP: Environmental Health and Engineering
+CE,590,SP: Negotiation and Conflict Resolution in the Construction Industry
+CE,596,Graduate Seminar
+CH,1001,Exploring Majors and Careers in Chemistry and Biochemistry
+CH,1010,Chemical Properties, Bonding, And Forces
+CH,1020,Chemical Reactions
+CH,1030,Kinetics, Equilibrium And Thermodynamics
+CH,1040,Spectroscopy In Organic And Polymer Chemistry
+CH,2310,Organic Chemistry I
+CH,2320,Organic Chemistry II
+CH,2330,Organic Chemistry III
+CH,2360,Organic Laboratory
+CH,2640,Experimental Chemistry I: Instrumental Analysis
+CH,2650,Modern Physical Chemistry Methods
+CH,2660,Organic Synthesis And Analysis Laboratory
+CH,2670,Interest List - Investigation Of Coordination Complexes Through Inquiry
+CH,2670,Investigation Of Coordination Complexes Through Inquiry
+CH,3410,Structure, Bonding, And Reactivity In Inorganic Chemistry
+CH,3510,Chemical Thermodynamics
+CH,3520,Fundamentals of Applying Mathematical Methods in Chemistry and Biochemistry
+CH,3530,Quantum Chemistry
+CH,3550,Chemical Dynamics
+CH,4110,Protein Structure And Function
+CH,4120,Lipids And Biomembrane Functions
+CH,4130,Nucleic Acids And Bioinformation
+CH,4140,Metabolism And Disease
+CH,4150,Enzymology And Protein Characterization Laboratory
+CH,4170,Experimental Genetic Engineering
+CH,4190,Regulation Of Gene Expression
+CH,421X,Applications of AI in Life Sciences Molecular Studies
+CH,4420,Principles and Applications of Group Theory in Chemistry
+CH,4520,Chemical Statistical Mechanics
+CH,516,Chemical Spectroscopy
+CH,520,Cell Signaling
+CH,538,Medicinal Chemistry
+CH,540,Regulation Of Gene Expression
+CH,542,Drugs In The Brain
+CH,544,Elucidation Of Organic Reaction Mechanisms
+CH,554,Molecular Modeling
+CH,555,ST: AI in Molecular Life Sciences
+CH,555,ST: Metals in Biology
+CH,555,Advanced Topics: Supramolecular Chemistry
+CH,555,AT: Introduction to Sensor Science and Technology
+CH,555,AT: Drug Regulations
+CH,555,AT: Plant Medicinal Chemistry
+CH,555,AT: Drug Safety and Regulatory Compliance
+CH,555,AT: Cannabis Chemistry
+CH,571,Seminar
+CHE,1011,Introduction To Chemical Engineering
+CHE,2011,Chemical Engineering Fundamentals
+CHE,2012,Elementary Chemical Processes
+CHE,2013,Applied Chemical Engineering Thermodynamics
+CHE,2014,Advanced Chemical Processes
+CHE,3201,Kinetics And Reactor Design
+CHE,3301,Introduction To Biological Engineering
+CHE,3501,Applied Mathematics In Chemical Engineering
+CHE,3702,Energy Challenges In The 21st Century
+CHE,3722,Bioenergy
+CHE,4063,Transport & Transformations In The Environment
+CHE,4401,Unit Operations Of Chemical Engineering I
+CHE,4402,Unit Operations Of Chemical Engineering II
+CHE,4403,Chemical Engineering Design
+CHE,4404,Chemical Plant Design Project
+CHE,4405,Chemical Process Dynamics And Control Laboratory
+CHE,501,Professional Development for Chemical Engineering Doctoral Students
+CHE,502,Professional Development for Chemical Engineering Master’s Students
+CHE,503,Colloquium
+CHE,504,Mathematical Analysis In Chemical Engineering
+CHE,509,Reactor Design And Kinetics
+CHE,515,Research Analysis And Design
+CHE,521,Biochemical Engineering
+CHE,554,Molecular Modeling
+CHE,561,Thermodynamics
+CHE,565,Advanced Process Engineering
+CHE,571,Transport Phenomena
+CHE,580,ST: Pathways to Chemical Engineering
+CHE,580,ST: Applied Machine Learning in Chemical Engineering and Materials Science
+CHE,580,ST: TBD
+CHE,580,ST: Sustainable Materials
+CN,1541,Elementary Chinese I
+CN,1542,Elementary Chinese II
+CN,1543,Elementary Chinese III
+CN,2541,Intermediate Chinese I
+CN,2542,Intermediate Chinese II
+CN,2543,Intermediate Chinese III
+CN,2544,Intermediate Chinese IV
+CN,3541,Advanced Intermediate Chinese I
+CN,3542,Advanced Intermediate Chinese II
+CN,3543,Advanced Intermediate Chinese III
+CN,3561,Business Chinese
+CN,3571,Contemporary China: Culture and Trends
+CP,1000,Coop: Altair Engineering, Inc.
+CP,1000,Coop: Bel Air Finishing Corp.
+CP,1003,Co-Op: New England Infrastructure, Inc.
+CS,1004,Introduction To Programming For Non-Majors
+CS,1101,Introduction To Program Design
+CS,1102,Accelerated Introduction To Program Design
+CS,2011,Introduction To Machine Organization And Assembly Language
+CS,2022,Discrete Mathematics
+CS,2102,Object-Oriented Design Concepts
+CS,2103,Accelerated Object-Oriented Design Concepts
+CS,2119,Application Building With Object-Oriented Concepts
+CS,2223,Algorithms
+CS,2301,Systems Programming For Non-Majors
+CS,2303,Systems Programming Concepts
+CS,3013,Operating Systems
+CS,3041,Human-Computer Interaction
+CS,3043,Social Implications Of Information Processing
+CS,3133,Foundations Of Computer Science
+CS,340X,Introduction to Security
+CS,3431,Database Systems I
+CS,3516,Computer Networks
+CS,3733,Interest List - Software Engineering
+CS,3733,Software Engineering
+CS,4032,Numerical Methods For Linear And Nonlinear Systems
+CS,4033,Interest List - Numerical Methods For Calculus And Differential Equations
+CS,4033,Numerical Methods For Calculus And Differential Equations
+CS,4099,ST: Graph Machine Learning
+CS,4100,Artificial Intelligence For Interactive Media And Games
+CS,411X,Multiplayer Network Games
+CS,4120,Analysis Of Algorithms
+CS,4123,Theory Of Computation
+CS,4233,Object-Oriented Analysis And Design
+CS,4241,Webware: Computational Technology For Network Information Systems
+CS,4300,Graphics, Simulation, and Aesthetics
+CS,4341,Introduction To Artificial Intelligence
+CS,4342,Machine Learning
+CS,4401,Software Security Engineering
+CS,4404,Tools And Techniques In Computer Network Security
+CS,4432,Database Systems II
+CS,4433,Big Data Management and Analytics
+CS,4445,Data Mining And Knowledge Discovery In Databases
+CS,4513,Distributed Computing Systems
+CS,4516,Advanced Computer Networks
+CS,4518,Mobile & Ubiquitous Computing
+CS,4533,Techniques Of Programming Language Translation
+CS,4536,Programming Languages
+CS,4731,Computer Graphics
+CS,4732,Computer Animation
+CS,4801,Introduction To Cryptography And Communication Security
+CS,4804,Data Visualization
+CS,5003,Foundations Of Computer Science: An Introduction
+CS,5007,Introduction To Applications Of Computer Science With Data Structures And Algorithms
+CS,5008,Introduction to Systems and Network Programming
+CS,502,Operating Systems
+CS,503,Foundations Of Computer Science
+CS,5084,Introduction To Algorithms: Design And Analysis
+CS,509,Design Of Software Systems
+CS,513,Computer Networks
+CS,522,Numerical Methods
+CS,525,ST: ML on Mobile
+CS,525,Topics In Computer Science: Human-AI interface
+CS,526,Human-Robot Interaction
+CS,528,Mobile And Ubiquitous Computing
+CS,534,Introduction to Artificial Intelligence
+CS,536,Programming Language Design
+CS,539,Machine Learning
+CS,541,Deep Learning
+CS,542,Database Management Systems
+CS,543,Computer Graphics
+CS,545,Digital Image Processing
+CS,546,Human-Computer Interaction
+CS,547,Information Retrieval
+CS,548,Knowledge Discovery And Data Mining
+CS,549,Computer Vision
+CS,551,Reinforcement Learning
+CS,552,Generative Artificial Intelligence
+CS,553,Machine Learning Development and Operations
+CS,554,Natural Language Processing
+CS,555,Responsible Artificial Intelligence
+CS,556,On-Device Deep Learning
+CS,557,Software Security Design And Analysis
+CS,558,Computer Network Security
+CS,565,User Modeling
+CS,571,Case Studies In Computer Security
+CS,573,Data Visualization
+CS,577,Advanced Computer And Communications Networks
+CS,578,Cryptography And Data Security
+CS,584,Algorithms: Design And Analysis
+CS,585,Big Data Management
+CS,586,Big Data Analytics
+CS,587,Cyber Security Capstone Experience
+CS,588,Computer Science Capstone Experience
+CS,673,Advanced Cryptography
+DEV,1200,International Development And Society
+DEV,2200,Case Studies In International Development Policy And Engineering
+DEV,300X,Africa and Globalization: Roots and Routes
+DEV,501,Social Innovation and Global Development
+DEV,502,Design for Social Change
+DEV,510,Design Studio 1
+DEV,530,Ethics and Social Justice in Science, Engineering and Development
+DEV,540,Research Methods
+DEV,550,Policy Evaluation
+DS,1010,Data Science I: Introduction To Data Science
+DS,2010,Data Science II: Modeling And Data Analysis
+DS,3010,Data Science III: Computational Data Intelligence
+DS,4433,Big Data Management and Analytics
+DS,4635,Data Analytics And Statistical Learning
+DS,5002,Mathematical Foundations For Data Science
+DS,5006,Machine Learning for Engineering and Science Applications
+DS,501,Introduction To Data Science
+DS,502,Statistical Methods For Data Science
+DS,503,Big Data Management
+DS,504,Big Data Analytics
+DS,541,Deep Learning
+DS,547,Information Retrieval
+DS,551,Reinforcement Learning
+DS,552,Generative Artificial Intelligence
+DS,553,Machine Learning Development and Operations
+DS,554,Natural Language Processing
+DS,555,Responsible Artificial Intelligence
+DS,556,On-Device Deep Learning
+DS,577,Machine Learning in Cybersecurity
+DS,595,ST: Machine Learning for Engineering & Science Applications
+DS,596,Independent Study - BSMS Credit
+DS,598,Graduate Qualifying Project
+ECE,2010,Introduction To Electrical And Computer Engineering
+ECE,2019,Sensors, Circuits, And Systems
+ECE,2029,Introduction To Digital Circuit Design
+ECE,2039,Computational Engineering
+ECE,2049,Embedded Computing In Engineering Design
+ECE,2112,Electromagnetic Fields
+ECE,2201,Microelectronic Circuits I
+ECE,2305,Introduction To Communications And Networks
+ECE,2311,Continuous-Time Signal And System Analysis
+ECE,2312,Discrete-Time Signal And System Analysis
+ECE,2799,Electrical And Computer Engineering Design
+ECE,3012,Introduction To Control Systems Engineering
+ECE,3113,Introduction To RF Circuit Design
+ECE,3204,Microelectronic Circuits II
+ECE,3308,Introduction To Wireless Networks
+ECE,331X,Software Radio Design
+ECE,3405,Foundations and Trends in Machine Learning for Engineering
+ECE,3500,Introduction To Contemporary Electric Power Systems
+ECE,3501,Electrical Energy Conversion
+ECE,3829,Advanced Digital System Design With FPGAs
+ECE,3849,Real-Time Embedded Systems
+ECE,4011,Biomedical Signal Analysis
+ECE,4023,Biomedical Instrumentation Design
+ECE,4503,Power Electronics and Power Management
+ECE,4703,Real-Time Digital Signal Processing
+ECE,4801,Computer Organization And Design
+ECE,4802,Introduction To Cryptography And Communication Security
+ECE,4901,CMOS Fundamentals
+ECE,4902,Analog Integrated Circuit Design
+ECE,502,Analysis Of Probabilistic Signals And Systems
+ECE,503,Digital Signal Processing
+ECE,504,Analysis Of Deterministic Signals And Systems
+ECE,505,Computer Architecture
+ECE,506,Introduction To Local And Wide Area Networks
+ECE,5105,Introduction To Antenna Design
+ECE,5106,Modeling Of Electromagnetic Fields In Electrical & Biological Systems
+ECE,514,Fundamentals Of RF And MW Engineering
+ECE,5204,Analog Circuits And Intuition
+ECE,523,Power Electronics
+ECE,524,Advanced Analog Integrated Circuit Design
+ECE,531,Principles Of Detection And Estimation Theory
+ECE,5311,Information Theory And Coding
+ECE,5312,Modern Digital Communications
+ECE,537,Advanced Computer And Communications Networks
+ECE,539,ST: Wearable/Mobile Sensors and Systems
+ECE,545,Digital Image Processing
+ECE,5500,Power System Analysis
+ECE,5511,Transients In Power Systems
+ECE,5520,Power System Protection And Control
+ECE,5521,Protective Relaying
+ECE,5522,Advanced Applications In Protective Relaying
+ECE,5523,Power System Dynamics
+ECE,5530,Power Distribution
+ECE,5532,Distributed And Renewable Power Generation
+ECE,5540,Power Transmission
+ECE,556,On-Device Deep Learning
+ECE,571,Machine Learning for Engineering Applications
+ECE,574,Advanced Digital Systems Design
+ECE,576,Applied Cryptography and Physical Attacks
+ECE,577,Machine Learning in Cybersecurity
+ECE,578,Cryptography And Data Security
+ECE,579,ST: Physical Security of Microelectronic Systems
+ECE,588,Cyber Security Capstone Experience
+ECE,596,Graduate Seminars
+ECE,673,Advanced Cryptography
+ECON,1110,Introductory Microeconomics
+ECON,1120,Introductory Macroeconomics
+ECON,2110,Intermediate Microeconomics
+ECON,2120,Intermediate Macroeconomics
+ECON,2130,Econometric Modeling
+ECON,2135,Information Economics And Policy
+ECON,2145,Behavioral Economics
+ECON,2155,Experimental Economics
+ECON,220X,Ecological Systems and Economic Policy
+ECON,2910,Economics And Entrepreneurship
+ECON,3117,Environmental Economics
+EDU,2200,Community Engagement & Pre-Practicum in Teaching
+EDU,2200,Early Fieldwork in STEM Teaching and Community Engagement
+EDU,2300,Teaching K-12 STEM in the Community
+EDU,3200,Sheltered English Immersion Endorsement Course For Teachers
+EDU,4000,Topics in Teacher Preparation: Practicum Seminar
+EDU,4100,Teaching Methods in Science, Technology, Engineering, and Mathematics
+EDU,4200,Senior Seminar
+EDU,500,Foundations of Integrated STEM Education
+EDU,510,Classroom Climate that Supports Diverse STEM Learners
+EDU,580,ST: The Storyline Model of Teaching & Learning Science
+EDU,580,ST: AI in STEM Education
+EN,1219,Introduction to Creative Writing
+EN,1222,Shakespeare In The Age Of Elizabeth
+EN,1242,Introduction To English Poetry
+EN,1251,Introduction To Literature
+EN,1257,Introduction To African American Literature And Culture
+EN,2219,Creative Writing: Poetry
+EN,2219,Creative Writing: Creative Nonfiction
+EN,2219,Creative Writing: Fiction
+EN,2219,Creative Writing: Memoir
+EN,2226,Infected Shakespeare: Venereal Disease, Madness, Plague
+EN,2234,Modern American Novel
+EN,2237,Literature And The Environment
+EN,2242,Popular Fiction: Reading In Installments
+EN,2251,Moral Issues In The Modern Novel
+EN,2252,Science And Scientists In Modern Literature
+EN,2281,World Literatures: The Best of Russian Literature
+EN,2281,World Literatures
+EN,2410,Screenwriting
+EN,3219,Advanced Creative Writing: Creative Nonfiction
+EN,3219,Advanced Creative Writing: Fiction
+EN,3219,Advanced Creative Writing: Nonfiction
+EN,3226,Strange And Strangers
+EN,3231,Supernatural Literatures
+EN,3234,Modern American Poetry
+EN,3238,American Authors: James Baldwin
+EN,3248,The English Novel
+EN,3257,Topics in African American Literature
+EN,3271,American Literary Topics: Speculative Fiction
+ENV,1100,Introduction To Environmental Studies
+ENV,1500,Introductions To Geographical Information Systems
+ENV,2201,Planning For Sustainable Communities
+ENV,2319,Global Environmental Politics
+ENV,2500,Psychology for Sustainability
+ENV,2700,Social Media, Social Movements, And The Environment
+ENV,2710,Designing for Climate Resilience and Justice
+ENV,2800,ST: Regenerating Deserts: Politics, Ecology, Practices, and Futures
+ENV,2800,ST: Documentary Filmmaking, Advocacy and Policymaking for Climate Action
+ENV,2900,The Green Economy And Models For Alternative Forms Of Development
+ENV,3100,Adventures In Sustainable Urbanism
+ES,1020,Introduction To Engineering
+ES,1310,Introduction To Computer Aided Design
+ES,1500,Fundamentals of Systems Thinking
+ES,2001,Introduction To Materials Science
+ES,2501,Introduction To Static Systems
+ES,2502,Stress Analysis
+ES,2503,Introduction To Dynamic Systems
+ES,2800,Environmental Impacts Of Engineering Decisions
+ES,3001,Introduction To Thermodynamics
+ES,3002,Mass Transfer
+ES,3003,Heat Transfer
+ES,3004,Fluid Mechanics
+ES,3011,Control Engineering I
+ES,3323,Advanced Computer Aided Design
+ESL,500,Acad English for Intl Grad Students
+ETR,1100,Engineering Innovation And Entrepreneurship
+ETR,112X,Innovation and the Entrepreneurial Mindset
+ETR,2900,Social Entrepreneurship
+ETR,2910,Economics And Entrepreneurship
+ETR,4930,Growing And Managing New Ventures
+ETR,500,Entrepreneurship And Innovation
+ETR,593,Technology Commercialization
+FIN,1250,Personal Finance
+FIN,2070,Fundamentals of Finance
+FIN,3300,Finance & Technology
+FIN,3310,Financial Markets and Digital Currencies
+FIN,3330,Financial Analytics
+FIN,500,Financial Management
+FIN,530,Cryptocurrencies and Financial Markets
+FIN,540,Financial Analytics
+FP,3070,Introduction To Fire Protection Engineering
+FP,3080,Introduction To Building Fires Safety System Design
+FP,4000,Fire Laboratory
+FP,4001,Fire, Risk, And Sustainability
+FP,520,Fire Modeling
+FP,521,Fire Dynamics I
+FP,553,Fire Protection Systems
+FP,554,Advanced Fire Suppression
+FP,555,Detection, Alarm And Smoke Control
+FP,570,Building Fire Safety I
+FP,571,Performance-Based Design
+FP,573,Industrial Fire Protection
+FP,575,Explosion Protection
+FP,580,SP: Forensic Techniques
+FP,580,SP: Complex Decision Making
+FP,580,ST: Complex Decision Making
+FP,580,SP: Combustion
+FP,580,SP: Explosion Modeling Practical Applications
+FP,582,Quantitative Risk Analysis
+FP,585,Explosion Dynamics
+FP,588,Practical Explosion Analysis: Case Studies in Energy Industry
+FY,1100,GPS: Climate Change
+FY,1100,GPS: Seeking Sustainability
+FY,1100,GPS: Recover, Reuse
+FY,1100,GPS: Shelter the World
+FY,1100,GPS: Heal the World
+FY,1100,GPS: Our Unequal World
+FY,1100,GPS: Extinctions
+FY,1100,GPS: Smart & Sustainable Cities
+FY,1100,GPS: AI, Design, and Society
+FY,1100,GPS: Power the World
+FY,1100,GPS: Humanitarian Engineering
+FY,1101,GPS: Climate Change
+FY,1101,GPS: Seeking Sustainability
+FY,1101,GPS: Recover, Reuse
+FY,1101,GPS: Heal the World
+FY,1101,GPS: Our Unequal World
+FY,1101,GPS: Extinctions
+FY,1101,GPS: Smart & Sustainable Cities
+FY,1101,GPS: AI, Design, and Society
+FY,1101,GPS: Shelter the World
+FY,1101,GPS: Power the World
+FY,1101,GPS: Humanitarian Engineering
+FY,1800,Discovering Majors And Careers
+GE,2341,Geology
+GN,1511,Elementary German I: Identities and Communities
+GN,1512,Elementary German II
+GN,250X,German for Professional Purposes
+GN,2511,Intermediate German I: Cultural Practices and Products of the German-Speaking World
+GN,2512,Intermediate German II
+GN,350X,Advanced German for Professional Purposes
+GN,3511,Advanced German I: Exploration and Innovation in the German-Speaking World
+GN,3512,Advanced German II: National Identities and Storie
+GN,3512,Advanced German II
+GN,3513,Survey Of German Civilization And Culture From 1871 To The Present
+GN,3514,Seminar On Selected Topics In German Literature
+GN,3516,German Film
+GOV,1301,U.S. Government
+GOV,1303,American Public Policy
+GOV,1310,Law, Courts, And Politics
+GOV,1320,Topics In International Politics
+GOV,1320,Topics In International Politics: Law, International NGOs, and Human Rights
+GOV,2100,Engineering and Public Policy
+GOV,2302,Science-Technology Policy
+GOV,2310,Constitutional Law: Foundations Of Government
+GOV,2311,Environmental Policy And Law
+GOV,2313,Intellectual Property Law
+GOV,2314,Cyberlaw And Policy
+GOV,2319,Global Environmental Politics
+GOV,3000,Psychology And Law
+HI,1311,Introduction To American Urban History
+HI,1313,The US and the World
+HI,1314,Introduction To Early American History
+HI,1322,Introduction To European History
+HI,1330,Introduction To The History Of Science And Technology
+HI,1345,Atlantic Worlds
+HI,1350,Introduction To Environmental History
+HI,2310,Topics In Urban History
+HI,2310,Topics In Urban History: Civil Rights in the City
+HI,2311,American Colonial History
+HI,2313,American History, 1789-1877
+HI,2314,American History, 1877-1920
+HI,2315,The Shaping Of Post-1920 America
+HI,2318,Topics In Law, Justice And American Society: Race, Gender, and the Law
+HI,2320,Modern European History
+HI,2328,History Of Revolutions In The Twentieth Century
+HI,2329,European Empires
+HI,2335,Topics In The History Of American Science And Technology: The 20th Century
+HI,2335,Topics In The History Of American Science And Technology
+HI,2343,East Asia: China At The Center
+HI,2350,Topics In The History Of Science: Space and Time
+HI,2350,Topics In The History Of Science: Biology/Anthropology
+HI,2350,Topics In The History Of Science: The Planets
+HI,2400,Topics In Environmental History: Global Environmental History
+HI,2400,Topics In Environmental History: An Animal History of North America
+HI,2400,Topics In Environmental History
+HI,2900,Topics in Gender and History: Women & Communism
+HI,2900,Topics in Gender and History: Women, Peace, and Conflict
+HI,2900,Topics in Gender and History: Tech Bros
+HI,2913,Capitalism And Its Discontents
+HI,2921,Topics In Modern European History: Mass Violence and Genocide
+HI,2921,Topics In Modern European History: Disability in European History
+HI,2921,Topics In Modern European History
+HI,2930,Topics in Latin American History
+HI,3312,Topics In American Social History: Love and Marriage
+HI,3312,Topics In American Social History: African American History
+HI,3314,The American Revolution
+HI,3316,Topics In Twentieth-Century U.S. History: Suburban Dreaming
+HI,3317,Topics In Environmental History: American Disaster
+HI,331X,Urban Ecology and Environmental Justice
+HI,3331,Topics In The History Of European Science And Technology: The European Atom
+HI,3334,Topics In The History Of American Science And Technology: Media Revolutions
+HI,3335,Topics In The History Of Non-Western Science And Technology: Ethnomathematics
+HI,3343,Topics In Asian History
+HI,3343,Topics In Asian History: Global China
+HI,3344,Pacific Worlds
+HU,1222,Introduction To Medical Humanities
+HU,1400,Introduction to Africana Studies
+HU,1411,Introduction To American Studies
+HU,1500,Introduction To Gender, Sexuality & Women's Studies
+HU,2222,Topics In Medical Humanities
+HU,2251,Introduction To Film Studies
+HU,2258,World Cinemas
+HU,2501,Stem-Inism
+HU,2502,Global Feminisms
+HU,250X,Women in Chinese Fiction and Film
+HU,2901,Topics in Sexuality and LGBTQ+ Studies
+HU,2901,Topics in Sexuality and LGBTQ+ Studies: Feminist, Queer, Crip
+HU,2901,Topics in Sexuality and LGBTQ+ Studies: Queering Bioethics
+HU,2901,Topics in Sexuality and LGBTQ+ Studies: LGBTQ Icons
+HU,3570,Topics in Film Studies
+HU,3570,Topics in Film Studies: Science Fiction Film
+HU,3900,INQ SEM: TBA
+HU,3900,INQ SEM: Early American History
+HU,3900,INQ SEM: American History through Film
+HU,3900,INQ SEM: History of Sports
+HU,3900,INQ SEM: Sci-Fi, Horror, and Fantasy Writing
+HU,3900,INQ SEM: Rhetorics of Health and Illness
+HU,3900,INQ SEM IN HUA: Rhetoric and Popular Culture
+HU,3900,INQ SEM: Theory and Practice of Meditation
+HU,3900,INQ SEM: A Christmas Carol
+HU,3900,INQ SEM: AI and Professional Writing
+HU,3900,INQ SEM: Migrations
+HU,3900,INQ SEM: Urban History
+HU,3900,INQ SEM: Power of Manifestos
+HU,3900,INQ SEM: Communicating Across Cultures
+HU,3900,INQ SEM: The Beatles
+HU,3900,INQ SEM: Philosophy of Film
+HU,3900,INQ SEM: Riots and Rebellions in American Cities
+HU,3900,INQ SEM HUA: Short Forms
+HU,3900,INQ SEM: Travel Writing
+HU,3900,INQ SEM: Biomedicine and the Language of Pain
+HU,3900,IINQ SEM: Modern Architecture
+HU,3900,INQ SEM: MCKIM, MEAD & WHITE & AMER ARCH 1870-1929
+HU,3900,INQ SEM: The Poetic Sequence
+HU,3900,INQ SEM: Soviet Space Program
+HU,3900,INQ SEM: Literature and the Environment
+HU,3900,INQ SEM: Integrating the Humanities in STEM Education
+HU,3900,INQ SEM: Rhetoric and Popular Culture
+HU,3900,INQ SEM: DDT, SILNT SPR, AM ENV
+HU,3900,INQ SEM: History and the Atom
+HU,3900,INQ SEM: History of Biodiversity, Extinction, and Anthropocene Technologies
+HU,3900,INQ SEM: History Through Film
+HU,3900,INQ SEM: Holocaust and Memory
+HU,3900,INQ SEM: European Social Histories of Gender and Disability
+HU,3900,INQ SEM: Writing through Conflict
+HU,3900,INQ SEM: Queer Cinema
+HU,3900,INQ SEM IN HUA: Ethics of AI-generated Media
+HU,3900,INQ SEM: Contemporary Moral Problems
+HU,3900,INQ SEM: Philosophy
+HU,3900,INQ SEM: Queerly Religious
+HU,3900,INQ SEM: Loaded Language
+HU,3900,INQ SEM: Environmental Phil
+HU,3900,INQ SEM: Rhetoric & Motivation in Exercise and Sport
+HU,3900,INQ SEM: Jazz History Database
+HU,3900,INQ SEM: Music and Society
+HU,3900,INQ SEM IN HUA: Gravity's Rainbow
+HU,3900,INQ SEM: Writing Suspense
+HU,3900,INQ SEM IN HUA: Writing, Rhetoric, and Social Justice
+HU,3900,INQ SEM IN HUA: African Literature
+HU,3900,INQ SEM: Fictions of Time Travel
+HU,3900,INQ SEM: Global Studies
+HU,3900,INQ SEM: Latin America and the World
+HU,3900,INQ SEM: Collections of W A M
+HU,3900,INQ SEM: Writing, Rhetoric, and Social Justice
+HU,3900,INQ SEM: AI and Rhetorical Machines
+HU,3900,INQ SEM: Feminist Killjoys
+HU,3900,INQ SEM: Gravity's Rainbow
+HU,3900,INQ SEM: Writing the Prose Poem
+HU,3900,INQ SEM: Native American History
+HU,3900,INQ SEM: Media Revolutions
+HU,3900,INQ SEM: Visions of the City
+HU,3900,INQ SEM IN HUA: Revolutions
+HU,3900,INQ SEM: Histories of the Future
+HU,3900,INQ SEM: History of Rationality in Enlightenment Society
+HU,3900,INQ SEM: The Meaning of Life
+HU,3900,INQ SEM: Nationalism
+HU,3900,INQ SEM: Nationalism in Asia
+HU,3900,INQ SEM: Jewish Immigrant Fiction
+HU,3900,INQ SEM: Oceans
+HU,3900,INQ SEM: Rhetoric of Conspiracy Theories
+HU,3900,INQ SEM: Writing About Music
+HU,3900,INQ SEM: Will AI Destroy the World? Critical Theories of Technology
+HU,3900,INQ SEM: Philosophy and Religion in Early China
+HU,3900,INQ SEM: ‘Illness Influencers’: Social Media and the Rhetoric of Authentic Suffering
+HU,3900,INQ SEM: Decolonization and Activism in the African Diaspora
+HU,3900,INQ SEM: Effortless Action
+HU,3900,INQ SEM: The Long Civil Rights Movement
+HU,3900,INQ SEM: Mapping History
+HU,3900,INQ SEM: Playwriting
+HU,3900,INQ SEM: The Concept Album: Past and Present
+HU,3900,INQ SEM: TBD
+HU,3900,INQ SEM IN HUA: The Concept Album: Past and Present
+HU,3900,INQ SEM IN HUA: Early American History
+HU,3900,INQ SEM IN HUA: Literature in the World
+HU,3900,INQ SEM IN HUA: Theory and Practice of Meditation
+HU,3900,INQ SEM IN HUA: History of Technology
+HU,3900,INQ SEM IN HUA: Non-Western World Literature
+HU,3900,INQ SEM IN HUA: Being Human in a Digital Age
+HU,3910,PRAC IN HUA: Writing for the Web
+HU,3910,PRAC IN HUA: Developing Technology for Music
+HU,3910,PRAC IN HUA: Light Art
+HU,3910,PRAC IN HUA: Creating Algorithmic Music
+HU,3910,PRAC IN HUA: Musical Robotics
+HU,3910,PRAC IN HUA: Visual Persuasion
+HU,3910,PRAC IN HUA: Documentary Short Video and Narrative Photography
+HU,3910,PRAC IN HUA: Film Narratives in Play
+HU,3910,PRAC IN HUA: Illustrating Fiction
+HU,3910,PRAC IN HUA: Music and Science
+HU,3910,PRAC IN HUA: Arranging
+HU,3910,PRAC IN HUA: Adapt/Modded Musical Instruments
+HU,3910,PRAC IN HUA: WasteWorks
+HU,3910,PRAC IN HUA: Producer as Composer
+HU,3910,PRAC IN HUA: Nature, Design & Art
+HU,3910,PRAC IN HUA: 2D Design - 3D Sculpture
+HU,3910,PRAC IN HUA: Advanced Studies in Figure Drawing
+HU,3910,PRAC IN HUA: Cinematic Production
+HU,3910,PRAC IN HUA: Develop Technology for Music
+HU,3910,PRAC IN HUA: Vocal Performance
+HU,3910,PRAC IN HUA: Literary Magazine Editing
+HU,3910,PRAC IN HUA: Literary Magazine Editing - hex literary
+HU,3910,PRAC IN HUA: Instrumental Music Performance
+HU,3910,PRAC IN HUA: Writing a Web Series
+HU,3910,PRAC IN HUA: Performance & Dramaturgy (FA25)
+HU,3910,PRAC IN HUA: Design (FA25)
+HU,3910,PRAC IN HUA: Technical Production (FA25)
+HU,3910,PRAC IN HUA: Publicity & Management (FA25)
+HU,3910,PRAC IN HUA: Directing & Dramaturgy (SP25)
+HU,3910,PRAC IN HUA: Performance & Dramaturgy (SP26)
+HU,3910,PRAC IN HUA: Design (SP26)
+HU,3910,PRAC IN HUA: Design & Management (SP25)
+HU,3910,PRAC IN HUA: Technical Production (SP25)
+HU,3910,PRAC IN HUA: Technical Production (SP26)
+HU,3910,PRAC IN HUA: Publicity & Management (SP26)
+ID,1000,Summer Academic Success Program
+ID,2050,SOC SCI RES-IQP: Cape Town (WI)
+ID,2050,SOC SCI RES- IQP: Hangzhou (WI)
+ID,2050,SOC SCI RES- IQP: Kyoto (WI)
+ID,2050,SOC SCI RES- IQP: Melbourne (WI)
+ID,2050,SOC SCI RES- IQP: Nantucket (WI)
+ID,2050,SOC SCI RES- IQP: Prague (WI)
+ID,2050,SOC SCI RES-IQP: Santa Fe (WI)
+ID,2050,SOC SCI RES-IQP: Tirana (WI)
+ID,2050,SOC SCI RES-IQP: Venice (WI)
+ID,2050,SOC SCI RES-IQP: Washington DC (WI)
+ID,2050,SOC SCI RES-IQP: Nepal (WI)
+ID,2050,SOC SCI RES-IQP- Hawaii (WI)
+ID,2050,SOC SCI RES-IQP: Bangkok (WI)
+ID,2050,SOC SCI RES-IQP- Cuenca (WI)
+ID,2050,SOC SCI RES-IQP: Melbourne (WI)
+ID,2050,SOC SCI RES-IQP: Hawaii (WI)
+ID,2050,SOC SCI RES-IQP: Ghana (WI)
+ID,2050,SOC SCI RES-IQP: Monteverde, Costa Rica (WI)
+ID,2050,SOC SCI RES-IQP- London (WI)
+ID,2050,SOC SCI RES-IQP: San Jose, Costa Rica (WI)
+ID,2050,SOC SCI RES-IQP: New Zealand (WI)
+ID,2050,SOC SCI RES-IQP- Worcester, MA. (WI)
+ID,2050,SOC SCI RES-IQP: Hong Kong, China
+ID,2050,SOC SCI RES-IQP- Puerta Rico (WI)
+ID,2050,SOC SCI RES-IQP-Paraguay (WI)
+ID,2050,SOC SCI RES-IQP-Germany (WI)
+ID,2050,SOC SCI RES-IQP- Romania (WI)
+ID,2050,SOC SCI RES-IQP- Denmark (WI)
+ID,2050,SOC SCI RES-IQP-Victoria Canada (WI)
+ID,2050,SOC SCI RES-IQP- Paxton (WI)
+ID,2050,SOC SCI RES-IQP- India (WI)
+ID,2050,SOC SCI RES-IQP- Montreal Canada (WI)
+ID,2050,SOC SCI RES-IQP- Australia (WI)
+ID,2050,SOC SCI RES-IQP- Cadiz (WI)
+ID,2050,SOC SCI RES-IQP- Puerto Rico (WI)
+ID,2050,SOC SCI RES-IQP- Taipei Taiwan (WI)
+ID,2050,SOC SCI RES-IQP- Greece (WI)
+ID,2050,SOC SCI RES-IQP- MWROC MA, USA (WI)
+ID,2050,SOC SCI RES-IQP- Namibia (WI)
+ID,2050,SOC SCI RES-IQP- Worcester UK (WI)
+ID,2050,SOC SCI RES-IQP- Armenia (WI)
+ID,2050,SOC SCI RES-IQP- Rabat-Morocco (WI)
+ID,2050,SOC SCI RES-IQP-Worc Tech Teacher Prep
+ID,2050,SOC SCI RES-IQP-Worcester Teacher Preparation Project Center
+ID,2050,SOC SCI RES-IQP- Worcester Ma (WI)
+ID,2050,SOC SCI RES-IQP- Lausanne (WI)
+ID,2050,SOC SCI RES-IQP- Singapore (WI)
+ID,2050,SOC SCI RES-IQP- New Zealand (WI)
+ID,2050,SOC SCI RES-IQP: COA option ME (WI)
+ID,2050,SOC SCI RES-IQP: Schodic option ME (WI)
+ID,2050,SOC SCI RES-IQP- Beijing China (WI)
+ID,2050,SOC SCI RES-IQP- London England (WI)
+ID,2050,SOC SCI RES-IQP: MWROC
+ID,2050,SOC SCI RES-IQP: France (WI)
+ID,2050,SOC SCI RES-IQP- Boston, MA (WI)
+ID,2050,SOC SCI RES-IQP- Farm Stay, MA (WI)
+ID,2050,SOC SCI RES-IQP- Glacier National Park (WI)
+ID,2050,SOC SCI RES-IQP- Panama City, Panama (WI)
+ID,2050,SOC SCI RES-IQP- Reykjavik, Iceland (WI)
+ID,2050,SOC SCI RES-IQP- Zurich, Switzerland (WI)
+ID,2050,SOC SCI RES-IQP- Venice (WI)
+ID,2050,SOC SCI RES-IQP- Istanbul (WI)
+ID,2050,SOC SCI RES-IQP- Worcester, MA
+ID,2050,SOC SCI RES-IQP- White Mountains, NH (WI)
+ID,2314,Cyberlaw And Policy
+ID,3150,Light, Vision And Understanding
+ID,3525,Spanish American Film/Media: Cultural Issues
+ID,3526,Comparative Business Environments
+ID,3527,Technical And Business Spanish
+ID,3529,Caribbeanness: Voices Of The Spanish Caribbean
+ID,3530,Spanish Film/Media: Cultural Issues
+ID,3531,Contemporary Us Latino Literature & Culture
+ID,500,Responsible Conduct Of Research
+ID,525,ST: Value Creation for Graduate Research
+ID,527,Fundamentals Of Scientific Teaching And Pedagogy
+IDG,598,Systems Engineering Leadership Project
+IGS,502,Perspectives in Global Health
+IGS,590,Capstone Seminar: Comparative Climate Action
+IGS,596,ST in IGS: GIS for Climate Resilience
+IMGD,1000,Critical Studies Of Interactive Media And Games
+IMGD,1001,The Game Development Process
+IMGD,1002,Storytelling In Interactive Media And Games
+IMGD,2000,Social Issues In Interactive Media And Games
+IMGD,2030,Game Audio I
+IMGD,2048,Technical Art And Character Rigging
+IMGD,2101,3d Modeling I
+IMGD,2200,AI in Writing and Communication
+IMGD,2222,2d Animation I
+IMGD,2333,3d Animation I
+IMGD,2450,Narrative Design for Interactive Media and Games
+IMGD,2700,Digital Painting
+IMGD,2740,3d Environmental Modeling
+IMGD,2900,Digital Game Design I
+IMGD,2905,Data Analysis For Game Development
+IMGD,3000,Technical Game Development I
+IMGD,3030,Game Audio II
+IMGD,3100,Novel Interfaces For Interactive Environments
+IMGD,3101,3d Modeling II
+IMGD,3200,Interactive Electronic Arts
+IMGD,3210,Human Figure in Motion
+IMGD,3222,2d Animation II
+IMGD,3333,3d Animation II
+IMGD,3450,Writing Characters For Interactive Media & Games
+IMGD,3500,Artistic Game Development I
+IMGD,3700,Concept Art And Creative Illustration
+IMGD,4000,Technical Game Development II
+IMGD,4030,Advanced Topics in Interactive Audio
+IMGD,4099,Special Topics In IMGD: Death & Games
+IMGD,4099,Special Topics In IMGD: Real-Time VFX for Games and Interactive Media
+IMGD,4100,Artificial Intelligence For Interactive Media And Games
+IMGD,411X,Multiplayer Network Games
+IMGD,4200,History And Future Of Immersive And Interactive Media
+IMGD,4300,Graphics, Simulation, and Aesthetics
+IMGD,4403,Motion Capture Techniques
+IMGD,444X,Advanced Topics in Interactive Media, Production
+IMGD,445X,Advanced Interactive Narrative
+IMGD,4500,Artistic Game Development II
+IMGD,4600,Serious Games
+IMGD,4700,Advanced Storytelling: Quest Logic And Level Design
+IMGD,4900,Digital Game Design Studio
+IMGD,5000,Imgd Studio
+IMGD,5010,IMGD Fundamentals
+IMGD,5099,ST: Arts Based Research
+IMGD,5200,History And Future Of Immersive And Interactive Media
+IMGD,5300,Design Of Interactive Experiences
+IMGD,5400,Production Management For Interactive Media
+IMGD,5500,Serious and Applied Games
+IMGD,6001,IMGD Career Colloquium
+INTL,1100,Introduction To International And Global Studies
+INTL,1200,Introduction to Asia
+INTL,1300,Introduction To Latin America
+INTL,2100,Approaches To Global Studies
+INTL,2110,Global Justice
+INTL,2310,Modern Latin America
+INTL,2320,Environmental Justice in the Global Caribbean and Latin America
+INTL,2410,Modern Africa
+INTL,2420,Middle East, North Africa and Mediterranean
+INTL,2510,Contemporary Europe: Union And Disunion
+INTL,2910,Topics In Global Studies: Nationalism and Globalism
+INTL,2910,Topics In Global Studies: Religion in Modern China
+INTL,2910,Topics In Global Studies: Multiculturalism in London
+INTL,3050,Global Re-Entry Seminar
+INTL,4100,Senior Seminar In International And Global Studies
+ISE,1800,Academic Skills for English Language Learners
+ISE,1801,College Writing for English Language Learners
+ISE,1803,Oral Communication for English Language Learners
+ISE,2800,Research Writing for English Language Learners
+ISE,2820,Critical Reading of Our World for English Language Learners
+JP,120X,Elementary Japanese III
+JP,200X,Intermediate Japanese I
+JP,210X,Intermediate Japanese II
+JP,220X,Intermediate Japanese III
+MA,099X,Algebra, Analytic Geometry, and Trigonometry
+MA,1020,Calculus I With Preliminary Topics
+MA,1021,Calculus I
+MA,1022,Calculus II
+MA,1023,Calculus III
+MA,1023,Calculus III (group 1)
+MA,1023,Calculus III (group 4)
+MA,1023,Calculus III (group 3)
+MA,1023,Calculus III (group 5)
+MA,1023,Calculus III (group 6)
+MA,1023,Calculus III (group 2)
+MA,1024,Calculus IV
+MA,1024,Calculus IV (group 2)
+MA,1024,Calculus IV (group 1)
+MA,1024,Calculus IV (group 3)
+MA,1024,Calculus IV (group 5)
+MA,1024,Calculus IV (group 6)
+MA,1024,Calculus IV (group 7)
+MA,1024,Calculus IV (group 8)
+MA,1024,Calculus IV (group 9)
+MA,1024,Calculus IV (group 10)
+MA,1033,Theoretical Calculus III
+MA,1034,Theoretical Calculus IV
+MA,1120,Calculus II W/ Prelim Topics
+MA,1801,Denksport
+MA,1971,Bridge To Higher Mathematics
+MA,2051,Ordinary Differential Equations
+MA,2051,Ordinary Differential Equations (group 1)
+MA,2051,Ordinary Differential Equations (group 2)
+MA,2051,Ordinary Differential Equations (group 3)
+MA,2071,Matrices And Linear Algebra I
+MA,2071,Matrices And Linear Algebra I (group 1)
+MA,2071,Matrices And Linear Algebra I (group 2)
+MA,2071,Matrices And Linear Algebra I (group 3)
+MA,2072,Accelerated Matrices And Linear Algebra I
+MA,2072,Accelerated Matrices And Linear Algebra I (group 1)
+MA,2073,Matrices And Linear Algebra II
+MA,2201,Discrete Mathematics
+MA,2210,Mathematical Methods In Decision Making
+MA,2211,Theory Of Interest I
+MA,2212,Theory Of Interest II
+MA,2251,Vector And Tensor Calculus
+MA,2271,Graph Theory
+MA,2273,Combinatorics
+MA,2431,Mathematical Modeling With Ordinary Differential Equations
+MA,2610,Interest List - Applied Statistics For The Life Sciences
+MA,2610,Applied Statistics For The Life Sciences
+MA,2611,Applied Statistics I
+MA,2611,Applied Statistics I (group 1)
+MA,2611,Applied Statistics I (group 2)
+MA,2611,Applied Statistics I (group 3)
+MA,2611,Applied Statistics I (group 4)
+MA,2612,Applied Statistics II
+MA,2612,Applied Statistics II (group 1)
+MA,2612,Applied Statistics II (group 2)
+MA,2621,Probability For Applications
+MA,2621,Probability For Applications (group 1)
+MA,2621,Probability For Applications (group 2)
+MA,2631,Probability Theory
+MA,3212,Actuarial Mathematics I
+MA,3213,Actuarial Mathematics II
+MA,321X,Introduction to Actuarial Ratemaking
+MA,3231,Linear Programming
+MA,3257,Numerical Methods For Linear And Nonlinear Systems
+MA,3457,Numerical Methods For Calculus And Differential Equations
+MA,3471,Advanced Ordinary Differential Equations
+MA,3475,Calculus Of Variations
+MA,3627,Introduction To The Design And Analysis Of Experiments
+MA,3631,Mathematical Statistics
+MA,3823,Group Theory
+MA,3825,Rings And Fields
+MA,3831,Principles Of Real Analysis I
+MA,3832,Principles Of Real Analysis II
+MA,4213,Loss Models I - Risk Theory
+MA,4216,Actuarial Seminar
+MA,4222,Top Algorithms In Applied Mathematics
+MA,4235,Mathematical Optimization
+MA,4237,Probabilistic Methods In Operations Research
+MA,4291,Applied Complex Variables
+MA,4451,Boundary Value Problems
+MA,4631,Probability And Mathematical Statistics I
+MA,4632,Probability And Mathematical Statistics II
+MA,4635,Data Analytics And Statistical Learning
+MA,4644,Introduction to Time Series Analysis
+MA,4891,Topics In Mathematics
+MA,4891,ST: Number Theory
+MA,4892,Topics In Actuarial Mathematics
+MA,4895,Differential Geometry
+MA,500,Basic Real Analysis
+MA,501,Engineering Mathematics
+MA,502,Linear Algebra
+MA,503,Lebesgue Measure And Integration
+MA,504,Functional Analysis
+MA,505,Complex Analysis
+MA,508,Mathematical Modeling
+MA,510,Numerical Methods
+MA,511,Applied Statistics For Engineers And Scientists
+MA,512,Numerical Differential Equations
+MA,514,Numerical Linear Algebra
+MA,517,Mathematical Foundations For Data Science
+MA,521,Partial Differential Equations
+MA,529,Stochastic Processes
+MA,535,Algebra
+MA,540,Probability And Mathematical Statistics I
+MA,541,Probability And Mathematical Statistics II
+MA,542,Regression Analysis
+MA,543,Statistical Methods For Data Science
+MA,546,Design and Analysis of Experiments
+MA,547,Design and Analysis of Observational and Sampling Studies
+MA,549,Analysis of Lifetime Data
+MA,551,Computational Statistics
+MA,556,Applied Bayesian Statistics
+MA,557,Graduate Seminar in Applied Mathematics
+MA,559,Statistics Graduate Seminar
+MA,574,Portfolio Valuation and Risk Management
+MA,575,Market and Credit Risk Models and Management
+MA,584,Statistical Methods In Genetics And Bioinformatics
+MA,590,ST: Scientific Machine Learning
+MA,590,ST: TBD
+MA,590,ST:Statistical Methods for Social and Behavioral Science
+MA,590,ST: Principles of Epidemiology
+MA,595,Independent Study - Algebraic Topology II
+ME,1520,The Technology Of Alpine Skiing
+ME,1800,Manufacturing Science, Prototyping, And Computer-Controlled Machining
+ME,2300,Introduction To Engineering Design
+ME,2312,Introduction To Computational Solutions For Engineering Problems
+ME,281X,Introduction to Manufacturing Engineering
+ME,2820,Interest List - Materials Processing
+ME,2820,Materials Processing
+ME,3310,Kinematics Of Mechanisms
+ME,3311,Dynamics of Mechanisms and Machines
+ME,3320,Design of Machine Elements
+ME,3411,Intermediate Fluid Mechanics
+ME,3501,Elementary Continuum Mechanics
+ME,3506,Rehabilitation Engineering
+ME,3820,Computer-Aided Manufacturing
+ME,3901,Engineering Experimentation
+ME,3902,Project-Based Engineering Experimentation
+ME,4320,Advanced Engineering Design
+ME,4322,Modeling And Analysis Of Mechatronic Systems.
+ME,4322,Modeling And Analysis Of Mechatronic Systems
+ME,4323,Fundamentals of Vehicle Drivetrain Systems
+ME,4324,Integrated Design of Mechanical System
+ME,4422,Design and Optimization of Thermal Systems
+ME,4424,Radiation Heat Transfer Application & Design
+ME,4429,Thermofluid Application and Design
+ME,4503,Computational Biomechanics
+ME,4504,Biomechanics
+ME,4506,Mechanical Vibrations
+ME,4512,Introduction to the Finite Element Method
+ME,4606,Biofluids
+ME,4813,Ceramics And Glasses For Engineering Applications
+ME,4814,Biomaterials
+ME,4821,Plastics
+ME,4832,Corrosion And Corrosion Control
+ME,4840,Physical Metallurgy
+ME,4875,Introduction To Nanomaterials And Nanotechnology
+ME,500,Applied Analytical Methods in Engineering
+ME,5001,Applied Numerical Methods In Engineering
+ME,5108,Introduction To Computational Fluid Dynamics
+ME,514,Fluid Dynamics
+ME,516,Heat Transfer
+ME,5200,Mechanical Vibrations
+ME,5202,Advanced Dynamics
+ME,5220,Control Of Linear Dynamical Systems
+ME,5221,Control Of Nonlinear Dynamical Systems
+ME,5225,Fiber Optical Sensors
+ME,527,Foundations Of Robotics
+ME,528,Robot Dynamics
+ME,5303,Applied Finite Element Methods In Engineering
+ME,5304,Laser Metrology And Nondestructive Testing
+ME,5311,Structure And Properties Of Engineering Materials
+ME,5312,Properties And Performance Of Engineering Materials
+ME,5358,Plastics
+ME,5361,Mechanical Behavior And Fracture Of Materials
+ME,5370,Surface Metrology
+ME,5371,Fundamentals of Surface Metrology
+ME,5380,Foundations Of Elasticity
+ME,5381,Applied Elasticity
+ME,5383,Continuum Mechanics
+ME,5385,Metal Additive Manufacturing
+ME,5420,Fundamentals Of Axiomatic Design Of Manufacturing Processes
+ME,543,Axiomatic Design Of Manufacturing Processes
+ME,5431,Computer Integrated Manufacturing
+ME,5441,Design For Manufacturability
+ME,5503,Medical Device Innovation and Development
+ME,552,Tissue Mechanics
+ME,5847,Materials for Electrochemical Energy Systems
+ME,591,Graduate Seminar
+ME,593,ST: Design and Optimization of Thermal Systems
+ME,593,ST: Printed Electronics and Sensors
+ME,593,Design and Optimization of Thermal Systems
+ME,593,ST: Machining Processes
+ME,593,ST: Extraction and Recycling of Metals
+ME,593,ST: Computational Modeling for Biofluid and Medical Devices
+MFE,500,Current Topics In Manufacturing Seminar
+MFE,511,Application Of Industrial Robotics
+MFE,520,Axiomatic Design Of Manufacturing Processes
+MFE,531,Computer Integrated Manufacturing
+MFE,5385,Metal Additive Manufacturing
+MFE,541,Design For Manufacturability
+MFE,5420,Fundamentals Of Axiomatic Design Of Manufacturing Processes
+MFE,5841,Surface Metrology
+MFE,5843,Fundamentals of Surface Metrology
+MFE,594,ST: Machining Processes
+MIS,2300,Business Applications of Blockchain
+MIS,3010,Creating Value Through Innovation
+MIS,3720,Business Data Management
+MIS,3730,Artificial Intelligence with Business Application
+MIS,3787,Business Applications Of Machine Learning
+MIS,4084,Business Intelligence
+MIS,4720,Systems Analysis And Design
+MIS,4741,User Experience And Design
+MIS,500,Innovating With Information Systems
+MIS,502,Data Management For Analytics
+MIS,510,Business Application of Blockchain Tech
+MIS,520,Artificial Intelligence and its Business Applications
+MIS,571,Database Applications Design And Development
+MIS,573,System Design And Development
+MIS,576,Project Management
+MIS,581,Policy And Strategy For Information Technology And Analytics
+MIS,582,Information Security Management
+MIS,583,User Experience Applications
+MIS,584,Business Intelligence
+MIS,585,User Experience Design
+MIS,587,Business Applications In Machine Learning
+MKT,3640,Management Of Process And Product Innovation
+MKT,3650,Consumer Behavior
+MKT,4030,Achieving Strategic Effectiveness
+MKT,500,Marketing Strategy
+MKT,561,Consumer Behavior And Analytics
+MKT,562,Marketing Research
+MKT,565,Digital and Social Media Marketing
+MKT,568,Marketing Analytics
+MKT,569,Product And Brand Management
+ML,1011,Foundations Of Officership I
+ML,1012,Foundations Of Officership II
+ML,1021,Basic Leadership I
+ML,1022,Basic Leadership II
+ML,2011,Individual Leadership Studies I
+ML,2012,Individual Leadership Studies II
+ML,2021,Leadership And Teamwork I
+ML,2022,Leadership And Teamwork II
+ML,3011,Leadership And Problem Solving I
+ML,3012,Leadership And Problem Solving II
+ML,3021,Leadership And Ethics I
+ML,3022,Leadership And Ethics II
+ML,4011,Leadership And Management I
+ML,4022,Leadership And Management II
+ML,4023,Officership
+ML,4024,Transition To Lieutenant
+MME,518,Geometrical Concepts
+MME,523,Analysis With Applications
+MME,524,Probability, Statistics And Data Analysis I
+MME,525,Probability, Statistics And Data Analysis II
+MME,528,Mathematical Modeling And Problem Solving
+MME,529,Numbers, Polynomials And Algebraic Structures
+MME,531,Discrete Mathematics
+MME,532,Differential Equations
+MPE,510,Classical Mechanics
+MPE,520,Electrodynamics
+MTE,509,Electron Microscopy
+MTE,511,Structure And Properties Of Engineering Materials
+MTE,512,Properties And Performance Of Engineering Materials
+MTE,520,Axiomatic Design Of Manufacturing Processes
+MTE,526,Advanced Thermodynamics
+MTE,532,X-Ray Diffraction And Crystallography
+MTE,5385,Metal Additive Manufacturing
+MTE,540,Analytical Methods In Materials Engineering
+MTE,5420,Fundamentals Of Axiomatic Design Of Manufacturing Processes
+MTE,550,Phase Transformations In Materials
+MTE,558,Plastics
+MTE,561,Mechanical Behavior And Fracture Of Materials
+MTE,575,Introduction To Nanomaterials And Nanotechnology
+MTE,580,Materials Science And Engineering Seminar
+MTE,5816,Ceramics And Glasses For Engineering Applications
+MTE,5841,Surface Metrology
+MTE,5843,Fundamentals of Surface Metrology
+MTE,5844,Corrosion And Corrosion Control
+MTE,5847,Materials for Electrochemical Energy Systems
+MTE,594,ST: Printed Electronics and Sensors
+MTE,594,ST: Advanced Surface Engineering
+MTE,594,ST: Machining Processes
+MTE,594,ST: Extraction and Recycling of Metals
+MU,1000,Music and Its Makers
+MU,1100,Foundations of Music Theory and Aural Skills
+MU,2001,History of Western Art Music Before 1750
+MU,2002,History of Western Art Music After 1750
+MU,2010,Jazz History
+MU,2020,History Of American Popular Music
+MU,2100,Music Composition
+MU,2101,Arranging And Orchestration
+MU,2201,Sounds of Social Justice
+MU,2300,Foundations Of Music Technology
+MU,2301,Making Music With Machines
+MU,2401,Glee Club
+MU,2402,Alden Voices
+MU,2403,Chamber Choir
+MU,2410,Jazz Combo
+MU,2411,Jazz Ensemble
+MU,2412,Stage Band
+MU,2413,African Drumming Ensemble
+MU,2420,Orchestra
+MU,2421,String Quartet
+MU,2430,Concert Band
+MU,2431,Brass Ensemble
+MU,2440,Percussion Ensemble
+MU,2450,Independent Instruction (Lessons) in Music
+MU,2451,Conducting
+MU,2501,Music And Mind
+MU,3110,Jazz Theory
+MU,3201,Music in Time of Conflict
+MU,3202,Music, Gender, and Power
+MU,3210,Topics in African American Music
+MU,3230,World Music
+MU,3301,Topics In MIDI
+MU,3302,Topics In Digital Sound: Sound Design
+MU,3302,Topics In Digital Sound: Film Music
+MU,3303,Topics In Interactive Programming
+NEU,501,Neuroscience
+NEU,502,Neural Plasticity
+NEU,503,Computational Neuroscience
+NEU,590,ST IN NEU
+NEU,590,ST in NEU: Human Neuroscience and Neurotechnology
+NSE,515,Radiation Biology
+NSE,530,Health Physics
+NSE,570,Diagnostic Medical Physics
+NSE,580,Radiation Therapy Physics
+OBC,1010,Leadership Practice
+OBC,3354,Organizational Behavior And Change
+OBC,4367,Leadership, Ethics, And Social Responsibility
+OBC,505,Teaming And Organizing For Innovation
+OBC,506,Leadership
+OBC,533,Negotiations
+OIE,2081,Introduction To Prescriptive Analytics
+OIE,2600,Scripting for Process and Productivity Improvement
+OIE,2850,Engineering Economics
+OIE,3020,Achieving Effective Operations
+OIE,3405,Work Systems And Facilities Planning
+OIE,3410,Materials Management In Supply Chains
+OIE,3420,Quality Planning, Design And Control
+OIE,3460,Simulation Modeling And Analysis
+OIE,3510,Stochastic Models
+OIE,4410,Case Studies In Industrial Engineering
+OIE,4430,Advanced Prescriptive Analytics: From Data to Impact
+OIE,4460,Global Planning And Logistics
+OIE,501,Operations Management
+OIE,542,Risk Management And Decision Making
+OIE,544,Supply Chain Analysis And Design
+OIE,548,Performance Analytics
+OIE,549,Sustainable Supply Chain and Operations Management
+OIE,552,Modeling And Optimizing Processes
+OIE,553,Global Purchasing And Logistics
+OIE,558,Designing And Managing Lean Six Sigma Processes
+OIE,559,Advanced Prescriptive Analytics: From Data to Impact
+OIE,597,Operations and Supply Chain Consulting Project
+PH,1110,General Physics-Mechanics
+PH,1111,Principles Of Physics-Mechanics
+PH,1120,General Physics-Electricity And Magnetism
+PH,1121,Principles Of Physics-Electricity And Magnetism
+PH,1130,Modern Physics
+PH,1140,Oscillations, And Waves
+PH,1150,Introductory Physics of Living Systems
+PH,2101,Principles Of Thermodynamics
+PH,2201,Intermediate Mechanics I
+PH,2202,Intermediate Mechanics II
+PH,2301,Electromagnetic Fields
+PH,2501,Photonics
+PH,2502,Lasers
+PH,2510,Atomic Force Microscopy
+PH,2520,Introduction To Astrophysics
+PH,2540,Solar Systems
+PH,2550,Atmospheric And Space Environments
+PH,2601,Photonics Laboratory
+PH,2651,Intermediate Physics Laboratory
+PH,3206,Statistical Physics
+PH,3301,Electromagnetic Theory
+PH,3401,Quantum Mechanics I
+PH,3402,Quantum Mechanics II
+PH,3501,Relativity
+PH,3502,Solid State Physics
+PH,3503,Nuclear Physics
+PH,3504,Optics
+PH,351X,General Relativity
+PH,443X,Introduction To Quantum Information
+PH,511,Classical Mechanics I
+PH,514,Quantum Mechanics I
+PH,515,Quantum Mechanics II
+PH,533,Advanced Electromagnetic Theory
+PH,541,Mathematical Methods in Physics
+PH,544,Fundamentals of Photonics
+PH,554,Solid State Physics
+PH,561,Atomic Force Microscopy
+PH,562,Fundamentals of Soft Matter and Biophysics
+PH,563,Introduction to experimental methods in biophysics
+PH,571,Biophysics/Soft Condensed Matter Journal Club
+PH,571,Biophysics Journal Club
+PH,580,Graduate Seminar
+PH,585,Science Writing & Proposal Dev
+PH,597,ST: Physics Education Research Journal Club
+PH,597,ST: Quantum Field Theory
+PH,597,ST: Research Practicum
+PSY,1400,Introduction To Psychological Science
+PSY,1500,The Science of Creativity
+PSY,1504,Strategies For Improving Cognitive Skills
+PSY,1800,ST In Psychological Science: Science and Practice of Well-Being: Pathways to Flourishing
+PSY,2402,Social Psychology
+PSY,2403,Cognitive Psychology
+PSY,2404,Developmental Psychology
+PSY,2406,Cross-Cultural Psychology
+PSY,2411,Social Neuroscience
+PSY,2412,Mental Health
+PSY,2500,Psychology for Sustainability
+PSY,2501,Music And Mind
+PSY,3000,Psychology And Law
+PSY,3211,Positive Psychology: The Science and Practice of Well-Being
+PSY,3407,Psychology Of Gender
+PSY,3408,Health Psychology
+PSY,4100,School Psychology
+PSY,4500,Experimental Design And Analysis
+PSY,4800,ST: Anxiety Disorders: Empirical Research and Treatment
+PSY,4800,ST In Psychological Science: Creativity and Learning Science
+PSY,4800,ST In Psychological Science: Motivation Metacognition & Affect
+PSY,504,Meta-Cognition, Motivation, And Affect
+PSY,506,Learning and Creativity
+PSY,590,ST in Psychological Science: Embodied Cognition
+PSY,590,ST in Psychological Science: Human Neuroscience and Neurotech
+PY,1731,Introduction To Philosophy And Religion
+PY,2711,Epistemology
+PY,2712,Social And Political Philosophy
+PY,2713,Bioethics
+PY,2716,Gender, Race, and Class
+PY,2717,Philosophy And The Environment
+PY,2718,Existentialism And Phenomenology
+PY,2719,Philosophy Of Science
+PY,2731,Ethics
+PY,2734,Philosophy And Spirituality
+PY,3711,Topics In Philosophy: Knowledge and Happiness
+PY,3711,Topics In Philosophy
+PY,3711,Topics In Philosophy: Justice and Responsibility
+PY,3711,Topics In Philosophy: Marxism and Capitalism
+PY,3712,Philosophy Of Religion
+PY,3721,Topics In Religion: Daoism
+PY,3721,Topics In Religion: (Gender) Jihad
+PY,3721,Topics In Religion: Buddhism
+RBE,1001,Introduction To Robotics
+RBE,2001,Unified Robotics I: Mechanical Applications in Robotics
+RBE,2002,Unified Robotics II: Sensing and Perception in Robotics
+RBE,200X,Embedded Systems for Robotics
+RBE,3001,Unified Robotics III
+RBE,3002,Unified Robotics IV
+RBE,3100,Social Implications Of Robotics
+RBE,4322,Modeling And Analysis Of Mechatronic Systems.
+RBE,4322,Modeling And Analysis Of Mechatronic Systems
+RBE,4540,Vision-based Robotic Manipulation
+RBE,4701,Artificial Intelligence for Robotics
+RBE,474X,Deep learning For Perception
+RBE,4815,Industrial Robotics
+RBE,500,Foundations Of Robotics
+RBE,501,Robot Dynamics
+RBE,502,Robot Control
+RBE,510,Multi-Robot Systems
+RBE,511,Swarm Intelligence
+RBE,520,Biomechanics And Robotics
+RBE,521,Legged Robotics
+RBE,522,Continuum Robotics
+RBE,526,Human-Robot Interaction
+RBE,530,Soft Robotics
+RBE,549,Computer Vision
+RBE,550,Motion Planning
+RBE,575,Safety and Guarantees for Autonomous Robots
+RBE,577,Machine Learning for Robotics
+RBE,580,Biomedical Robotics
+RBE,594,Capstone Project Experience In Robotics Engineering
+RBE,595,SP - Deep learning for Perception
+RBE,595,ST: Socially Assistive Robotics
+RBE,595,ST: Medical Imaging and Instrumentation
+RBE,595,ST: Optimal Control
+RBE,595,ST: Hands-On Autonomous Aerial Robotics
+RBE,595,ST: Fundamentals of Artificial Intelligence and Robotics for Autonomous Vehicle Applications
+RBE,595,ST: Vision-based Robotic Manipulation
+RBE,595,ST: Advanced Robot Navigation
+RBE,595,ST: Reinforcement Learning
+RE,1731,Introduction To Philosophy And Religion
+RE,2716,Gender, Race, and Class
+RE,2721,Religion And Culture
+RE,2731,Ethics
+RE,3711,Topics In Philosophy: Knowledge and Happiness
+RE,3711,Topics In Philosophy
+RE,3711,Topics In Philosophy: Justice and Responsibility
+RE,3711,Topics In Philosophy: Marxism and Capitalism
+RE,3721,Topics In Religion: Daoism
+RE,3721,Topics In Religion: (Gender) Jihad
+RE,3721,Topics In Religion: Buddhism
+SD,1510,Introduction To System Dynamics Modeling
+SD,2520,Modeling Economic And Social Systems
+SD,550,System Dynamics Foundation: Managing Complexity
+SEME,504,Meta-Cognition, Motivation, And Affect
+SEME,524,Probability, Statistics And Data Analysis I
+SEME,525,Probability, Statistics And Data Analysis II
+SEME,565,User Modeling
+SOC,1202,Introduction To Sociology And Cultural Diversity
+SP,1523,Elementary Spanish I
+SP,1524,Elementary Spanish II
+SP,2521,Intermediate Spanish I
+SP,2522,Intermediate Spanish II
+SP,3521,Advanced Spanish I
+SP,3522,Advanced Spanish II
+SP,3525,Spanish American Film/Media: Cultural Issues
+SP,3526,Comparative Business Environments
+SP,3527,Technical And Business Spanish
+SP,3528,Spanish Culture And Civilization
+SP,3529,Caribbeanness: Voices Of The Spanish Caribbean
+SP,3530,Spanish Film/Media: Cultural Issues
+SP,3531,Contemporary Us Latino Literature & Culture
+SS,1505,Games For Understanding Complexity
+SS,170X,Artificial Intelligence for Society
+SS,510,Principles of Epidemiology
+SS,560,Artificial Intelligence: Exploring Technology, Ethics and Policy
+STS,1200,Fundamentals Of Global Health
+STS,4000,Senior Seminar In Global Public Health
+SYS,501,Concepts Of Systems Engineering
+SYS,502,Business Practices
+SYS,510,Systems Architecture And Design
+SYS,511,Systems Integration, Verification & Validation
+SYS,512,Requirements Engineering
+SYS,520,System Optimization
+SYS,521,Model Based Systems Engineering
+SYS,540,Introduction To Systems Thinking
+SYS,579,ST: Software Systems Engineering
+SYS,579,ST: Complex Decision Making
+SYS,579,ST: Engineering Dependable and Secure Systems
+SYS,579,ST: Systems Engineering Management and Leadership
+SYS,585,Systems Engineering Capstone Experience
+TH,1221,Introduction to Theatre on Page and Stage
+TH,203X,Contemporary Dance
+TH,205X,Dance for Musical Theatre
+TH,207X,Social Dance Across Cultures
+TH,2100,Fundamentals of Acting
+TH,2400,Fundamentals of Theatrical Design
+TH,2500,Fundamentals of Technical Theatre
+TH,310X,Scene Study for Actors & Directors
+TH,3200,Special Topics in Dramatic Literature: Queer Theatre
+TH,3240,Playwriting
+TH,3300,ST in Theater Studies: Musical Theatre and Representation
+TH,3400,Lighting Design
+TH,342X,Costume Design
+TH,343X,Scenic Design
+TH,3510,Scenic Fabrication
+TH,360X,Stage Management
+WPE,1003,Intro To Badminton
+WPE,1008,Rowing For Fitness
+WPE,1009,Walking For Fitness
+WPE,1011,Touch Football
+WPE,1012,Basketball
+WPE,1013,Softball
+WPE,1017,Beginning Swimming
+WPE,1018,Volleyball
+WPE,1019,Soccer
+WPE,1054,Plyometrics
+WPE,1055,Physical Conditioning
+WPE,1070,Leisure Education: Redefining Social Norms
+WPE,1077,Swimming For Fitness
+WPE,1078,Aquatic Conditioning
+WPE,1099,Healthy Alternative: Zumba
+WPE,1099,Healthy Alternative
+WPE,1099,Healthy Alternative - Zumba
+WPE,1099,Healthy Alternative: Introduction to Mindfulness
+WPE,1200,Club Sport - Miscellaneous
+WPE,1201,Club Sport - Alpine Ski Team
+WPE,1202,Club Sport - Badminton
+WPE,1203,Club Sport - Ballroom Dancing
+WPE,1204,Club Sport - Dance Team
+WPE,1205,Club Sport - Fencing Team
+WPE,1206,Club Sport - Men's Ice Hockey
+WPE,1207,Club Sport - Karate
+WPE,1209,Club Sport- Women's Rugby Team
+WPE,1210,Club Sport - Men's Ultimate Frisbee Team
+WPE,1211,Club Sport - Women's Ultimate Frisbee Team
+WPE,1212,Club Sport - Men's Lacrosse Team
+WPE,1213,Club Sport - Women's Lacrosse Team
+WPE,1214,Club Sport - Men's Volleyball Team
+WPE,1216,Club Sport - Pep Band
+WPE,1217,Club Sport - Sailing
+WPE,1219,Club Sport - Soma (Society of Martial Arts)
+WPE,1220,Club Sport - Smas: Boffer Games
+WPE,1221,Club Sport - Running
+WPE,1222,Club Sport - Men's Soccer
+WPE,1223,Club Sport - Women's Soccer
+WPE,1224,Club Sport - Cheerleading
+WPE,1225,Club Sport - Scuba Co-Ed
+WPE,1226,Club Sport - Water Polo
+WPE,1227,Club Sport - Tennis
+WPE,1228,Club Sport - Cycling
+WPE,1229,Club Sport - Men's Rugby
+WPE,1230,Club Sport - Competitive Climbing Co-Ed
+WPE,1231,Club Sport - Freestyle Wrestling
+WPE,1232,Club Sport - Equestrian
+WPE,1233,Club Sport - Men's Basketball
+WPE,1234,Club Sport - Women’s Basketball
+WPE,1235,Club Sport - Women’s Volleyball
+WPE,1236,Club Sport - Women’s Ice Hockey
+WPE,1237,Club Sport – Outing Club: Climbing
+WPE,1238,Club Sport – Rangeela: Bollywood Bhangra Fusion
+WPE,1239,Club Sport – Powerlifting
+WPE,1601,Insight Program
+WPE,1610,Approaches to Holistic Well-Being
+WPE,1611,Introduction to Mindfulness
+WPE,1612,Introductory Yoga
+WPE,1613,Succeeding as an Introvert
+WPE,1699,ST in Holistic Well-Being: Intuitive eating
+WPE,1699,ST in Holistic Well-Being: Regenerative Cultures
+WPE,1699,ST in Holistic Well-Being: Sophomore Success-Navigating Your Second Year at WPI
+WPE,1699,ST in Holistic Well-Being: Exploring the impact of nutrition on brain, body, and planet
+WPE,1699,ST in Holistic Well-Being: Finding Joy in the Visual Arts
+WPE,1699,ST in Holistic Well-Being: Intuitive Eating
+WPE,1699,ST in Holistic Well-Being - Sophomore Success: Navigating Your Second Year at WPI.
+WPE,1699,ST in Holistic Well-Being: Exploring the Impact of Nutrition on Brain, Body and Planet
+WPE,1699,ST in Holistic Well-Being: Pranayama
+WPE,2001,Varsity Football Team
+WPE,2002,Varsity Men's Soccer Team
+WPE,2003,Varsity Women's Soccer Team
+WPE,2004,Varsity Field Hockey Team
+WPE,2005,Varsity Women's Volleyball Team
+WPE,2006,Varsity Men's And Women's Cross Country Team
+WPE,2007,Varsity Wrestling Team
+WPE,2008,Varsity Men's Basketball Team
+WPE,2009,Varsity Women's Basketball Team
+WPE,2010,Varsity Men's And Women's Swim Team
+WPE,2011,Varsity Men's And Women's Indoor Track Team
+WPE,2012,Varsity Baseball Team
+WPE,2013,Varsity Softball Team
+WPE,2014,Varsity Men's And Women's Outdoor Track Team
+WPE,2015,Varsity Men's Crew Team
+WPE,2016,Varsity Women's Crew Team
+WR,1010,Elements Of Writing
+WR,1011,Writing About Science And Technology
+WR,1020,Introduction To Rhetoric
+WR,2010,Elements Of Style
+WR,2200,AI in Writing and Communication
+WR,2210,Business Writing And Communication
+WR,2300,Intercultural Communication
+WR,2310,Visual Rhetoric
+WR,2410,Screenwriting
+WR,2450,Narrative Design for Interactive Media and Games
+WR,2500,Writing in the Life Sciences
+WR,3011,Teaching Writing
+WR,3112,Rhetorical Theory
+WR,3210,Technical Writing
+WR,3214,Writing About Disease And Public Health
+WR,3450,Writing Characters For Interactive Media & Games
+WR,4210,Medical Writing
+WR,513,Ethical Impact and Communication in Robotics and AI Research
