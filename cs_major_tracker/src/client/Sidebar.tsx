@@ -16,7 +16,8 @@ import {
 const pages = [
     {label: 'Home', route: '/main', icon: (<HomeIcon className="h-5 w-5"></HomeIcon>)},
     {label: 'Tracker', route: '/tracker', icon: (<TableCellsIcon className="h-5 w-5"></TableCellsIcon>)},
-    {label: 'Tutorial', route: '/main#tutorial', icon: (<QuestionMarkCircleIcon className="h-5 w-5"></QuestionMarkCircleIcon>)}
+    {label: 'Tutorial', route: '/main#tutorial', icon: (<QuestionMarkCircleIcon className="h-5 w-5"></QuestionMarkCircleIcon>)},
+    {label: 'FAQ', route: '/faq', icon: (<QuestionMarkCircleIcon className="h-5 w-5"></QuestionMarkCircleIcon>)}
 ];
 
 //interface SidebarProps {
