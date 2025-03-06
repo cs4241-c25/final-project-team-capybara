@@ -1,17 +1,25 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Accordion, AccordionHeader, AccordionBody, Card, Button, Typography, Tooltip } from "@material-tailwind/react";
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionBody,
+  Card,
+  Button,
+  Typography,
+  Tooltip,
+} from "@material-tailwind/react";
 import Papa from "papaparse";
 import { PDFDocument } from "pdf-lib";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 
-import {CheckCircleIcon, QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
-import {XCircleIcon} from "@heroicons/react/16/solid";
-
-const address = "http://localhost:3000/";
-// const address = 'https://final-project-team-capybara.onrender.com/';
+import {
+  CheckCircleIcon,
+  QuestionMarkCircleIcon,
+} from "@heroicons/react/24/outline";
+import { XCircleIcon } from "@heroicons/react/16/solid";
 
 function Tracker() {
   const navigate = useNavigate();
@@ -24,6 +32,7 @@ function Tracker() {
     }
   }, [navigate]);
 
+  // Category states
   const [humanitiesData, setHumanities] = useState<any[]>([]);
   const [wellnessData, setWellness] = useState<any[]>([]);
   const [socialData, setSocial] = useState<any[]>([]);
@@ -39,7 +48,9 @@ function Tracker() {
     setData: React.Dispatch<React.SetStateAction<any[]>>
   ) => {
     try {
-      const response = await fetch(address + `data?type=${type}`, { credentials: "include" });
+      const response = await fetch(`/data?type=${type}`, {
+        credentials: "include",
+      });
       const data = await response.json();
 
       if (!data.success && data.message === "Not authorized") {
@@ -100,14 +111,27 @@ function Tracker() {
       const percentage = (total_courses / 48) * 100;
       if (percent) {
         if (percentage > 50) {
-          percent.innerText = `Congrats! You have completed ${percentage.toFixed(2)}% of your graduation requirement.`;
+          percent.innerText = `Congrats! You have completed ${percentage.toFixed(
+            2
+          )}% of your graduation requirement.`;
         } else {
-          percent.innerText = `Sadly, you have only completed ${percentage.toFixed(2)}% of your graduation requirement.`;
+          percent.innerText = `Sadly, you have only completed ${percentage.toFixed(
+            2
+          )}% of your graduation requirement.`;
         }
       }
     };
     getPercent();
-  }, [humanitiesData, wellnessData, socialData, iqpData, csData, mathData, scienceData, freeData]);
+  }, [
+    humanitiesData,
+    wellnessData,
+    socialData,
+    iqpData,
+    csData,
+    mathData,
+    scienceData,
+    freeData,
+  ]);
 
   // Re-fetch all categories at once
   const refreshAllData = () => {
@@ -161,10 +185,10 @@ function Tracker() {
     }
   }, [booleanData]);
 
-  // Handle delete (for courses marked added===true)
+  // 1) Our handleDelete function
   const handleDelete = async (id: string, category: string) => {
     try {
-      const url = address + `delete?id=${id}&type=${category}`;
+      const url = `/delete?id=${id}&type=${category}`;
       const response = await fetch(url, {
         method: "GET",
         credentials: "include",
@@ -238,12 +262,21 @@ function Tracker() {
 
     let num = 1;
     for (let i = 0; i < humanitiesData.length; i++) {
-      if (humanitiesData[i].column1 == "HU" && (humanitiesData[i].column2 == "3900" || humanitiesData[i].column3 == "3910")) {
+      if (
+        humanitiesData[i].column1 == "HU" &&
+        (humanitiesData[i].column2 == "3900" ||
+          humanitiesData[i].column3 == "3910")
+      ) {
         continue;
       }
       const field = form.getTextField(`Course${num}`);
       field.setFontSize(7);
-      field.setText(humanitiesData[i].column1 + humanitiesData[i].column2 + " - " + humanitiesData[i].column3);
+      field.setText(
+        humanitiesData[i].column1 +
+          humanitiesData[i].column2 +
+          " - " +
+          humanitiesData[i].column3
+      );
       num++;
     }
 
@@ -251,7 +284,12 @@ function Tracker() {
     for (let i = 0; i < wellnessData.length; i++) {
       const field = form.getTextField(`Course${num}`);
       field.setFontSize(7);
-      field.setText(wellnessData[i].column1 + wellnessData[i].column2 + " - " + wellnessData[i].column3);
+      field.setText(
+        wellnessData[i].column1 +
+          wellnessData[i].column2 +
+          " - " +
+          wellnessData[i].column3
+      );
       num++;
     }
 
@@ -259,7 +297,12 @@ function Tracker() {
     for (let i = 0; i < socialData.length; i++) {
       const field = form.getTextField(`Course${num}`);
       field.setFontSize(7);
-      field.setText(socialData[i].column1 + socialData[i].column2 + " - " + socialData[i].column3);
+      field.setText(
+        socialData[i].column1 +
+          socialData[i].column2 +
+          " - " +
+          socialData[i].column3
+      );
       num++;
     }
 
@@ -277,7 +320,9 @@ function Tracker() {
     for (let i = 0; i < freeData.length; i++) {
       const field = form.getTextField(`Course${num}`);
       field.setFontSize(7);
-      field.setText(freeData[i].column1 + freeData[i].column2 + " - " + freeData[i].column3);
+      field.setText(
+        freeData[i].column1 + freeData[i].column2 + " - " + freeData[i].column3
+      );
       num++;
     }
 
@@ -285,7 +330,9 @@ function Tracker() {
     for (let i = 0; i < csData.length; i++) {
       const field = form.getTextField(`Course${num}`);
       field.setFontSize(7);
-      field.setText(csData[i].column1 + csData[i].column2 + " - " + csData[i].column3);
+      field.setText(
+        csData[i].column1 + csData[i].column2 + " - " + csData[i].column3
+      );
       num++;
     }
 
@@ -293,7 +340,9 @@ function Tracker() {
     for (let i = 0; i < mathData.length; i++) {
       const field = form.getTextField(`Course${num}`);
       field.setFontSize(7);
-      field.setText(mathData[i].column1 + mathData[i].column2 + " - " + mathData[i].column3);
+      field.setText(
+        mathData[i].column1 + mathData[i].column2 + " - " + mathData[i].column3
+      );
       num++;
     }
 
@@ -301,7 +350,12 @@ function Tracker() {
     for (let i = 0; i < scienceData.length; i++) {
       const field = form.getTextField(`Course${num}`);
       field.setFontSize(7);
-      field.setText(scienceData[i].column1 + scienceData[i].column2 + " - " + scienceData[i].column3);
+      field.setText(
+        scienceData[i].column1 +
+          scienceData[i].column2 +
+          " - " +
+          scienceData[i].column3
+      );
       num++;
       if (num === 48) {
         break;
@@ -323,155 +377,173 @@ function Tracker() {
 
   const humanities_description = () => {
     return (
-        <p className="ml-1">
-          <Tooltip placement="right-start" content={
+      <p className="ml-1">
+        <Tooltip
+          placement="right-start"
+          content={
             <div className="p-2 max-w-xs text-left">
               <p className="text-sm font-semibold mb-2">Humanities Checklist</p>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2">
-                  <span className="text-sm">At least one class is 2000-level or above</span>
+                  <span className="text-sm">
+                    At least one class is 2000-level or above
+                  </span>
                   {checks.hua_2000 ? (
-                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                    <CheckCircleIcon className="w-5 h-5 text-green-500" />
                   ) : (
-                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                    <XCircleIcon className="w-5 h-5 text-red-500" />
                   )}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-sm">HUA project is completed</span>
                   {checks.hua ? (
-                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                    <CheckCircleIcon className="w-5 h-5 text-green-500" />
                   ) : (
-                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                    <XCircleIcon className="w-5 h-5 text-red-500" />
                   )}
                 </li>
               </ul>
             </div>
-          }>
-            <QuestionMarkCircleIcon className="w-6 h-6 text-blue-300" />
-          </Tooltip>
-        </p>
-    )
-  }
+          }
+        >
+          <QuestionMarkCircleIcon className="w-6 h-6 text-blue-300" />
+        </Tooltip>
+      </p>
+    );
+  };
 
   const cs_description = () => {
     return (
-        <p className="ml-1">
-          <Tooltip placement="right-start" content={
+      <p className="ml-1">
+        <Tooltip
+          placement="right-start"
+          content={
             <div className="p-2 max-w-xs text-left">
-              <p className="text-sm font-semibold mb-2">Computer Science Checklist</p>
+              <p className="text-sm font-semibold mb-2">
+                Computer Science Checklist
+              </p>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2">
                   <span className="text-sm">Systems Requirement</span>
                   {checks.systems ? (
-                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                    <CheckCircleIcon className="w-5 h-5 text-green-500" />
                   ) : (
-                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                    <XCircleIcon className="w-5 h-5 text-red-500" />
                   )}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-sm">Theory Requirement</span>
                   {checks.theory ? (
-                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                    <CheckCircleIcon className="w-5 h-5 text-green-500" />
                   ) : (
-                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                    <XCircleIcon className="w-5 h-5 text-red-500" />
                   )}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-sm">Design Requirement</span>
                   {checks.design ? (
-                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                    <CheckCircleIcon className="w-5 h-5 text-green-500" />
                   ) : (
-                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                    <XCircleIcon className="w-5 h-5 text-red-500" />
                   )}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-sm">Social Requirement</span>
                   {checks.social ? (
-                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                    <CheckCircleIcon className="w-5 h-5 text-green-500" />
                   ) : (
-                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                    <XCircleIcon className="w-5 h-5 text-red-500" />
                   )}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-sm">5/3 units 4000-level</span>
                   {checks.cs_4000 ? (
-                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                    <CheckCircleIcon className="w-5 h-5 text-green-500" />
                   ) : (
-                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                    <XCircleIcon className="w-5 h-5 text-red-500" />
                   )}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-sm">MQP Requirement</span>
                   {checks.mqp ? (
-                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                    <CheckCircleIcon className="w-5 h-5 text-green-500" />
                   ) : (
-                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                    <XCircleIcon className="w-5 h-5 text-red-500" />
                   )}
                 </li>
               </ul>
             </div>
-          }>
-            <QuestionMarkCircleIcon className="w-6 h-6 text-blue-300" />
-          </Tooltip>
-        </p>
-    )
-  }
+          }
+        >
+          <QuestionMarkCircleIcon className="w-6 h-6 text-blue-300" />
+        </Tooltip>
+      </p>
+    );
+  };
 
   const math_description = () => {
     return (
-        <p className="ml-1">
-          <Tooltip placement="right-start" content={
+      <p className="ml-1">
+        <Tooltip
+          placement="right-start"
+          content={
             <div className="p-2 max-w-xs text-left">
-              <p className="text-sm font-semibold mb-2">Humanities Checklist</p>
+              <p className="text-sm font-semibold mb-2">Math Checklist</p>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2">
                   <span className="text-sm">Stats Requirement</span>
                   {checks.stat ? (
-                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                    <CheckCircleIcon className="w-5 h-5 text-green-500" />
                   ) : (
-                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                    <XCircleIcon className="w-5 h-5 text-red-500" />
                   )}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-sm">Probability Requirement</span>
                   {checks.prob ? (
-                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                    <CheckCircleIcon className="w-5 h-5 text-green-500" />
                   ) : (
-                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                    <XCircleIcon className="w-5 h-5 text-red-500" />
                   )}
                 </li>
               </ul>
             </div>
-          }>
-            <QuestionMarkCircleIcon className="w-6 h-6 text-blue-300" />
-          </Tooltip>
-        </p>
-    )
-  }
+          }
+        >
+          <QuestionMarkCircleIcon className="w-6 h-6 text-blue-300" />
+        </Tooltip>
+      </p>
+    );
+  };
 
   const science_description = () => {
     return (
-        <p className="ml-1">
-          <Tooltip placement="right-start" content={
+      <p className="ml-1">
+        <Tooltip
+          placement="right-start"
+          content={
             <div className="p-2 max-w-xs text-left">
-              <p className="text-sm font-semibold mb-2">Humanities Checklist</p>
+              <p className="text-sm font-semibold mb-2">Science Checklist</p>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2">
-                  <span className="text-sm">3 courses from BB, CH, GE, PH</span>
+                  <span className="text-sm">
+                    3 courses from BB, CH, GE, PH
+                  </span>
                   {checks.science ? (
-                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                    <CheckCircleIcon className="w-5 h-5 text-green-500" />
                   ) : (
-                      <XCircleIcon className="w-5 h-5 text-red-500" />
+                    <XCircleIcon className="w-5 h-5 text-red-500" />
                   )}
                 </li>
               </ul>
             </div>
-          }>
-            <QuestionMarkCircleIcon className="w-6 h-6 text-blue-300" />
-          </Tooltip>
-        </p>
-    )
-  }
+          }
+        >
+          <QuestionMarkCircleIcon className="w-6 h-6 text-blue-300" />
+        </Tooltip>
+      </p>
+    );
+  };
 
   return (
     <>
@@ -480,18 +552,93 @@ function Tracker() {
       <main className="min-h-screen bg-gray-1 flex flex-col">
         <div className="flex flex-col items-center flex-grow text-black">
           <div className="bg-gray-3 flex flex-col items-center justify-center flex-grow w-full p-9">
-            <h1 className="text-4xl font-body font-bold mt-6 mb-2">CS Major Tracker</h1>
+            <h1 className="text-4xl font-body font-bold mt-6 mb-2">
+              CS Major Tracker
+            </h1>
             <h2 id="percentage"></h2>
           </div>
           <div className="my-10">
-            <CourseDropdowns title="Humanities Requirement" data={humanitiesData} open={openAcc1} handleOpen={handleOpenAcc1} num={6} description={humanities_description()}/>
-            <CourseDropdowns title="Wellness Requirement" data={wellnessData} open={openAcc2} handleOpen={handleOpenAcc2} num={4} description={undefined}/>
-            <CourseDropdowns title="Social Science Requirement" data={socialData} open={openAcc3} handleOpen={handleOpenAcc3} num={2} description={undefined}/>
-            <CourseDropdowns title="IQP Requirement" data={iqpData} open={openAcc4} handleOpen={handleOpenAcc4} num={1} description={undefined}/>
-            <CourseDropdowns title="Computer Science Requirement" data={csData} open={openAcc5} handleOpen={handleOpenAcc5} num={18} description={cs_description()}/>
-            <CourseDropdowns title="Math Requirement" data={mathData} open={openAcc6} handleOpen={handleOpenAcc6} num={7} description={math_description()}/>
-            <CourseDropdowns title="Science Requirement" data={scienceData} open={openAcc7} handleOpen={handleOpenAcc7} num={5} description={science_description()}/>
-            <CourseDropdowns title="Free Elective Requirement" data={freeData} open={openAcc8} handleOpen={handleOpenAcc8} num={3} description={undefined}/>
+            {/* Pass category and onDelete so the child can actually delete */}
+            <CourseDropdowns
+              title="Humanities Requirement"
+              data={humanitiesData}
+              open={openAcc1}
+              handleOpen={handleOpenAcc1}
+              num={6}
+              description={humanities_description()}
+              category="humanities"
+              onDelete={handleDelete}
+            />
+            <CourseDropdowns
+              title="Wellness Requirement"
+              data={wellnessData}
+              open={openAcc2}
+              handleOpen={handleOpenAcc2}
+              num={4}
+              description={undefined}
+              category="wellness"
+              onDelete={handleDelete}
+            />
+            <CourseDropdowns
+              title="Social Science Requirement"
+              data={socialData}
+              open={openAcc3}
+              handleOpen={handleOpenAcc3}
+              num={2}
+              description={undefined}
+              category="social"
+              onDelete={handleDelete}
+            />
+            <CourseDropdowns
+              title="IQP Requirement"
+              data={iqpData}
+              open={openAcc4}
+              handleOpen={handleOpenAcc4}
+              num={1}
+              description={undefined}
+              category="iqp"
+              onDelete={handleDelete}
+            />
+            <CourseDropdowns
+              title="Computer Science Requirement"
+              data={csData}
+              open={openAcc5}
+              handleOpen={handleOpenAcc5}
+              num={18}
+              description={cs_description()}
+              category="cs"
+              onDelete={handleDelete}
+            />
+            <CourseDropdowns
+              title="Math Requirement"
+              data={mathData}
+              open={openAcc6}
+              handleOpen={handleOpenAcc6}
+              num={7}
+              description={math_description()}
+              category="math"
+              onDelete={handleDelete}
+            />
+            <CourseDropdowns
+              title="Science Requirement"
+              data={scienceData}
+              open={openAcc7}
+              handleOpen={handleOpenAcc7}
+              num={5}
+              description={science_description()}
+              category="sciences"
+              onDelete={handleDelete}
+            />
+            <CourseDropdowns
+              title="Free Elective Requirement"
+              data={freeData}
+              open={openAcc8}
+              handleOpen={handleOpenAcc8}
+              num={3}
+              description={undefined}
+              category="free"
+              onDelete={handleDelete}
+            />
           </div>
           <Button className="mb-10 font-body" variant="gradient" onClick={onButtonClick}>
             Download Tracker PDF
@@ -525,8 +672,29 @@ function Icon({ open }) {
   );
 }
 
+// Updated CourseDropdowns
+interface CourseDropdownsProps {
+  title: string;
+  data: any[];
+  open: boolean;
+  handleOpen: () => void;
+  num: number;
+  description?: React.ReactNode;
+  category: string;
+  onDelete: (id: string, category: string) => void;
+}
+
 // @ts-ignore
-const CourseDropdowns = ({ title, data, open, handleOpen, num, description }) => {
+const CourseDropdowns = ({
+  title,
+  data,
+  open,
+  handleOpen,
+  num,
+  description,
+  category,
+  onDelete,
+}: CourseDropdownsProps) => {
   const headings = [
     "Column 1",
     "Column 2",
@@ -539,18 +707,20 @@ const CourseDropdowns = ({ title, data, open, handleOpen, num, description }) =>
     "Action",
   ];
 
-
   return (
     <Accordion open={open} icon={<Icon open={open} />}>
-      <AccordionHeader onClick={handleOpen} className={`flex ${data.length >= num ? 'text-green-500' : ''}`}>
-        <p className={'flex justify-start'}>
+      <AccordionHeader
+        onClick={handleOpen}
+        className={`flex ${data.length >= num ? "text-green-500" : ""}`}
+      >
+        <p className={"flex justify-start"}>
           {title} ({data.length}/{num})
           {description}
         </p>
       </AccordionHeader>
       <AccordionBody>
         <div className="mt-8 w-full max-w-4xl">
-          <Card className="mt-8 mb-5 w-full max-w-4xl overflow-auto  border-gray-3 border">
+          <Card className="mt-8 mb-5 w-full max-w-4xl overflow-auto border-gray-3 border">
             <table className="font-body w-full w-min-max text-left">
               <thead>
                 <tr className="bg-gray-200">
@@ -709,7 +879,7 @@ function AddCoursePanel({
       setStatus("Adding course...");
   
       try {
-        const response = await fetch("http://localhost:3000/addCourse", {
+        const response = await fetch("/addCourse", {
           method: "POST",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
