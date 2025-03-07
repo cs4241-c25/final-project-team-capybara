@@ -25,6 +25,7 @@ When Render is loading back up the project, it sometimes fails to load the web p
 - **Node.js & Express:** We used Express as our web server to handle requests and session middleware.
   - The **express-session** module allowed us to maintain the user's login session.
 - **PDF-lib:** We used pdf-lib to write the user's courses to the CS major tracking sheet PDF file.
+- **Papa Parse:** We used the papaparse module for CSV parsing.
 - **Typescript:** Typescript is the programming language we used to implement dynamic behavior and for server-side programming.
 - **Material Tailwind:** We used Material Tailwind as our frontend framework. This provided us a set of easily-customizable
   components as a foundation for our UI. We configured Tailwind in order to define custom colors and fonts.
