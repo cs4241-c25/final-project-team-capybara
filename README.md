@@ -9,8 +9,8 @@ Our website is a course tracker that allows CS majors to upload their course his
     (i.e. CS Systems requirement) were met. Users can see what percentage of their graduation requirements they have met.
     These features require logic to parse an excel file and sort the data into different categories within the database.
     
-Additionally, our website allows users to register accounts, add and delete custom courses through manual input, and download
-    a PDF of the CS tracking sheet with their courses filled in.
+Additionally, our website allows users to register accounts, add and delete custom courses through manual input, download
+    a PDF of the CS tracking sheet with their courses filled in, and chat with AI advisor.
     
 ## Additional Information
 When Render is loading back up the project, it sometimes fails to load the web page the first time. If this happens, please refresh the page.
@@ -35,14 +35,20 @@ When Render is loading back up the project, it sometimes fails to load the web p
 - **Render:** We used Render to deploy our website.
 
 ## Challenges
+
+- **Deployment:**
 Deployment was initially challenging because every service we tried to use did not work with our setup at first. However,
  Render eventually started working after waiting a long period of time before trying again.
  
+- **Sorting and Filtering:**
 Sorting and filtering the user's courses was also a challenge, since there are a lot of complex specifications involved in major
   degree requirements.
-  
-Manual course input was another challenge because we wanted the form to be able to auto-fill valid courses and course names
-  based on the user's selection. This required pulling information from WPI's course listings.
+
+- **Manual Course Input:**
+Manual course input is another challenge because we needed to modify the backend structure to distinguish different types of courses and store them in the appropriate database. Since our database structure was predetermined and finalized at the beginning, any kind of future refactoring and updates would be challenging.
+
+- **AI Advisor Prompt Enginnering:**
+We used OpenAI GPT-4o-mini for the AI advisor because it is the most budget-friendly solution. However, this choice also resulted in lower performance, particularly when checking for missing requirements and answering questions about WPI courses or requirements. Some responses could be outdated or inaccurate. To improve accuracy, we included user course data as part of the prompt and implemented a specialized algorithm to help the AI identify missing requirements for CS majors. Additionally, we made the system dynamic, allowing user-added courses to update the AI in real time.
 
 ## Contributions
 - Huy Ho:
@@ -62,8 +68,13 @@ Manual course input was another challenge because we wanted the form to be able 
   - FAQ page
   - Jira
 - Lianrui Sun (Darcy):
-  - Login, registration, & authentication
+  - Login, Registration & Authentication
   - Router
-  - Manual input & deletion
+  - AddCourse panel
+  - Add wpi_courses.cvs data
+  - Delete button for added course
+  - Refactor backend code
   - Handling duplicate courses
-  - AI chatbot
+  - Handling NR courses
+  - AI Chatbot
+  - Prompt Engineering
