@@ -24,7 +24,6 @@ import AiAdvisorPopup from "./AiAdvisorPopup";
 
 function Tracker() {
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("authenticated");
@@ -647,9 +646,19 @@ function Tracker() {
             Download Tracker PDF
           </Button>
         </div>
-      <div>
-        <AiAdvisorPopup />
-      </div>
+        <div>
+          <AiAdvisorPopup
+            humanitiesData={humanitiesData}
+            wellnessData={wellnessData}
+            socialData={socialData}
+            iqpData={iqpData}
+            csData={csData}
+            mathData={mathData}
+            scienceData={scienceData}
+            freeData={freeData}
+            checks={checks}
+          />
+        </div>
       </main>
       <aside>
         <Sidebar />
@@ -806,7 +815,7 @@ function AddCoursePanel({
   const [status, setStatus] = useState("");
 
   // NEW: track whether the panel is minimized
-  const [isMinimized, setIsMinimized] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(true);
 
   // 1) On mount, fetch and parse CSV into a dictionary { [courseType]: [{courseNumber, courseTitle}, ...] }
   useEffect(() => {
