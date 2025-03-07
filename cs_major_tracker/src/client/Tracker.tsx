@@ -20,6 +20,7 @@ import {
   QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
 import { XCircleIcon } from "@heroicons/react/16/solid";
+import AiAdvisorPopup from "./AiAdvisorPopup";
 
 function Tracker() {
   const navigate = useNavigate();
@@ -274,9 +275,9 @@ function Tracker() {
       field.setFontSize(7);
       field.setText(
         humanitiesData[i].column1 +
-          humanitiesData[i].column2 +
-          " - " +
-          humanitiesData[i].column3
+        humanitiesData[i].column2 +
+        " - " +
+        humanitiesData[i].column3
       );
       num++;
     }
@@ -287,9 +288,9 @@ function Tracker() {
       field.setFontSize(7);
       field.setText(
         wellnessData[i].column1 +
-          wellnessData[i].column2 +
-          " - " +
-          wellnessData[i].column3
+        wellnessData[i].column2 +
+        " - " +
+        wellnessData[i].column3
       );
       num++;
     }
@@ -300,9 +301,9 @@ function Tracker() {
       field.setFontSize(7);
       field.setText(
         socialData[i].column1 +
-          socialData[i].column2 +
-          " - " +
-          socialData[i].column3
+        socialData[i].column2 +
+        " - " +
+        socialData[i].column3
       );
       num++;
     }
@@ -353,9 +354,9 @@ function Tracker() {
       field.setFontSize(7);
       field.setText(
         scienceData[i].column1 +
-          scienceData[i].column2 +
-          " - " +
-          scienceData[i].column3
+        scienceData[i].column2 +
+        " - " +
+        scienceData[i].column3
       );
       num++;
       if (num === 48) {
@@ -645,12 +646,23 @@ function Tracker() {
             Download Tracker PDF
           </Button>
         </div>
+        <div>
+          <AiAdvisorPopup
+            humanitiesData={humanitiesData}
+            wellnessData={wellnessData}
+            socialData={socialData}
+            iqpData={iqpData}
+            csData={csData}
+            mathData={mathData}
+            scienceData={scienceData}
+            freeData={freeData}
+            checks={checks}
+          />
+        </div>
       </main>
       <aside>
         <Sidebar />
       </aside>
-
-      {/* The “Add Course” panel on the right, with CSV reading */}
       <AddCoursePanel onCourseAdded={refreshAllData} />
     </>
   );
@@ -786,237 +798,237 @@ function AddCoursePanel({
 }: {
   onCourseAdded: () => void;
 }) {
-    // The data from CSV in dictionary form
-    const [typeMap, setTypeMap] = useState<{
-      [type: string]: { courseNumber: string; courseTitle: string }[];
-    }>({});
-  
-    // The user’s selected values
-    const [selectedType, setSelectedType] = useState("");
-    const [selectedNumber, setSelectedNumber] = useState("");
-  
-    // The final fields we’re sending to the server
-    const [courseType, setCourseType] = useState("");
-    const [courseNum, setCourseNum] = useState("");
-    const [courseTitle, setCourseTitle] = useState("");
-  
-    const [status, setStatus] = useState("");
-  
-    // NEW: track whether the panel is minimized
-    const [isMinimized, setIsMinimized] = useState(false);
-  
-    // 1) On mount, fetch and parse CSV into a dictionary { [courseType]: [{courseNumber, courseTitle}, ...] }
-    useEffect(() => {
-      fetch("/wpi_courses.csv")
-        .then((res) => res.text())
-        .then((csvText) => {
-          Papa.parse<CSVRow>(csvText, {
-            header: true,
-            skipEmptyLines: true,
-            complete: (results) => {
-              // results.data is an array of CSVRows
-              const dict: {
-                [key: string]: { courseNumber: string; courseTitle: string }[];
-              } = {};
-  
-              for (const row of results.data) {
-                const t = row.courseType.trim();
-                if (!dict[t]) dict[t] = [];
-                dict[t].push({
-                  courseNumber: row.courseNumber.trim(),
-                  courseTitle: row.courseTitle.trim(),
-                });
-              }
-  
-              setTypeMap(dict);
-            },
-            error: (err) => {
-              console.error("Error parsing CSV:", err);
-            },
-          });
-        })
-        .catch((err) => console.error("Error fetching CSV:", err));
-    }, []);
-  
-    // 2) When user selects a Type
-    const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-      const newType = e.target.value;
-      setSelectedType(newType);
-      setCourseType(newType); // also set the final field
-  
-      // Clear old selection
-      setSelectedNumber("");
-      setCourseNum("");
-      setCourseTitle("");
-    };
-  
-    // 3) When user selects a Number
-    const handleNumberChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-      const newNumber = e.target.value;
-      setSelectedNumber(newNumber);
-      setCourseNum(newNumber); // final field
-  
-      // Auto-populate title from dictionary
-      const possible = typeMap[selectedType];
-      if (possible) {
-        const found = possible.find((c) => c.courseNumber === newNumber);
-        if (found) {
-          setCourseTitle(found.courseTitle);
-        }
-      }
-    };
-  
-    // 4) Handle form submission
-    const handleAddCourse = async (e: React.FormEvent) => {
-      e.preventDefault();
-      setStatus("Adding course...");
-  
-      try {
-        const response = await fetch("/addCourse", {
-          method: "POST",
-          credentials: "include",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ courseType, courseNum, courseTitle }),
+  // The data from CSV in dictionary form
+  const [typeMap, setTypeMap] = useState<{
+    [type: string]: { courseNumber: string; courseTitle: string }[];
+  }>({});
+
+  // The user’s selected values
+  const [selectedType, setSelectedType] = useState("");
+  const [selectedNumber, setSelectedNumber] = useState("");
+
+  // The final fields we’re sending to the server
+  const [courseType, setCourseType] = useState("");
+  const [courseNum, setCourseNum] = useState("");
+  const [courseTitle, setCourseTitle] = useState("");
+
+  const [status, setStatus] = useState("");
+
+  // NEW: track whether the panel is minimized
+  const [isMinimized, setIsMinimized] = useState(true);
+
+  // 1) On mount, fetch and parse CSV into a dictionary { [courseType]: [{courseNumber, courseTitle}, ...] }
+  useEffect(() => {
+    fetch("/wpi_courses.csv")
+      .then((res) => res.text())
+      .then((csvText) => {
+        Papa.parse<CSVRow>(csvText, {
+          header: true,
+          skipEmptyLines: true,
+          complete: (results) => {
+            // results.data is an array of CSVRows
+            const dict: {
+              [key: string]: { courseNumber: string; courseTitle: string }[];
+            } = {};
+
+            for (const row of results.data) {
+              const t = row.courseType.trim();
+              if (!dict[t]) dict[t] = [];
+              dict[t].push({
+                courseNumber: row.courseNumber.trim(),
+                courseTitle: row.courseTitle.trim(),
+              });
+            }
+
+            setTypeMap(dict);
+          },
+          error: (err) => {
+            console.error("Error parsing CSV:", err);
+          },
         });
-        const data = await response.json();
-  
-        if (response.ok && data.success) {
-          setStatus("Successfully added!");
-          // Refresh parent data
-          onCourseAdded();
-        } else {
-          const message = data.message || "Error adding course";
-          setStatus(message);
-        }
-      } catch (error: any) {
-        console.error("Error adding course:", error);
-        setStatus(error?.message || "Error adding course");
+      })
+      .catch((err) => console.error("Error fetching CSV:", err));
+  }, []);
+
+  // 2) When user selects a Type
+  const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newType = e.target.value;
+    setSelectedType(newType);
+    setCourseType(newType); // also set the final field
+
+    // Clear old selection
+    setSelectedNumber("");
+    setCourseNum("");
+    setCourseTitle("");
+  };
+
+  // 3) When user selects a Number
+  const handleNumberChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newNumber = e.target.value;
+    setSelectedNumber(newNumber);
+    setCourseNum(newNumber); // final field
+
+    // Auto-populate title from dictionary
+    const possible = typeMap[selectedType];
+    if (possible) {
+      const found = possible.find((c) => c.courseNumber === newNumber);
+      if (found) {
+        setCourseTitle(found.courseTitle);
       }
-    };
-  
-    // 5) Prepare data for UI
-    const types = Object.keys(typeMap).sort();
-    const numbers = selectedType ? typeMap[selectedType] : [];
-  
-    return (
-      <div
+    }
+  };
+
+  // 4) Handle form submission
+  const handleAddCourse = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("Adding course...");
+
+    try {
+      const response = await fetch("/addCourse", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ courseType, courseNum, courseTitle }),
+      });
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setStatus("Successfully added!");
+        // Refresh parent data
+        onCourseAdded();
+      } else {
+        const message = data.message || "Error adding course";
+        setStatus(message);
+      }
+    } catch (error: any) {
+      console.error("Error adding course:", error);
+      setStatus(error?.message || "Error adding course");
+    }
+  };
+
+  // 5) Prepare data for UI
+  const types = Object.keys(typeMap).sort();
+  const numbers = selectedType ? typeMap[selectedType] : [];
+
+  return (
+    <div
+      style={{
+        position: "fixed",
+        right: 0,
+        top: "50%",
+        transform: "translateY(-50%)",
+        // If minimized, narrow panel; else standard width
+        width: isMinimized ? "48px" : "260px",
+        maxHeight: "80%",
+        background: "#f8f8f8",
+        borderLeft: "1px solid #ccc",
+        padding: "8px",
+        overflowY: "auto",
+        boxShadow: "0 0 8px rgba(0,0,0,0.2)",
+        transition: "width 0.3s",
+      }}
+    >
+      {/* Toggle Minimize Button */}
+      <button
+        type="button"
+        onClick={() => setIsMinimized(!isMinimized)}
         style={{
-          position: "fixed",
-          right: 0,
-          top: "50%",
-          transform: "translateY(-50%)",
-          // If minimized, narrow panel; else standard width
-          width: isMinimized ? "48px" : "260px",
-          maxHeight: "80%",
-          background: "#f8f8f8",
-          borderLeft: "1px solid #ccc",
+          display: "block",
+          width: "100%",
+          marginBottom: isMinimized ? 0 : "8px",
           padding: "8px",
-          overflowY: "auto",
-          boxShadow: "0 0 8px rgba(0,0,0,0.2)",
-          transition: "width 0.3s",
+          backgroundColor: "#AC1C1C", // WPI red
+          color: "#fff",
+          borderRadius: "4px",
+          textAlign: "center",
+          cursor: "pointer",
+          transition: "background-color 0.2s",
         }}
+        onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#911818")}
+        onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#AC1C1C")}
       >
-        {/* Toggle Minimize Button */}
-        <button
-          type="button"
-          onClick={() => setIsMinimized(!isMinimized)}
-          style={{
-            display: "block",
-            width: "100%",
-            marginBottom: isMinimized ? 0 : "8px",
-            padding: "8px",
-            backgroundColor: "#AC1C1C", // WPI red
-            color: "#fff",
-            borderRadius: "4px",
-            textAlign: "center",
-            cursor: "pointer",
-            transition: "background-color 0.2s",
-          }}
-          onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#911818")}
-          onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#AC1C1C")}
-        >
-          {isMinimized ? "»" : "«"}
-        </button>
-  
-        {/* When minimized, hide content. Only show if not minimized. */}
-        {!isMinimized && (
-          <>
-            <h2 className="font-bold mb-2">Add a Course</h2>
-            <form onSubmit={handleAddCourse} className="flex flex-col gap-3">
-              {/* 1) Course Type dropdown */}
-              <label>
-                Course Type
-                <select
-                  className="border border-gray-300 p-1 w-full"
-                  value={selectedType}
-                  onChange={handleTypeChange}
-                  required
-                >
-                  <option value="">-- Select Type --</option>
-                  {types.map((t) => (
-                    <option key={t} value={t}>
-                      {t}
-                    </option>
-                  ))}
-                </select>
-              </label>
-  
-              {/* 2) Course Number dropdown */}
-              <label>
-                Course Number
-                <select
-                  className="border border-gray-300 p-1 w-full"
-                  value={selectedNumber}
-                  onChange={handleNumberChange}
-                  required
-                  disabled={!selectedType}
-                >
-                  <option value="">-- Select Number --</option>
-                  {numbers.map(({ courseNumber }) => (
-                    <option key={courseNumber} value={courseNumber}>
-                      {courseNumber}
-                    </option>
-                  ))}
-                </select>
-              </label>
-  
-              {/* 3) Title (auto-populated, but user can override) */}
-              <label>
-                Course Title
-                <input
-                  className="border border-gray-300 p-1 w-full"
-                  type="text"
-                  value={courseTitle}
-                  onChange={(e) => setCourseTitle(e.target.value)}
-                  placeholder="Short title"
-                  required
-                />
-              </label>
-  
-              {/* Submit Button, now WPI Red */}
-              <button
-                type="submit"
-                className="p-2 text-white rounded"
-                style={{
-                  backgroundColor: "#AC1C1C",
-                  transition: "background-color 0.2s",
-                }}
-                onMouseOver={(e) =>
-                  (e.currentTarget.style.backgroundColor = "#911818")
-                }
-                onMouseOut={(e) =>
-                  (e.currentTarget.style.backgroundColor = "#AC1C1C")
-                }
+        {isMinimized ? "»" : "«"}
+      </button>
+
+      {/* When minimized, hide content. Only show if not minimized. */}
+      {!isMinimized && (
+        <>
+          <h2 className="font-bold mb-2">Add a Course</h2>
+          <form onSubmit={handleAddCourse} className="flex flex-col gap-3">
+            {/* 1) Course Type dropdown */}
+            <label>
+              Course Type
+              <select
+                className="border border-gray-300 p-1 w-full"
+                value={selectedType}
+                onChange={handleTypeChange}
+                required
               >
-                Add Course
-              </button>
-            </form>
-  
-            {status && <p className="mt-3">{status}</p>}
-          </>
-        )}
-      </div>
-    );
-  }
+                <option value="">-- Select Type --</option>
+                {types.map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            {/* 2) Course Number dropdown */}
+            <label>
+              Course Number
+              <select
+                className="border border-gray-300 p-1 w-full"
+                value={selectedNumber}
+                onChange={handleNumberChange}
+                required
+                disabled={!selectedType}
+              >
+                <option value="">-- Select Number --</option>
+                {numbers.map(({ courseNumber }) => (
+                  <option key={courseNumber} value={courseNumber}>
+                    {courseNumber}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            {/* 3) Title (auto-populated, but user can override) */}
+            <label>
+              Course Title
+              <input
+                className="border border-gray-300 p-1 w-full"
+                type="text"
+                value={courseTitle}
+                onChange={(e) => setCourseTitle(e.target.value)}
+                placeholder="Short title"
+                required
+              />
+            </label>
+
+            {/* Submit Button, now WPI Red */}
+            <button
+              type="submit"
+              className="p-2 text-white rounded"
+              style={{
+                backgroundColor: "#AC1C1C",
+                transition: "background-color 0.2s",
+              }}
+              onMouseOver={(e) =>
+                (e.currentTarget.style.backgroundColor = "#911818")
+              }
+              onMouseOut={(e) =>
+                (e.currentTarget.style.backgroundColor = "#AC1C1C")
+              }
+            >
+              Add Course
+            </button>
+          </form>
+
+          {status && <p className="mt-3">{status}</p>}
+        </>
+      )}
+    </div>
+  );
+}
 
 export default Tracker;
