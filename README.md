@@ -1,46 +1,69 @@
-# Final Project
-*Due at noon on the day of your team's assigned class presentation. Teams will be presenting
-during the last week of class on Tuesday, Thursday, and Friday (March 4, 6, 7)*
+# CS Major Tracker - Team Capybara
+Project: https://final-project-team-capybara.onrender.com/
 
-For your final project, you'll implement a web application that exhibits understanding of the course materials.
-This project should provide an opportunity to both be creative and to pursue individual research and learning goals.
+Video: https://www.youtube.com/watch?v=1XyqxNSywzM
 
-## Final Project Description
-- Your project should consist of a complete Web application, exhibiting facets of the three main sections of the course material:
-- Static web page content and design. You should have a project with a well-designed user interface that is responsive, accessible, easily navigable, and features significant content.
-- Dynamic behavior implemented with JavaScript or Typescript.
-- Server-side programming using Node.js – either JavaScript or Typescript. Typically, this will take the form of some sort of persistent data (database), authentication, and possibly server-side computation.
-- A video (less than five minutes) where each group member explains some aspect of the project. An easy way to produce this video is for you all the group members to join a Zoom call that is recorded; each member can share their screen when they discuss the project or one member can "drive" the interface while other members narrate (this second option will probably work better.) The video should be posted on YouTube or some other accessible video hosting service. Make sure your video is less than five minutes, but long enough to successfully explain your project and show it in action. There is no minimum video length.
+## Description
+Our website is a course tracker that allows CS majors to upload their course history and see what requirements they have met
+    for their major. The website sorts the user's courses by requirement, while also specifying whether sub-requirements
+    (i.e. CS Systems requirement) were met. Users can see what percentage of their graduation requirements they have met.
+    These features require logic to parse an excel file and sort the data into different categories within the database.
+    
+Additionally, our website allows users to register accounts, add and delete custom courses through manual input, and download
+    a PDF of the CS tracking sheet with their courses filled in.
+    
+## Additional Information
+When Render is loading back up the project, it sometimes fails to load the web page the first time. If this happens, please refresh the page.
 
-## Project ideation
-I encourage you to identify projects that will have impact, either artistically or in terms of productivity. A few possibilities are
-1.	AI/ML app. You may take an AI/ML that you have written in the past and create a full application out of it provided it satisfies all the project requirements. I will review the proposals to make sure the scope is significant enough for a final project.
-2.	Mass General Brigham – The hospital is interested in providing visitors with directions to parking lots, building entrances, and information desks for multiple buildings. Integrated with the Google Maps API, these directions would guide visitors from their homes to the information desks of hospital buildings, and would guide visitors to locations between hospital buildings. Contact me if you would like more information.
-3.	Boston Freedom Trail app for tourists.
-4.	A generalized sightseeing app that permits tourist organizations to enter information in creating their own city walking tours.
-5.	An application aimed at serving the WPI student body. For example, an app that would facilitate the formation and coordination of informal WPI student groups.
-6.	An idea of your own!
+## Technologies
+- **React:** We used React as our web framework, making use of components, hooks, states, and props to create dynamic behavior.
+  - For example, we used hooks to redirect the user to the login page if they were not authenticated. Furthermore, React made
+    it easy to create the tutorial stepper, as we could maintain the current step as a state and pass it as a prop to each
+    step of the tutorial in order to decide which step to show.
+  - We used **react-router-dom** for routing.
+  - We used **react-dropzone** for the file upload drag-and-drop functionality.
+- **Node.js & Express:** We used Express as our web server to handle requests and session middleware.
+  - The **express-session** module allowed us to maintain the user's login session.
+- **PDF-lib:** We used pdf-lib to write the user's courses to the CS major tracking sheet PDF file.
+- **Papa Parse:** We used the papaparse module for CSV parsing.
+- **Typescript:** Typescript is the programming language we used to implement dynamic behavior and for server-side programming.
+- **Material Tailwind:** We used Material Tailwind as our frontend framework. This provided us a set of easily-customizable
+  components as a foundation for our UI. We configured Tailwind in order to define custom colors and fonts.
+  - We used **heroicons** for UI icons.
+- **MongoDB:** We used MongoDB for our database.
+- **Auth0:** Auth0 was our authentication method.
+- **Render:** We used Render to deploy our website.
 
+## Challenges
+Deployment was initially challenging because every service we tried to use did not work with our setup at first. However,
+ Render eventually started working after waiting a long period of time before trying again.
+ 
+Sorting and filtering the user's courses was also a challenge, since there are a lot of complex specifications involved in major
+  degree requirements.
+  
+Manual course input was another challenge because we wanted the form to be able to auto-fill valid courses and course names
+  based on the user's selection. This required pulling information from WPI's course listings.
 
-### Deliverables
-
-
-#### Turning in Your Project
-Push the final version of your term project to the GitHub repo you accepted for the assignment. 
-
-Deploy your app, in the form of a webpage, to Glitch, Vercel, AWS, Heroku or some other service; it is critical that the application functions correctly wherever you post it.
-
-The README for your submitted repo should include
-
-1. A brief description of what you created, and a link to the project itself (two paragraphs of text)
-2. Any additional instructions that might be needed to fully use your project (login information etc.)
-3. An outline of the technologies you used and how you used them.
-4. What challenges you faced in completing the project.
-5. What each group member was responsible for designing / developing.
-6. A link to your project video.
-
-Think of 1,3, and 4 in particular in a similar vein to the design / tech achievements for A1—A4… make a case for why what you did was challenging and why your implementation deserves a grade of 100%.
-
-## FAQs
-
-- **Can I use XYZ framework?** You can use any web-based frameworks or tools available, but for your server programming you need to use Node.js. Your client-side scripting language should be either JavaScript or TypeScript. While the course staff is happy to help with frameworks used in the class, we can't guarantee we'll be able to assist you with other frameworks / databases; choose carefully!
+## Contributions
+- Huy Ho:
+  - File upload
+  - Parsing excel file
+  - Sorting & filtering courses
+  - Router
+  - Filtering out incorrect excel files
+  - Writing to PDF
+- Cierra O'Grady:
+  - Tutorial
+  - Sidebar
+  - General styling (main page, tables, header, sidebar, fonts)
+  - Deployment
+- Alexander Stoyanov:
+  - Manual input
+  - FAQ page
+  - Jira
+- Lianrui Sun (Darcy):
+  - Login, registration, & authentication
+  - Router
+  - Manual input & deletion
+  - Handling duplicate courses
+  - AI chatbot

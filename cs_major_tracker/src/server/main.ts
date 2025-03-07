@@ -42,7 +42,7 @@ function determineCategory(courseType: string, courseNum: string) {
   const categoryInfo = [
     {
       name: "humanities",
-      limit: 5,
+      limit: 6,
       matches: [
         "AR", "EN", "TH", "MU", "AB", "CN", "GN", "SP",
         "WR", "RH", "HI", "HU", "INTL", "PY", "RE",
@@ -139,8 +139,6 @@ app.get("/data", async (req, res) => {
       free: "free",
       boolean: "boolean"
     };
-
-    console.log(type);
     const data = await db.collection(collections[type]).find({ owner: username }).toArray();
 
     // 5) Send only that user’s data
@@ -192,7 +190,6 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   }
 
   try {
-    console.log("Uploaded file path:", req.file.path);
     const workbook = new ExcelJS.Workbook();
     await workbook.xlsx.readFile(req.file.path);
     const worksheet = workbook.worksheets[0];
@@ -375,8 +372,6 @@ app.post("/upload", upload.single("file"), async (req, res) => {
       owner: username,
     }
     boolean.push(boolean_data);
-
-    console.log("Filtered & Formatted CS Data:", JSON.stringify(cs, null, 2));
 
     const db = client.db(dbName);
     const collection = db.collection("courses");
