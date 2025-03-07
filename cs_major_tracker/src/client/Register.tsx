@@ -55,7 +55,7 @@ const Register: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#AC2B37] text-black font-body">
       <div className="bg-white p-8 rounded-lg shadow-lg w-96">
-        <img src="/wpi.png" alt="WPI Logo" className="h-12 w-auto mx-auto mb-4" />
+        <img src="/wpi_red.png" alt="WPI Logo" className="h-12 w-auto mx-auto mb-4" />
         <h1 className="text-2xl font-bold text-center mb-6">Create a New Account</h1>
 
         {errorMsg && <p className="text-red-500 text-center mb-4">{errorMsg}</p>}
