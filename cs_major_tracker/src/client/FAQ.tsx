@@ -71,7 +71,7 @@ export default function FAQ() {
                                 <Typography variant="h6" className="font-bold" children={item.question} />
                             </AccordionHeader>
                             <AccordionBody>
-                                <Typography children={item.answer} />
+                                <Typography className="font-body" children={item.answer} />
                             </AccordionBody>
                         </Accordion>
                     )}

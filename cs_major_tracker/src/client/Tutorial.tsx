@@ -31,6 +31,7 @@ function Tutorial () {
                         activeStep={activeStep}
                         isLastStep={(value) => setIsLastStep(value)}
                         isFirstStep={(value) => setIsFirstStep(value)}
+                        className="w-[80%] self-center"
                     >
                         <Step onClick={() => setActiveStep(0)}>
                             1
@@ -77,7 +78,7 @@ function Tutorial () {
                             </div>
                         </Step>
                     </Stepper>
-                    <div className="mt-32 flex justify-between">
+                    <div className="mt-30 flex justify-between self-center w-[90%]">
                         <Button onClick={handlePrev} disabled={isFirstStep} className="font-body">
                             Prev
                         </Button>
@@ -121,7 +122,7 @@ function TutStep(props) {
                     <Typography className="font-body">A modal will appear prompting you to export the document. Click <em>Download</em>.</Typography>
                     <img src="/tutorial/t4.png" className="h-[16rem] self-center"></img><br />
 
-                    <Typography className="font-body">The excel file should download to your computer shortly.</Typography><br></br>
+                    <Typography className="font-body">The excel file should download to your computer shortly. Now you can upload it here!</Typography><br></br>
                 </>
             );
         default:

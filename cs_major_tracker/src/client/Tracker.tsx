@@ -379,7 +379,7 @@ function Tracker() {
 
   const humanities_description = () => {
     return (
-      <p className="ml-1">
+      <p className="ml-2 mt-1">
         <Tooltip
           placement="right-start"
           content={
@@ -408,7 +408,7 @@ function Tracker() {
             </div>
           }
         >
-          <QuestionMarkCircleIcon className="w-6 h-6 text-blue-300" />
+          <QuestionMarkCircleIcon className="w-5 h-5 text-blue-300" />
         </Tooltip>
       </p>
     );
@@ -416,7 +416,7 @@ function Tracker() {
 
   const cs_description = () => {
     return (
-      <p className="ml-1">
+      <p className="ml-2 mt-1">
         <Tooltip
           placement="right-start"
           content={
@@ -477,7 +477,7 @@ function Tracker() {
             </div>
           }
         >
-          <QuestionMarkCircleIcon className="w-6 h-6 text-blue-300" />
+          <QuestionMarkCircleIcon className="w-5 h-5 text-blue-300" />
         </Tooltip>
       </p>
     );
@@ -485,7 +485,7 @@ function Tracker() {
 
   const math_description = () => {
     return (
-      <p className="ml-1">
+      <p className="ml-2 mt-1">
         <Tooltip
           placement="right-start"
           content={
@@ -512,7 +512,7 @@ function Tracker() {
             </div>
           }
         >
-          <QuestionMarkCircleIcon className="w-6 h-6 text-blue-300" />
+          <QuestionMarkCircleIcon className="w-5 h-5 text-blue-300" />
         </Tooltip>
       </p>
     );
@@ -520,7 +520,7 @@ function Tracker() {
 
   const science_description = () => {
     return (
-      <p className="ml-1">
+      <p className="ml-2 mt-1">
         <Tooltip
           placement="right-start"
           content={
@@ -541,7 +541,7 @@ function Tracker() {
             </div>
           }
         >
-          <QuestionMarkCircleIcon className="w-6 h-6 text-blue-300" />
+          <QuestionMarkCircleIcon className="w-5 h-5 text-blue-300" />
         </Tooltip>
       </p>
     );
@@ -720,7 +720,7 @@ const CourseDropdowns = ({
     <Accordion open={open} icon={<Icon open={open} />}>
       <AccordionHeader
         onClick={handleOpen}
-        className={`flex ${data.length >= num ? "text-green-500" : ""}`}
+        className={`flex cursor-pointer font-body font-normal ${data.length >= num ? "text-green-500" : ""}`}
       >
         <p className={"flex justify-start"}>
           {title} ({data.length}/{num})
