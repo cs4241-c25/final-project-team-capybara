@@ -42,7 +42,7 @@ function determineCategory(courseType: string, courseNum: string) {
   const categoryInfo = [
     {
       name: "humanities",
-      limit: 5,
+      limit: 6,
       matches: [
         "AR", "EN", "TH", "MU", "AB", "CN", "GN", "SP",
         "WR", "RH", "HI", "HU", "INTL", "PY", "RE",
